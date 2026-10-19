@@ -577,6 +577,13 @@ class GraphicsView(QtWidgets.QGraphicsView):
 
         self.toggleUiDeviceMenu()
 
+    def discardDraft(self, item):
+        """Discard a dialog draft without sending DELETE for an uncreated ID."""
+        self._topology.removeDrawing(item)
+        if item.scene() is self.scene():
+            self.scene().removeItem(item)
+
+
     def wheelEvent(self, event):
         """
         Handles zoom in or out using the mouse wheel.
@@ -1645,7 +1652,7 @@ class GraphicsView(QtWidgets.QGraphicsView):
         if self._main_window and not sip.isdeleted(self._main_window):
             QtWidgets.QMessageBox.critical(self._main_window, name, message.strip())
 
-    def createDrawingItem(self, type, x, y, z, locked=False, rotation=0, svg=None, drawing_id=None):
+    def createDrawingItem(self, type, x, y, z, locked=False, rotation=0, svg=None, drawing_id=None, create=True):
 
         if type == "ellipse":
             item = EllipseItem(pos=QtCore.QPointF(x, y), z=z, locked=locked, rotation=rotation, project=self._topology.project(), drawing_id=drawing_id, svg=svg)
@@ -1658,7 +1665,7 @@ class GraphicsView(QtWidgets.QGraphicsView):
         elif type == "text":
             item = TextItem(pos=QtCore.QPointF(x, y), z=z, rotation=rotation, locked=locked, project=self._topology.project(), drawing_id=drawing_id, svg=svg)
 
-        if drawing_id is None:
+        if drawing_id is None and create:
             item.create()
 
         self.scene().addItem(item)
