@@ -63,6 +63,8 @@ from .items.line_item import LineItem
 from .items.ellipse_item import EllipseItem
 from .items.image_item import ImageItem
 from .items.logo_item import  LogoItem
+from .items.group_item import GroupItem, item_reference
+from .canvas_groups import CanvasGroups
 
 log = logging.getLogger(__name__)
 
@@ -94,6 +96,7 @@ class GraphicsView(QtWidgets.QGraphicsView):
         self._adding_line = False
         self._newlink = None
         self._dragging = False
+        self._groups = CanvasGroups(self)
         self._grid_size = 75
         self._drawing_grid_size = 25
         self._drawing_grid_color = self.DEFAULT_DRAWING_GRID_COLOR
@@ -112,6 +115,8 @@ class GraphicsView(QtWidgets.QGraphicsView):
 
         # set the custom flags for this view
         self.setDragMode(QtWidgets.QGraphicsView.DragMode.RubberBandDrag)
+        self.setMouseTracking(True)
+        self.setAcceptDrops(True)
         self.setRenderHint(QtGui.QPainter.RenderHint.Antialiasing)
         self.setTransformationAnchor(QtWidgets.QGraphicsView.ViewportAnchor.AnchorUnderMouse)
         self.setResizeAnchor(QtWidgets.QGraphicsView.ViewportAnchor.AnchorViewCenter)
@@ -195,6 +200,7 @@ class GraphicsView(QtWidgets.QGraphicsView):
         self._main_window.uiLockAllAction.setChecked(False)
 
         # clear all objects on the scene
+        self._groups.reset()
         self.scene().clear()
 
         # reset zoom / scale
@@ -431,6 +437,22 @@ class GraphicsView(QtWidgets.QGraphicsView):
             self._newlink = None
             self.addLink(source_item.node(), source_port, destination_item.node(), destination_port)
 
+    def groupSelectedNodes(self):
+        """Create a named topology container from selected sibling elements."""
+        self._groups.requestGroup()
+
+    def ungroupSelectedNodes(self):
+        self._groups.ungroup()
+
+    def enterGroup(self, group):
+        self._groups.enter(group)
+
+    def renameGroup(self, group=None):
+        groups = [group] if isinstance(group, GroupItem) else self._groups.selected()
+        for item in groups:
+            if isinstance(item, GroupItem):
+                self._groups.rename(item)
+
     def mousePressEvent(self, event):
         """
         Handles all mouse press events.
@@ -438,10 +460,25 @@ class GraphicsView(QtWidgets.QGraphicsView):
         :param event: QMouseEvent instance
         """
 
+        position = self.mapToScene(event.position().toPoint())
+        adding_item = any((self._adding_link, self._adding_note, self._adding_rectangle, self._adding_ellipse, self._adding_line))
+        self._groups.selection_started = (self._groups.selection_pending and not adding_item and
+                                          event.button() == QtCore.Qt.MouseButton.LeftButton and
+                                          not event.modifiers() & QtCore.Qt.KeyboardModifier.ShiftModifier)
+        if event.button() == QtCore.Qt.MouseButton.LeftButton and not adding_item and not self._dragging and not event.modifiers() & QtCore.Qt.KeyboardModifier.ShiftModifier:
+            if self._groups.beginResize(position):
+                event.accept()
+                return
+            editing = self._groups.editing
+            if editing is not None and not editing.shape().contains(editing.mapFromScene(position)):
+                self._groups.save()
+                self._groups.leave()
         is_not_link = True
         is_not_logo = True
 
         item = self.itemAt(event.position().toPoint())
+        if not self._adding_link:
+            item = self._groups.target(item)
         if item and sip.isdeleted(item):
             return
         elif not item:
@@ -511,6 +548,10 @@ class GraphicsView(QtWidgets.QGraphicsView):
         else:
             super().mousePressEvent(event)
 
+        if event.button() == QtCore.Qt.MouseButton.LeftButton and not self._adding_link:
+            self._groups.collapseSelection()
+        if event.button() == QtCore.Qt.MouseButton.LeftButton and not self._adding_link:
+            self._groups.beginDrag(item)
         self.toggleUiDeviceMenu()
 
     def contextMenuEvent(self, event):
@@ -524,6 +565,8 @@ class GraphicsView(QtWidgets.QGraphicsView):
         is_not_logo = True
 
         item = self.itemAt(event.pos())
+        if not self._adding_link:
+            item = self._groups.target(item)
         if item and sip.isdeleted(item):
             return
 
@@ -560,9 +603,13 @@ class GraphicsView(QtWidgets.QGraphicsView):
         :param: QMouseEvent instance
         """
 
-        for item in self.scene().selectedItems():
-            if isinstance(item, NodeItem):
-                item.mouseRelease()
+        if self._groups._resize is not None:
+            self._groups.clearDrag()
+            self._groups.endResize()
+            event.accept()
+            return
+        if not self._adding_link:
+            self._groups.collapseSelection()
 
         # If the left  mouse button is not still pressed TOGETHER with the SHIFT key and neither is the middle button
         # this means the user is no longer trying to drag the view
@@ -570,12 +617,18 @@ class GraphicsView(QtWidgets.QGraphicsView):
             self._dragging = False
             self.setCursor(QtCore.Qt.CursorShape.ArrowCursor)
         else:
-            item = self.itemAt(event.position().toPoint())
+            item = self._groups.target(self.itemAt(event.position().toPoint()))
             if item is not None and not (event.modifiers() & QtCore.Qt.KeyboardModifier.ControlModifier):
                 item.setSelected(True)
             super().mouseReleaseEvent(event)
 
+        detached = self._groups.endDrag()
+        self._groups.collapseSelection()
+        self._groups.save(self._groups.selected() + detached)
         self.toggleUiDeviceMenu()
+        if self._groups.selection_started:
+            self._groups.selection_started = False
+            self._groups.finishSelection()
 
     def wheelEvent(self, event):
         """
@@ -612,6 +665,17 @@ class GraphicsView(QtWidgets.QGraphicsView):
         :param event: QKeyEvent
         """
 
+        if event.key() == QtCore.Qt.Key.Key_Escape and self._groups.selection_pending:
+            self._groups.selection_pending = False
+            self._main_window.uiStatusBar.clearMessage()
+            event.accept()
+            return
+        if event.key() == QtCore.Qt.Key.Key_Escape and self._groups.editing:
+            self._groups.save()
+            self._groups.leave()
+            self.scene().clearSelection()
+            event.accept()
+            return
         if event.key() == QtCore.Qt.Key.Key_Delete:
             # check if we are editing an LabelItem instance, then send the delete key event to it
             for item in self.scene().selectedItems():
@@ -628,6 +692,18 @@ class GraphicsView(QtWidgets.QGraphicsView):
         :param event: QMouseEvent instance
         """
 
+        if self._groups._resize is not None:
+            self._groups.resizeTo(self.mapToScene(event.position().toPoint()))
+            event.accept()
+            return
+        if event.buttons() & QtCore.Qt.MouseButton.LeftButton and not self._dragging and not self._adding_link:
+            self._groups.showGuides()
+        if not event.buttons() and not self._adding_link:
+            hit = self._groups.resizeHandleAt(self.mapToScene(event.position().toPoint()))
+            if hit:
+                self.setCursor(QtCore.Qt.CursorShape.SizeFDiagCursor if hit[1] in ("tl", "br") else QtCore.Qt.CursorShape.SizeBDiagCursor)
+            elif self.cursor().shape() in (QtCore.Qt.CursorShape.SizeFDiagCursor, QtCore.Qt.CursorShape.SizeBDiagCursor):
+                self.unsetCursor()
         if self._dragging:
             # This if statement event checks to see if the user is dragging the scene
             # if so it sets the value of the scene scroll bars based on the change between
@@ -655,6 +731,8 @@ class GraphicsView(QtWidgets.QGraphicsView):
                 for child in item.childItems():
                     child.update()
             super().mouseMoveEvent(event)
+            if event.buttons() & QtCore.Qt.MouseButton.LeftButton and not self._dragging and not self._adding_link:
+                self._groups.updateDrag()
 
     def mouseDoubleClickEvent(self, event):
         """
@@ -666,6 +744,15 @@ class GraphicsView(QtWidgets.QGraphicsView):
         item = self.itemAt(event.position().toPoint())
 
         if not self._adding_link:
+            group = self._groups.target(item)
+            if isinstance(group, GroupItem) and group.labelRect().contains(group.mapFromScene(self.mapToScene(event.position().toPoint()))):
+                self.renameGroup(group)
+                event.accept()
+                return
+            if isinstance(group, GroupItem) and not group.editing:
+                self.enterGroup(group)
+                event.accept()
+                return
             if isinstance(item, NodeItem) and item.node().initialized():
                 item.setSelected(True)
                 if item.node().status() == Node.stopped or item.node().consoleType() == "none" or item.node().consoleType() is None:
@@ -699,20 +786,28 @@ class GraphicsView(QtWidgets.QGraphicsView):
             node_properties.show()
             node_properties.exec()
 
-    def dragMoveEvent(self, event):
-        """
-        Handles all drag move events.
-
-        :param event: QDragMoveEvent instance
-        """
-
-        # check if what is dragged is handled by this view
-        if event.mimeData().hasFormat("text/uri-list") \
-                or event.mimeData().hasFormat("application/x-gns3-template"):
+    def dragEnterEvent(self, event):
+        if event.mimeData().hasFormat("application/x-gns3-template") or event.mimeData().hasFormat("text/uri-list"):
             event.acceptProposedAction()
-            event.accept()
         else:
+            self._groups.clearDropTarget()
             event.ignore()
+
+    def dragMoveEvent(self, event):
+        """Preview membership only for new devices dragged from templates."""
+        if event.mimeData().hasFormat("application/x-gns3-template"):
+            self._groups.setDropTarget(self.mapToScene(event.position().toPoint()))
+            event.acceptProposedAction()
+        elif event.mimeData().hasFormat("text/uri-list"):
+            self._groups.clearDropTarget()
+            event.acceptProposedAction()
+        else:
+            self._groups.clearDropTarget()
+            event.ignore()
+
+    def dragLeaveEvent(self, event):
+        self._groups.clearDropTarget()
+        event.accept()
 
     def dropEvent(self, event):
         """
@@ -721,6 +816,10 @@ class GraphicsView(QtWidgets.QGraphicsView):
         :param event: QDropEvent instance
         """
 
+        # Capture the container before clearing temporary highlight/guides.
+        # Resolve it again at the actual drop position, not the last hover point.
+        target = self._groups.groupAt(self.mapToScene(event.position().toPoint())) if event.mimeData().hasFormat("application/x-gns3-template") else None
+        self._groups.clearDropTarget()
         log.debug("Drop event received with mime data: {}".format(event.mimeData().formats()))
         # check if what has been dropped is handled by this view
         if event.mimeData().hasFormat("application/x-gns3-template"):
@@ -735,11 +834,11 @@ class GraphicsView(QtWidgets.QGraphicsView):
                     for node_number in range(integer):
                         x = event.position().x() - (150 // 2) + (node_number % max_nodes_per_line) * offset
                         y = event.position().y() - (70 // 2) + (node_number // max_nodes_per_line) * offset
-                        if self.createNodeFromTemplateId(template_id, QtCore.QPointF(x, y)) is False:
+                        if self.createNodeFromTemplateId(template_id, QtCore.QPointF(x, y), group=target) is False:
                             event.ignore()
                             break
             else:
-                if self.createNodeFromTemplateId(template_id, event.position()) is False:
+                if self.createNodeFromTemplateId(template_id, event.position(), group=target) is False:
                     event.ignore()
         elif event.mimeData().hasFormat("text/uri-list") and event.mimeData().hasUrls():
             # This should not arrive but we received bug report with it...
@@ -782,6 +881,14 @@ class GraphicsView(QtWidgets.QGraphicsView):
         items = self.scene().selectedItems()
         if not items:
             return
+
+        groups = [item for item in items if isinstance(item, GroupItem)]
+        if groups:
+            for text, callback in (("Enter group", lambda: self.enterGroup(groups[0])),
+                                   ("Rename group", self.renameGroup),
+                                   ("Ungroup", self.ungroupSelectedNodes)):
+                action = menu.addAction(text)
+                action.triggered.connect(callback)
 
         if True in list(map(lambda item: isinstance(item, NodeItem) and hasattr(item.node(), "configPage"), items)):
             # Action: Configure node
@@ -929,7 +1036,7 @@ class GraphicsView(QtWidgets.QGraphicsView):
             menu.addAction(reset_label_position_action)
 
         # item must have no parent
-        if True in list(map(lambda item: item.parentItem() is None, items)):
+        if all(item_reference(item) for item in items):
 
             if len(items) > 1:
                 horizontal_align_action = QtGui.QAction("Align horizontally", menu)
@@ -1405,33 +1512,25 @@ class GraphicsView(QtWidgets.QGraphicsView):
                                                                                                                                                          router.name(),
                                                                                                                                                          ios_image))
 
+    @staticmethod
+    def drawingType(item):
+        if isinstance(item, GroupItem):
+            return "group"
+        if isinstance(item, EllipseItem):
+            return "ellipse"
+        if isinstance(item, TextItem):
+            return "text"
+        if isinstance(item, RectangleItem):
+            return "rect"
+        if isinstance(item, LineItem):
+            return "line"
+        return "image"
+
     def duplicateActionSlot(self):
-        """
-        Slot to receive events from the duplicate action in the
-        contextual menu.
-        """
-
-        for item in self.scene().selectedItems():
-            if isinstance(item, DrawingItem):
-                if isinstance(item, EllipseItem):
-                    type = "ellipse"
-                elif isinstance(item, TextItem):
-                    type = "text"
-                elif isinstance(item, RectangleItem):
-                    type = "rect"
-                else:
-                    type = "image"
-
-                self.createDrawingItem(
-                    type,
-                    int(item.pos().x()) + 20,
-                    int(item.pos().y()) + 20,
-                    item.zValue(),
-                    rotation=item.rotation(),
-                    svg=item.toSvg()
-                )
-            elif isinstance(item, NodeItem):
-                item.node().duplicate(item.pos().x() + 20, item.pos().y() + 20, item.zValue())
+        """Duplicate selected topology trees with new identities throughout."""
+        roots = self._groups.selected()
+        if roots:
+            self._groups.duplicate(roots)
 
     def styleActionSlot(self):
         """
@@ -1481,35 +1580,29 @@ class GraphicsView(QtWidgets.QGraphicsView):
                 for link in links:
                     link.adjust()
 
-    def horizontalAlignmentSlot(self):
-        """
-        Slot to receive events from the horizontal align action in the
-        contextual menu.
-        """
+    def _alignSelection(self, horizontal):
+        items = self._groups.selected()
+        if len({item.parentItem() for item in items}) != 1 or self._groups.hasLocked(items):
+            return
+        if not items:
+            return
+        # The selected siblings share one coordinate system, whose origin is
+        # their container's (0, 0), rather than the global scene origin.
+        anchor = items[0].mapRectToParent(items[0].boundingRect()).center()
+        for item in items:
+            center = item.mapRectToParent(item.boundingRect()).center()
+            delta = QtCore.QPointF(0, anchor.y() - center.y()) if horizontal else QtCore.QPointF(anchor.x() - center.x(), 0)
+            allowed = item._allow_snap_to_grid
+            item._allow_snap_to_grid = False
+            item.setPos(item.pos() + delta)
+            item._allow_snap_to_grid = allowed
+        self._groups.save(items)
 
-        horizontal_pos = None
-        for item in self.scene().selectedItems():
-            if item.parentItem() is None:
-                if horizontal_pos is None:
-                    horizontal_pos = item.y() + item.boundingRect().height() / 2
-                item.setX(item.x())
-                item.setY(horizontal_pos - item.boundingRect().height() / 2)
-                item.updateNode()
+    def horizontalAlignmentSlot(self):
+        self._alignSelection(True)
 
     def verticalAlignmentSlot(self):
-        """
-        Slot to receive events from the vertical align action in the
-        contextual menu.
-        """
-
-        vertical_position = None
-        for item in self.scene().selectedItems():
-            if item.parentItem() is None:
-                if vertical_position is None:
-                    vertical_position = item.x() + item.boundingRect().width() / 2
-                item.setX(vertical_position - item.boundingRect().width() / 2)
-                item.setY(item.y())
-                item.updateNode()
+        self._alignSelection(False)
 
     def raiseLayerActionSlot(self):
         """
@@ -1518,12 +1611,12 @@ class GraphicsView(QtWidgets.QGraphicsView):
         """
 
         for item in self.scene().selectedItems():
-            if item.parentItem() is None:
+            if item_reference(item):
                 if not (item.flags() & QtWidgets.QGraphicsItem.GraphicsItemFlag.ItemIsMovable):
                     log.error("Cannot move object to a upper layer because it is locked")
                     continue
                 item.setZValue(item.zValue() + 1)
-                item.updateNode()
+                self._groups.save([item])
                 item.update()
 
     def lowerLayerActionSlot(self):
@@ -1533,12 +1626,12 @@ class GraphicsView(QtWidgets.QGraphicsView):
         """
 
         for item in self.scene().selectedItems():
-            if item.parentItem() is None:
+            if item_reference(item):
                 if not (item.flags() & QtWidgets.QGraphicsItem.GraphicsItemFlag.ItemIsMovable):
                     log.error("Cannot move object to a lower layer because it is locked")
                     continue
                 item.setZValue(item.zValue() - 1)
-                item.updateNode()
+                self._groups.save([item])
                 item.update()
 
     def lockActionSlot(self):
@@ -1553,43 +1646,42 @@ class GraphicsView(QtWidgets.QGraphicsView):
                     item.setLocked(False)
                 else:
                     item.setLocked(True)
-                if item.parentItem() is None:
-                    item.updateNode()
+                if item_reference(item):
+                    self._groups.save([item])
                 item.update()
 
     def deleteActionSlot(self):
-        """
-        Slot to receive events from the delete action in the
-        contextual menu.
-        """
-
-        selected_nodes = []
-        for item in self.scene().selectedItems():
-            if isinstance(item, NodeItem):
-                node = item.node()
-                if node.locked():
-                    QtWidgets.QMessageBox.critical(self, "Delete", "Cannot delete node '{}' because it is locked".format(node.name()))
-                    return
-                selected_nodes.append(node)
-            if isinstance(item, DrawingItem) and item.locked():
-                QtWidgets.QMessageBox.critical(self, "Delete", "Cannot delete drawing because it is locked")
+        """Delete selected containers and all descendants through their APIs."""
+        roots = self._groups.selected()
+        if self._groups.hasLocked(roots):
+            return
+        items = []
+        for root in roots:
+            items.append(root)
+            if isinstance(root, GroupItem):
+                items.extend(root.descendants())
+        nodes = [item for item in items if isinstance(item, NodeItem)]
+        if nodes:
+            reply = QtWidgets.QMessageBox.question(
+                self, "Delete", "Permanently delete {} device(s) and the selected elements?".format(len(nodes)),
+                QtWidgets.QMessageBox.StandardButton.Yes, QtWidgets.QMessageBox.StandardButton.No)
+            if reply != QtWidgets.QMessageBox.StandardButton.Yes:
                 return
-        if selected_nodes:
-            if len(selected_nodes) > 1:
-                question = "Do you want to permanently delete these {} nodes?".format(len(selected_nodes))
-            else:
-                question = "Do you want to permanently delete {}?".format(selected_nodes[0].name())
-            reply = QtWidgets.QMessageBox.question(self, "Delete", question,
-                                                   QtWidgets.QMessageBox.StandardButton.Yes, QtWidgets.QMessageBox.StandardButton.No)
-            if reply == QtWidgets.QMessageBox.StandardButton.No:
-                return
-        for item in self.scene().selectedItems():
+        if self._groups.editing in items:
+            self._groups.leave()
+        parents = {item.parentItem() for item in roots if isinstance(item.parentItem(), GroupItem)}
+        # Detach before asynchronous deletion: removing a Qt parent from the
+        # scene must not silently remove children before their API calls run.
+        from .items.group_item import reparent
+        for item in items:
+            reparent(item, None)
+        for item in items:
             if isinstance(item, NodeItem):
                 item.node().delete()
                 self._topology.removeNode(item.node())
-            elif item.parentItem() is None:
+            else:
                 item.delete()
-
+        self._groups.save(list(parents))
         self.scene().clearSelection()
         self.toggleUiDeviceMenu()
 
@@ -1613,12 +1705,40 @@ class GraphicsView(QtWidgets.QGraphicsView):
             raise ModuleError("Please select a server")
         return server
 
-    def createNodeFromTemplateId(self, template_id, pos):
+    def createNodeFromTemplateId(self, template_id, pos, group=None):
+        """Create through the existing API, then attach the returned node ID.
+
+        Capture a local position: a group may move while the server creates a
+        device. Do not infer membership from whichever notification arrives next.
         """
-        Ask the server to create a node using this template
-        """
-        pos = self.mapToScene(pos.toPoint())
-        return TemplateManager().instance().createNodeFromTemplateId(self._topology.project(), template_id, pos.x(), pos.y())
+        position = self.mapToScene(pos.toPoint())
+        project = self._topology.project()
+        manager = TemplateManager.instance()
+        if group is None:
+            return manager.createNodeFromTemplateId(project, template_id, position.x(), position.y())
+        local = group.mapFromScene(position)
+
+        def created(result, error=False):
+            if error or self._topology.project() is not project or sip.isdeleted(self):
+                return
+            if sip.isdeleted(group) or group.scene() is not self.scene():
+                return  # the device remains at the scene root if its target was removed
+            identity = result["node_id"]
+            if self._topology.getNodeFromUuid(identity) is None:
+                self._topology.createNode(result)
+            item = next((item for item in self.scene().items()
+                         if isinstance(item, NodeItem) and item.node().node_id() == identity), None)
+            if item is not None:
+                from .items.group_item import reparent
+                reparent(item, group, local)
+                # NodeItem.setPos caches scene coordinates. Keep the last
+                # server-confirmed values until save compares them with the
+                # actual scene position (the parent may have moved meanwhile).
+                item.node().setSettingValue("x", result.get("x", int(position.x())))
+                item.node().setSettingValue("y", result.get("y", int(position.y())))
+                self._groups.save([item])
+
+        return manager.createNodeFromTemplateId(project, template_id, position.x(), position.y(), callback=created)
 
     def createNodeItem(self, node, symbol, x, y):
         node.setSymbol(symbol)
@@ -1645,9 +1765,11 @@ class GraphicsView(QtWidgets.QGraphicsView):
         if self._main_window and not sip.isdeleted(self._main_window):
             QtWidgets.QMessageBox.critical(self._main_window, name, message.strip())
 
-    def createDrawingItem(self, type, x, y, z, locked=False, rotation=0, svg=None, drawing_id=None):
+    def createDrawingItem(self, type, x, y, z, locked=False, rotation=0, svg=None, drawing_id=None, create=True):
 
-        if type == "ellipse":
+        if type == "group":
+            item = GroupItem(pos=QtCore.QPointF(x, y), z=z, locked=locked, project=self._topology.project(), drawing_id=drawing_id, svg=svg)
+        elif type == "ellipse":
             item = EllipseItem(pos=QtCore.QPointF(x, y), z=z, locked=locked, rotation=rotation, project=self._topology.project(), drawing_id=drawing_id, svg=svg)
         elif type == "rect":
             item = RectangleItem(pos=QtCore.QPointF(x, y), z=z, locked=locked, rotation=rotation, project=self._topology.project(), drawing_id=drawing_id, svg=svg)
@@ -1658,7 +1780,15 @@ class GraphicsView(QtWidgets.QGraphicsView):
         elif type == "text":
             item = TextItem(pos=QtCore.QPointF(x, y), z=z, rotation=rotation, locked=locked, project=self._topology.project(), drawing_id=drawing_id, svg=svg)
 
-        if drawing_id is None:
+        if svg and not isinstance(item, GroupItem):
+            from .items.group_item import drawing_identity
+            saved_identity = drawing_identity(svg)
+            item._canvas_id = saved_identity or item.drawing_id()
+            item._canvas_identity_saved = bool(saved_identity)
+            # Duplication creates a new element, not another reference to the source.
+            if drawing_id is None:
+                item._canvas_id = item.drawing_id()
+        if drawing_id is None and create:
             item.create()
 
         self.scene().addItem(item)
@@ -1692,6 +1822,16 @@ class GraphicsView(QtWidgets.QGraphicsView):
         self._drawing_grid_color = self.DEFAULT_DRAWING_GRID_COLOR
         self._node_grid_color = self.DEFAULT_NODE_GRID_COLOR
         self.viewport().update()
+
+    def drawForeground(self, painter, rect):
+        super().drawForeground(painter, rect)
+        self._groups.drawGuides(painter)
+        self._groups.drawDragPreviews(painter)
+
+    def focusOutEvent(self, event):
+        self._groups.clearDrag()
+        self._groups.endResize()
+        super().focusOutEvent(event)
 
     def drawBackground(self, painter, rect):
         super().drawBackground(painter, rect)

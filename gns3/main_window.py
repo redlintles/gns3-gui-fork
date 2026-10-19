@@ -83,6 +83,7 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self._settings = {}
 
         self.setupUi(self)
+        self._setupNodeGroupingActions()
         self.setUnifiedTitleAndToolBarOnMac(True)
 
         # These widgets will be disabled when no project is loaded
@@ -1135,6 +1136,54 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
     def resizeEvent(self, event):
         self._notif_dialog.resize()
         super().resizeEvent(event)
+
+    def _setupNodeGroupingActions(self):
+        """Momentary canvas commands, with hover icons and status-bar help."""
+        for name, text, shortcut, callback in (
+            ("uiGroupNodesAction", "Group elements", "Ctrl+G", self.uiGraphicsView.groupSelectedNodes),
+            ("uiUngroupNodesAction", "Ungroup elements", "Ctrl+Shift+G", self.uiGraphicsView.ungroupSelectedNodes),
+        ):
+            action = QtGui.QAction(text, self.uiGraphicsView)
+            action.setObjectName(name)
+            action.setCheckable(False)
+            action.setShortcut(QtGui.QKeySequence(shortcut))
+            action.setShortcutContext(QtCore.Qt.ShortcutContext.WidgetShortcut)
+            action.setToolTip("{} ({})".format(text, shortcut))
+            action.setStatusTip("{} ({})".format(text, shortcut))
+            action.triggered.connect(callback)
+            self.uiGraphicsView.addAction(action)
+            self.uiAnnotateMenu.addAction(action)
+            setattr(self, name, action)
+
+        icon = QtGui.QIcon()
+        for mode, color in ((QtGui.QIcon.Mode.Normal, "#68737d"),
+                            (QtGui.QIcon.Mode.Active, "#3484c6"),
+                            (QtGui.QIcon.Mode.Disabled, "#aeb4b9")):
+            pixmap = QtGui.QPixmap(32, 32)
+            pixmap.fill(QtCore.Qt.GlobalColor.transparent)
+            painter = QtGui.QPainter(pixmap)
+            pen = QtGui.QPen(QtGui.QColor(color), 2)
+            painter.setPen(pen)
+            painter.drawRect(7, 7, 8, 8)
+            painter.drawRect(17, 17, 8, 8)
+            pen.setStyle(QtCore.Qt.PenStyle.SolidLine)
+            painter.setPen(pen)
+            painter.drawRect(2, 2, 28, 28)
+            painter.end()
+            icon.addPixmap(pixmap, mode, QtGui.QIcon.State.Off)
+        self.uiGroupNodesAction.setIcon(icon)
+        self.uiAnnotationToolBar.addAction(self.uiGroupNodesAction)
+        button = self.uiAnnotationToolBar.widgetForAction(self.uiGroupNodesAction)
+        # A request creates one group, immediately or after the next selection.
+        # Keep the button released while the canvas waits for that selection.
+        button.setFocusPolicy(QtCore.Qt.FocusPolicy.NoFocus)
+        button.setStatusTip(self.uiGroupNodesAction.statusTip())
+
+        def released():
+            button.setDown(False)
+            button.setChecked(False)
+            button.clearFocus()
+        self.uiGroupNodesAction.triggered.connect(released)
 
     def keyPressEvent(self, event):
         """
