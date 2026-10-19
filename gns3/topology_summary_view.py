@@ -270,7 +270,7 @@ class TopologySummaryView(QtWidgets.QTreeWidget):
             group = groups[identity]
             row.group = group
             row.setText(0, group.name)
-            row.setText(1, "Group")
+            row.setText(1, "Container")
             parent = group.parentItem()
             parent_row = self._group_items.get(parent.drawing_id()) if isinstance(parent, GroupItem) else None
             if parent_row:
@@ -362,10 +362,13 @@ class TopologySummaryView(QtWidgets.QTreeWidget):
         view = MainWindow.instance().uiGraphicsView
         menu = QtWidgets.QMenu(self)
 
+        if group.editing:
+            menu.addAction('Edit container').triggered.connect(lambda: view.editContainer(group))
+
         def run(callback):
             self._selectGroup(group)
             callback()
-        for text, callback in (("Rename group", lambda: view.renameGroup(group)),
+        for text, callback in (("Rename container", lambda: view.renameGroup(group)),
                                ("Duplicate", view.duplicateActionSlot),
                                ("Delete", view.deleteActionSlot)):
             menu.addAction(text).triggered.connect(lambda checked=False, callback=callback: run(callback))

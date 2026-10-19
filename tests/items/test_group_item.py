@@ -232,7 +232,7 @@ def test_enter_nested_group_edit_child_and_escape(canvas):
     inner = group(canvas, [a, b])
     outer = group(canvas, [inner, drawing(canvas, x=400)], "Site")
     canvas.enterGroup(inner)
-    assert inner.editing and outer.editing
+    assert inner.editing and not outer.editing
     QtWidgets.QApplication.processEvents()
     initial = a.pos()
     start = canvas.mapFromScene(a.sceneBoundingRect().center())
@@ -368,7 +368,7 @@ def test_invalid_metadata_and_stale_acknowledgment(canvas):
     assert container.pos() == old_position + QtCore.QPointF(30, 40)
 
 
-def test_drag_closed_nested_container_and_double_click_one_level(canvas):
+def test_drag_closed_nested_container_and_double_click_inner(canvas):
     a, b = device(canvas, 100, 80), device(canvas, 200, 80)
     inner = group(canvas, [a, b])
     outer = group(canvas, [inner, drawing(canvas, x=400)], "Site")
@@ -384,9 +384,8 @@ def test_drag_closed_nested_container_and_double_click_one_level(canvas):
     assert outer.isSelected() and not inner.isSelected() and not a.isSelected()
     start = canvas.mapFromScene(a.sceneBoundingRect().center())
     QTest.mouseDClick(canvas.viewport(), QtCore.Qt.MouseButton.LeftButton, pos=start)
-    assert outer.editing and not inner.editing
-    QTest.mouseDClick(canvas.viewport(), QtCore.Qt.MouseButton.LeftButton, pos=start)
-    assert inner.editing and canvas._groups.editing is inner
+    assert not outer.editing and inner.editing
+    assert canvas._groups.editing is inner
 
 
 def test_fixed_dimensions_margin_and_child_clipping(canvas):
@@ -532,7 +531,7 @@ def test_summary_nested_groups_ports_and_group_actions(canvas, summary):
     assert row.parent().group is inner and row.parent().parent() is top
     assert row.child(0) is port_row
     menu = summary.groupMenu(inner)
-    assert [action.text() for action in menu.actions()] == ["Rename group", "Duplicate", "Delete"]
+    assert [action.text() for action in menu.actions()] == ["Rename container", "Duplicate", "Delete"]
     with patch("gns3.canvas_groups.GroupPropertiesDialog.getProperties", return_value=("LAN renamed", 220, 180)):
         menu.actions()[0].trigger()
     assert row.parent().text(0) == "LAN renamed"

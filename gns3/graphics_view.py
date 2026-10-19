@@ -447,6 +447,12 @@ class GraphicsView(QtWidgets.QGraphicsView):
     def enterGroup(self, group):
         self._groups.enter(group)
 
+    def editContainer(self, container=None):
+        container = container if isinstance(container, GroupItem) else self._groups.editing
+        if container is not None and container.editing:
+            self._groups.rename(container)
+
+
     def renameGroup(self, group=None):
         groups = [group] if isinstance(group, GroupItem) else self._groups.selected()
         for item in groups:
@@ -462,13 +468,16 @@ class GraphicsView(QtWidgets.QGraphicsView):
 
         position = self.mapToScene(event.position().toPoint())
         adding_item = any((self._adding_link, self._adding_note, self._adding_rectangle, self._adding_ellipse, self._adding_line))
+        # Claim handles outside the shape before empty-canvas navigation.
+        if (event.button() == QtCore.Qt.MouseButton.LeftButton and not adding_item and
+                not self._dragging and not event.modifiers() & QtCore.Qt.KeyboardModifier.ShiftModifier):
+            if self._groups.beginResize(position):
+                event.accept()
+                return
         self._groups.selection_started = (self._groups.selection_pending and not adding_item and
                                           event.button() == QtCore.Qt.MouseButton.LeftButton and
                                           not event.modifiers() & QtCore.Qt.KeyboardModifier.ShiftModifier)
         if event.button() == QtCore.Qt.MouseButton.LeftButton and not adding_item and not self._dragging and not event.modifiers() & QtCore.Qt.KeyboardModifier.ShiftModifier:
-            if self._groups.beginResize(position):
-                event.accept()
-                return
             editing = self._groups.editing
             if editing is not None and not editing.shape().contains(editing.mapFromScene(position)):
                 self._groups.save()
@@ -630,6 +639,13 @@ class GraphicsView(QtWidgets.QGraphicsView):
             self._groups.selection_started = False
             self._groups.finishSelection()
 
+    def discardDraft(self, item):
+        """Discard a dialog draft without sending DELETE for an uncreated ID."""
+        self._topology.removeDrawing(item)
+        if item.scene() is self.scene():
+            self.scene().removeItem(item)
+
+
     def wheelEvent(self, event):
         """
         Handles zoom in or out using the mouse wheel.
@@ -744,7 +760,14 @@ class GraphicsView(QtWidgets.QGraphicsView):
         item = self.itemAt(event.position().toPoint())
 
         if not self._adding_link:
-            group = self._groups.target(item)
+            # Double-click addresses the deepest visible container directly.
+            # Normal movement still resolves to a closed ancestor as a unit.
+            position = self.mapToScene(event.position().toPoint())
+            containers = [candidate for candidate in self.scene().items(position)
+                          if isinstance(candidate, GroupItem) and
+                          candidate.shape().contains(candidate.mapFromScene(position))]
+            group = next((candidate for candidate in containers if not any(
+                candidate.isAncestorOf(other) for other in containers)), None)
             if isinstance(group, GroupItem) and group.labelRect().contains(group.mapFromScene(self.mapToScene(event.position().toPoint()))):
                 self.renameGroup(group)
                 event.accept()
@@ -882,11 +905,15 @@ class GraphicsView(QtWidgets.QGraphicsView):
         if not items:
             return
 
+        if self._groups.editing is not None and self._groups.editing.editing:
+            menu.addAction('Edit').triggered.connect(lambda: self.editContainer())
+        if self._groups.selected():
+            menu.addAction('Create container').triggered.connect(self.groupSelectedNodes)
         groups = [item for item in items if isinstance(item, GroupItem)]
         if groups:
-            for text, callback in (("Enter group", lambda: self.enterGroup(groups[0])),
-                                   ("Rename group", self.renameGroup),
-                                   ("Ungroup", self.ungroupSelectedNodes)):
+            for text, callback in (("Enter container", lambda: self.enterGroup(groups[0])),
+                                   ("Rename container", self.renameGroup),
+                                   ("Unpack container", self.ungroupSelectedNodes)):
                 action = menu.addAction(text)
                 action.triggered.connect(callback)
 
