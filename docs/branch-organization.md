@@ -3,8 +3,8 @@
 Reorganized on 2026-10-19. The complete branch was renamed from
 `codex/canvas-device-grouping` to `codex/canvas-all-improvements`.
 Its commit (`125c8771855c14e19d28c24e00280bf4a425b13b`), tree and entire history
-are unchanged. No history of `main`, `canvas-improvements` or upstream master
-was rewritten. The pre-existing untracked `docs/pr-canvas-improvements.md` was
+are unchanged. The target fork is `https://github.com/redlintles/gns3-gui-fork`.
+No history of its `master`, `canvas-improvements` or upstream master was rewritten. The pre-existing untracked `docs/pr-canvas-improvements.md` was
 left untouched and is not part of this reorganization.
 
 ## Branches and review bases
@@ -19,10 +19,10 @@ left untouched and is not part of this reorganization.
 | `feature-image-importing` | `fix-async-requests` | `47ce1bb4` | 204 |
 | `feature-container` | `fix-async-requests` | `ee49ccb6` | 301 |
 
-`c776d4ef` is the original common upstream base, not the fork's current main,
-which already includes most of the combined implementation. For focused PRs,
-compare against the review base shown above. A PR against the current fork main
-will not show a clean, independent addition of a feature already present there.
+`c776d4ef` is the original common upstream base and the fork's `master` at
+publication. For focused PRs, compare against the review base shown above.
+`canvas-improvements` already includes most of the combined implementation;
+it is not the base for reviewing the separate feature additions.
 
 Containers and images share the exact async branch ancestry. Merge async first;
 review their feature-only changes against `codex/fix-async-requests`. Geometry
