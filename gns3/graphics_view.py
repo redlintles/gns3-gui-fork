@@ -60,6 +60,7 @@ from .items.shape_item import ShapeItem
 from .items.drawing_item import DrawingItem
 from .items.rectangle_item import RectangleItem
 from .items.line_item import LineItem
+from .canvas_lines import CanvasLines
 from .items.ellipse_item import EllipseItem
 from .items.image_item import ImageItem
 from .items.logo_item import  LogoItem
@@ -92,6 +93,7 @@ class GraphicsView(QtWidgets.QGraphicsView):
         self._adding_rectangle = False
         self._adding_ellipse = False
         self._adding_line = False
+        self._lines = CanvasLines(self)
         self._newlink = None
         self._dragging = False
         self._grid_size = 75
@@ -112,6 +114,7 @@ class GraphicsView(QtWidgets.QGraphicsView):
 
         # set the custom flags for this view
         self.setDragMode(QtWidgets.QGraphicsView.DragMode.RubberBandDrag)
+        self.setMouseTracking(True)
         self.setRenderHint(QtGui.QPainter.RenderHint.Antialiasing)
         self.setTransformationAnchor(QtWidgets.QGraphicsView.ViewportAnchor.AnchorUnderMouse)
         self.setResizeAnchor(QtWidgets.QGraphicsView.ViewportAnchor.AnchorViewCenter)
@@ -175,6 +178,8 @@ class GraphicsView(QtWidgets.QGraphicsView):
         reset the instances count.
         """
 
+        self._lines.reset()
+
         # reset the modules
         for module in MODULES:
             instance = module.instance()
@@ -237,6 +242,7 @@ class GraphicsView(QtWidgets.QGraphicsView):
         """
 
         if enabled:
+            self._lines.cancel()
             self.setCursor(QtCore.Qt.CursorShape.CrossCursor)
         else:
             if self._newlink and self._newlink in self.scene().items():
@@ -253,6 +259,7 @@ class GraphicsView(QtWidgets.QGraphicsView):
         """
 
         if state:
+            self._lines.cancel()
             self._adding_note = True
             self.setCursor(QtCore.Qt.CursorShape.IBeamCursor)
         else:
@@ -267,6 +274,7 @@ class GraphicsView(QtWidgets.QGraphicsView):
         """
 
         if state:
+            self._lines.cancel()
             self._adding_rectangle = True
             self.setCursor(QtCore.Qt.CursorShape.PointingHandCursor)
         else:
@@ -281,6 +289,7 @@ class GraphicsView(QtWidgets.QGraphicsView):
         """
 
         if state:
+            self._lines.cancel()
             self._adding_ellipse = True
             self.setCursor(QtCore.Qt.CursorShape.PointingHandCursor)
         else:
@@ -288,18 +297,26 @@ class GraphicsView(QtWidgets.QGraphicsView):
             self.setCursor(QtCore.Qt.CursorShape.ArrowCursor)
 
     def addLine(self, state):
-        """
-        Adds a line.
-
-        :param state: boolean
-        """
-
+        """Choose two scene points before confirming the visual line style."""
+        self._lines.cancel()
         if state:
+            cancel_shape = getattr(self, "cancelShapeDrawing", None)
+            if cancel_shape is not None:
+                cancel_shape()
+            groups = getattr(self, "_groups", None)
+            if groups is not None and groups.selection_pending:
+                groups.selection_pending = groups.selection_started = False
+                self._main_window.uiStatusBar.clearMessage()
+            self.addingLinkSlot(False)
+            self._main_window.uiAddLinkAction.setChecked(False)
+            self._adding_note = self._adding_rectangle = self._adding_ellipse = False
+            for action in (self._main_window.uiAddNoteAction, self._main_window.uiDrawRectangleAction,
+                           self._main_window.uiDrawEllipseAction):
+                action.setChecked(False)
             self._adding_line = True
-            self.setCursor(QtCore.Qt.CursorShape.PointingHandCursor)
-        else:
-            self._adding_line = False
-            self.setCursor(QtCore.Qt.CursorShape.ArrowCursor)
+            self._main_window.uiDrawLineAction.setChecked(True)
+            self.setCursor(QtCore.Qt.CursorShape.CrossCursor)
+            self.setFocus()
 
     def addImage(self, image_path):
         """
@@ -438,6 +455,9 @@ class GraphicsView(QtWidgets.QGraphicsView):
         :param event: QMouseEvent instance
         """
 
+        if self._lines.press(event):
+            return
+
         is_not_link = True
         is_not_logo = True
 
@@ -502,12 +522,6 @@ class GraphicsView(QtWidgets.QGraphicsView):
             self._main_window.uiDrawEllipseAction.setChecked(False)
             self.setCursor(QtCore.Qt.CursorShape.ArrowCursor)
             self._adding_ellipse = False
-        elif event.button() == QtCore.Qt.MouseButton.LeftButton and self._adding_line:
-            pos = self.mapToScene(event.position().toPoint())
-            self.createDrawingItem("line", int(pos.x()), int(pos.y()), 1)
-            self._main_window.uiDrawLineAction.setChecked(False)
-            self.setCursor(QtCore.Qt.CursorShape.ArrowCursor)
-            self._adding_line = False
         else:
             super().mousePressEvent(event)
 
@@ -519,6 +533,9 @@ class GraphicsView(QtWidgets.QGraphicsView):
 
         :param event: QContextMenuEvent instance
         """
+
+        if self._lines.contextMenu(event):
+            return
 
         is_not_link = True
         is_not_logo = True
@@ -560,6 +577,9 @@ class GraphicsView(QtWidgets.QGraphicsView):
         :param: QMouseEvent instance
         """
 
+        if self._lines.release(event):
+            return
+
         for item in self.scene().selectedItems():
             if isinstance(item, NodeItem):
                 item.mouseRelease()
@@ -576,6 +596,7 @@ class GraphicsView(QtWidgets.QGraphicsView):
             super().mouseReleaseEvent(event)
 
         self.toggleUiDeviceMenu()
+        self._lines.finishMove()
 
     def discardDraft(self, item):
         """Discard a dialog draft without sending DELETE for an uncreated ID."""
@@ -619,6 +640,11 @@ class GraphicsView(QtWidgets.QGraphicsView):
         :param event: QKeyEvent
         """
 
+        if event.key() == QtCore.Qt.Key.Key_Escape and self._adding_line:
+            self._lines.cancel()
+            event.accept()
+            return
+
         if event.key() == QtCore.Qt.Key.Key_Delete:
             # check if we are editing an LabelItem instance, then send the delete key event to it
             for item in self.scene().selectedItems():
@@ -634,6 +660,9 @@ class GraphicsView(QtWidgets.QGraphicsView):
 
         :param event: QMouseEvent instance
         """
+
+        if self._lines.move(event):
+            return
 
         if self._dragging:
             # This if statement event checks to see if the user is dragging the scene
@@ -1446,6 +1475,11 @@ class GraphicsView(QtWidgets.QGraphicsView):
         contextual menu.
         """
 
+        lines = [item for item in self.scene().selectedItems() if isinstance(item, LineItem)]
+        if lines and len(lines) == len(self.scene().selectedItems()):
+            self._lines.edit(lines)
+            return
+
         items = []
         for item in self.scene().selectedItems():
             if isinstance(item, ShapeItem) or isinstance(item, LineItem):
@@ -1699,6 +1733,10 @@ class GraphicsView(QtWidgets.QGraphicsView):
         self._drawing_grid_color = self.DEFAULT_DRAWING_GRID_COLOR
         self._node_grid_color = self.DEFAULT_NODE_GRID_COLOR
         self.viewport().update()
+
+    def focusOutEvent(self, event):
+        self._lines.focusOut()
+        super().focusOutEvent(event)
 
     def drawBackground(self, painter, rect):
         super().drawBackground(painter, rect)

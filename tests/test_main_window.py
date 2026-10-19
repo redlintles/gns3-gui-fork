@@ -17,13 +17,17 @@
 
 import pytest
 
-from unittest.mock import MagicMock
+from unittest.mock import MagicMock, patch
 
 
 @pytest.fixture
 def real_main_window():
     from gns3.main_window import MainWindow
-    return MainWindow()
+    with patch.object(MainWindow, "run_later"):
+        window = MainWindow()
+    yield window
+    window._local_config_timer.stop()
+    window.deleteLater()
 
 
 def test_main_window_settings_changed_signal(real_main_window):
@@ -41,3 +45,14 @@ def test_main_window_settings_changed_slot(real_main_window):
     real_main_window._appliance_manager =  manager
     real_main_window.settingsChangedSlot()
     assert instance.refresh.called
+
+
+def test_line_toolbar_switches_between_authoring_tools(real_main_window):
+    window = real_main_window
+    window.uiDrawLineAction.trigger()
+    assert window.uiGraphicsView._adding_line
+    assert window.uiDrawLineAction.isChecked()
+    window.uiDrawRectangleAction.trigger()
+    assert window.uiGraphicsView._adding_rectangle
+    assert not window.uiGraphicsView._adding_line
+    assert not window.uiDrawLineAction.isChecked()
