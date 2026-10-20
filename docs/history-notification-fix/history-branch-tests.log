@@ -1,0 +1,15 @@
+.....................................................................s.. [ 13%]
+........................................................................ [ 26%]
+........................................................................ [ 39%]
+........................................................................ [ 52%]
+........................................................................ [ 66%]
+........................................................................ [ 79%]
+........................................................................ [ 92%]
+.........................................                                [100%]
+=============================== warnings summary ===============================
+tests/test_update_manager.py::test_installDownloadedUpdates
+  /usr/lib/python3.12/tarfile.py:2301: DeprecationWarning: Python 3.14 will, by default, filter extracted tar archives and reject files or modify their metadata. Use the filter argument to control this behavior.
+    warnings.warn(
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+544 passed, 1 skipped, 1 warning in 11.54s
