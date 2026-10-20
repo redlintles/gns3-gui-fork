@@ -130,6 +130,12 @@ def description(changes, hint=None):
                 if all(values):
                     membership |= {(v['type'], v['id']) for v in values[0].get('children', [])} != {
                         (v['type'], v['id']) for v in values[1].get('children', [])}
+    # Dialog hints must not hide a rename, including its secondary label update.
+    if len(changes) == 1:
+        key, change = next(iter(changes.items()))
+        before, after = change['before'], change['after']
+        if key.startswith('nodes/') and before and after and before.get('name') != after.get('name'):
+            return 'Changed {} hostname to {}'.format(before.get('name', 'device'), after.get('name', 'device'))
     if hint:
         names = ', '.join((after or before).get('name', 'container') for before, after in groups[:2])
         return hint + (' — ' + names if names and (hint.lower().endswith('container') or hint == 'Change container properties') else '')

@@ -1,0 +1,27 @@
+{
+  "transitional_events": [
+    {
+      "action": "link.updated",
+      "event": {
+        "capture_compute_id": null,
+        "capture_file_name": null,
+        "capture_file_path": null,
+        "capturing": false,
+        "filters": {},
+        "link_id": "9fd129a0-4e3e-4a96-a92d-61c2f9f5c1c4",
+        "link_style": {
+          "color": "#123456",
+          "type": 1,
+          "width": 3
+        },
+        "link_type": "ethernet",
+        "nodes": [],
+        "project_id": "0699c634-4310-44ba-a812-a159fad47b0f",
+        "suspend": false
+      }
+    }
+  ],
+  "history_entries": 1,
+  "history_invalid": ""
+}
+PASS: transitional server event ignored; complete link recorded once
