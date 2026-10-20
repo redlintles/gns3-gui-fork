@@ -222,12 +222,16 @@ class HistoryDocument:
     def rebind_links(self, mapping):
         """GNS3 allocates fresh link UUIDs on POST, including compensation."""
         def rewrite(value):
-            if isinstance(value, str):
-                return UUID_TOKEN.sub(lambda match: mapping.get(match.group(), match.group()), value)
             if isinstance(value, list):
                 return [rewrite(v) for v in value]
             if isinstance(value, dict):
-                return {rewrite(k): rewrite(v) for k, v in value.items()}
+                result = {}
+                for key, item in value.items():
+                    target = 'links/' + mapping[key[6:]] if key.startswith('links/') and key[6:] in mapping else key
+                    result[target] = mapping.get(item, item) if key == 'link_id' and isinstance(item, str) else rewrite(item)
+                return result
+            # Names, SVG text, paths and arbitrary device properties are data,
+            # not references to a connection just because they contain a UUID.
             return value
         self.state = rewrite(self.state)
         self.entries = rewrite(self.entries)

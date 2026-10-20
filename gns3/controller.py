@@ -57,6 +57,11 @@ class Controller(QtCore.QObject):
         self._display_error = True
         self._projects = []
         self._websocket = QtWebSockets.QWebSocket()
+        self._notification_signals_connected = False
+        self._notification_retry = QtCore.QTimer(self)
+        self._notification_retry.setSingleShot(True)
+        self._notification_retry.setInterval(1000)
+        self._notification_retry.timeout.connect(self._startListenNotifications)
 
         # If we do multiple call in order to download the same symbol we queue them
         self._static_asset_download_queue = {}
@@ -435,6 +440,12 @@ class Controller(QtCore.QObject):
         if not self.connected():
             return
 
+        self._notification_retry.stop()
+        if (self._notification_stream is self._websocket and self._websocket.state() in
+                (QtNetwork.QAbstractSocket.SocketState.ConnectingState,
+                 QtNetwork.QAbstractSocket.SocketState.ConnectedState)):
+            return
+
         # Due to bug in Qt on some version we need a dedicated network manager
         self._notification_network_manager = QtNetwork.QNetworkAccessManager()
         self._notification_stream = None
@@ -452,16 +463,19 @@ class Controller(QtCore.QObject):
             log.info("Listening for controller notifications on '{}'".format(url))
 
         else:
+            if not self._notification_signals_connected:
+                self._websocket.textMessageReceived.connect(self._websocket_event_received)
+                if parse_version(QtCore.QT_VERSION_STR) < parse_version("6.5.0"):
+                    self._websocket.error.connect(self._websocket_error)
+                else:
+                    self._websocket.errorOccurred.connect(self._websocket_error)
+                self._websocket.sslErrors.connect(self._sslErrorsSlot)
+                self._notification_signals_connected = True
             self._notification_stream = self._http_client.connectWebSocket(self._websocket, "/notifications/ws")
-            self._notification_stream.textMessageReceived.connect(self._websocket_event_received)
-            if parse_version(QtCore.QT_VERSION_STR) < parse_version("6.5.0"):
-                self._notification_stream.error.connect(self._websocket_error)
-            else:
-                self._notification_stream.errorOccurred.connect(self._websocket_error)
-            self._notification_stream.sslErrors.connect(self._sslErrorsSlot)
             log.info("Listening for controller notifications on '{}'".format(self._notification_stream.requestUrl().toString()))
 
     def stopListenNotifications(self):
+        self._notification_retry.stop()
         if self._notification_stream:
             log.debug("Stop listening for notifications from controller")
             stream = self._notification_stream
@@ -475,14 +489,14 @@ class Controller(QtCore.QObject):
         """
         if self._notification_stream:
             self._notification_stream = None
-            self._startListenNotifications()
+            self._notification_retry.start()
 
     @qslot
     def _websocket_error(self, error):
         if self._notification_stream:
             log.error("Websocket controller notification stream error: {}".format(self._notification_stream.errorString()))
             self._notification_stream = None
-            self._startListenNotifications()
+            self._notification_retry.start()
 
     @qslot
     def _sslErrorsSlot(self, ssl_errors):

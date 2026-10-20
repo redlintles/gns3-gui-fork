@@ -87,6 +87,11 @@ class Project(QtCore.QObject):
 
         super().__init__()
         self.history = HistorySession(self)
+        self._notification_signals_connected = False
+        self._notification_retry = QtCore.QTimer(self)
+        self._notification_retry.setSingleShot(True)
+        self._notification_retry.setInterval(1000)
+        self._notification_retry.timeout.connect(self._startListenNotifications)
 
     def name(self):
         """
@@ -668,6 +673,7 @@ class Project(QtCore.QObject):
         Topology.instance().setProject(None)
 
     def stopListenNotifications(self):
+        self._notification_retry.stop()
         if self._notification_stream:
             log.debug("Stop listening for notifications from project %s", self._id)
             stream = self._notification_stream
@@ -676,6 +682,12 @@ class Project(QtCore.QObject):
 
     def _startListenNotifications(self):
         if not Controller.instance().connected():
+            return
+
+        self._notification_retry.stop()
+        if (self._notification_stream is self._websocket and self._websocket.state() in
+                (QtNetwork.QAbstractSocket.SocketState.ConnectingState,
+                 QtNetwork.QAbstractSocket.SocketState.ConnectedState)):
             return
 
         # Qt websocket before Qt 5.6 doesn't support auth
@@ -692,13 +704,15 @@ class Project(QtCore.QObject):
 
         else:
            path = "/projects/{project_id}/notifications/ws".format(project_id=self._id)
+           if not self._notification_signals_connected:
+               self._websocket.textMessageReceived.connect(self._websocket_event_received)
+               if parse_version(QtCore.QT_VERSION_STR) < parse_version("6.5.0"):
+                   self._websocket.error.connect(self._websocket_error)
+               else:
+                   self._websocket.errorOccurred.connect(self._websocket_error)
+               self._websocket.sslErrors.connect(self._sslErrorsSlot)
+               self._notification_signals_connected = True
            self._notification_stream = Controller.instance().httpClient().connectWebSocket(self._websocket, path)
-           self._notification_stream.textMessageReceived.connect(self._websocket_event_received)
-           if parse_version(QtCore.QT_VERSION_STR) < parse_version("6.5.0"):
-               self._notification_stream.error.connect(self._websocket_error)
-           else:
-               self._notification_stream.errorOccurred.connect(self._websocket_error)
-           self._notification_stream.sslErrors.connect(self._sslErrorsSlot)
            log.info("Listening for project notifications on '{}'".format(self._notification_stream.requestUrl().toString()))
 
     def _endListenNotificationCallback(self, result, error=False, **kwargs):
@@ -707,14 +721,14 @@ class Project(QtCore.QObject):
         """
         if self._notification_stream:
             self._notification_stream = None
-            self._startListenNotifications()
+            self._notification_retry.start()
 
     @qslot
     def _websocket_error(self, error):
         if self._notification_stream:
             log.error("Websocket project notification stream error: {}".format(self._notification_stream.errorString()))
             self._notification_stream = None
-            self._startListenNotifications()
+            self._notification_retry.start()
 
     @qslot
     def _sslErrorsSlot(self, ssl_errors):
