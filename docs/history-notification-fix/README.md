@@ -58,3 +58,9 @@ foi solicitada neste trabalho e criada a partir de `codex/feature-history`
 são aplicados por cherry-pick, sem incorporar funcionalidades alheias à base de
 histórico ou reescrever branches existentes. O push tem destino no fork
 `https://github.com/redlintles/gns3-gui-fork.git`.
+
+Validação da base específica `codex/canvas-history`: **544 passed, 1 skipped**;
+[log](history-branch-tests.log). O skip é macOS; essa base não contém o teste
+Windows da auditoria de segurança. O aviso de depreciação tarfile é da implementação
+de updater já existente nessa base, cuja correção de auditoria pertence à branch
+agregada. A diferença de contagem reflete os testes presentes em cada branch.
