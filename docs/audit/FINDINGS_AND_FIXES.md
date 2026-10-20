@@ -24,7 +24,7 @@ completa o conjunto. Projetos reais do usuário não foram modificados nos teste
 
 - Qt runtime 6.4.2: **587 aprovados, 2 ignorados** ([log](validation/gns3-fixed-full.log)).
 - Qt runtime 6.10.2: **587 aprovados, 2 ignorados** ([log](validation/gns3-fixed-full-qt610.log)).
-- Os skips cobrem teste de fonte já existente e parser nativo Windows, indisponível no Linux.
+- Os skips cobrem a migração de configurações antigas exclusiva do macOS e o parser nativo de argumentos Windows; ambos exigem o respectivo sistema operacional.
 - [Integração completa com servidor](validation/gns3-fixed-server.log): CRUD, associações, histórico, falhas, reabertura, exportação/importação e imagens grandes.
 - [Geometria com servidor](validation/gns3-fixed-geometry-server.log): 80×30 após resize, 80×40 após undo e 80×30 após redo/reabrir.
 - [Remapeamento com servidor](validation/gns3-fixed-rebinding-server.log): nota literal preservada; cursor 5 antes/depois de reabrir; nenhuma recuperação necessária.
