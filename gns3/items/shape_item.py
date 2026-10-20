@@ -40,6 +40,7 @@ class ShapeItem(DrawingItem):
         self.setAcceptHoverEvents(True)
         self._border = 5
         self._edge = None
+        self._resize_snapshot = None
         self._originally_movable = True
 
         if svg is None:
@@ -62,6 +63,10 @@ class ShapeItem(DrawingItem):
 
         self.update()
         self._originally_movable = bool(self.flags() & QtWidgets.QGraphicsItem.GraphicsItemFlag.ItemIsMovable)
+        if self.locked():
+            self._edge = None
+            QtWidgets.QGraphicsItem.mousePressEvent(self, event)
+            return
         if event.pos().x() > (self.rect().right() - self._border):
             self.setFlag(QtWidgets.QGraphicsItem.GraphicsItemFlag.ItemIsMovable, False)
             self._edge = "right"
@@ -77,6 +82,8 @@ class ShapeItem(DrawingItem):
         elif event.pos().y() > (self.rect().bottom() - self._border):
             self.setFlag(QtWidgets.QGraphicsItem.GraphicsItemFlag.ItemIsMovable, False)
             self._edge = "bottom"
+        if self._edge:
+            self._resize_snapshot = (QtCore.QRectF(self.rect()), event.pos(), self.sceneTransform(), self.sceneTransform().inverted()[0])
         QtWidgets.QGraphicsItem.mousePressEvent(self, event)
 
     def mouseReleaseEvent(self, event):
@@ -87,8 +94,9 @@ class ShapeItem(DrawingItem):
         """
 
         self.update()
-        self.setFlag(QtWidgets.QGraphicsItem.GraphicsItemFlag.ItemIsMovable, self._originally_movable)
+        self.setFlag(QtWidgets.QGraphicsItem.GraphicsItemFlag.ItemIsMovable, self._originally_movable and not self.locked())
         self._edge = None
+        self._resize_snapshot = None
         QtWidgets.QGraphicsItem.mouseReleaseEvent(self, event)
 
     def mouseMoveEvent(self, event):
@@ -99,44 +107,26 @@ class ShapeItem(DrawingItem):
         """
 
         self.update()
-        if self._edge:
-            r = self.rect()
-            scenePos = event.scenePos()
-
-            if self._edge == "top":
-                diff = self.y() - scenePos.y()
-                if r.height() - diff > 0:
-                    self.setPos(self.x(), scenePos.y())
-                    self.setRect(0, 0, self.rect().width(), self.rect().height() + diff)
-                else:
-                    self._edge = "bottom"
-                    self.setPos(self.x(), self.y() + self.rect().height())
-                    self.setRect(0, 0, self.rect().width(), diff - self.rect().height())
-            elif self._edge == "left":
-                diff = self.x() - scenePos.x()
-                if r.width() - diff > 0:
-                    self.setPos(scenePos.x(), self.y())
-                    self.setRect(0, 0, r.width() + diff, self.rect().height())
-                else:
-                    self._edge = "right"
-                    self.setPos(self.x() + self.rect().width(), self.y())
-                    self.setRect(0, 0, diff - self.rect().width(), self.rect().height())
-            elif self._edge == "bottom":
-                if r.height() > 0:
-                    pos = self.mapFromScene(scenePos)
-                    self.setRect(0, 0, self.rect().width(), pos.y())
-                else:
-                    self.setRect(0, 0, self.rect().width(), abs(scenePos.y() - self.y()))
-                    self.setPos(self.x(), scenePos.y())
-                    self._edge = "top"
-            elif self._edge == "right":
-                if r.width() > 0:
-                    pos = self.mapFromScene(scenePos)
-                    self.setRect(0, 0, pos.x(), self.rect().height())
-                else:
-                    self.setRect(0, 0, abs(scenePos.x() - self.x()), self.rect().height())
-                    self.setPos(scenePos.x(), self.y())
-                    self._edge = "left"
+        if self._edge and self._resize_snapshot and not self.locked():
+            rect, press, transform, inverse = self._resize_snapshot
+            delta = inverse.map(event.scenePos()) - press
+            resized = QtCore.QRectF(rect)
+            if self._edge == 'left':
+                resized.setLeft(rect.left() + delta.x())
+            elif self._edge == 'right':
+                resized.setRight(rect.right() + delta.x())
+            elif self._edge == 'top':
+                resized.setTop(rect.top() + delta.y())
+            else:
+                resized.setBottom(rect.bottom() + delta.y())
+            resized = resized.normalized()
+            resized.setWidth(max(1, resized.width()))
+            resized.setHeight(max(1, resized.height()))
+            from .group_item import set_scene_position
+            self.setRect(0, 0, resized.width(), resized.height())
+            set_scene_position(self, transform.map(resized.topLeft()))
+            event.accept()
+            return
 
         QtWidgets.QGraphicsItem.mouseMoveEvent(self, event)
 

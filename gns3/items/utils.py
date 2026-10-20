@@ -22,10 +22,5 @@ def colorFromSvg(value):
     """
     Transform a color coming from a SVG file to a Qcolor
     """
-    value = value.strip('#')
-    if value == "":
-        value = "000000"
-    if len(value) == 6:  # If alpha channel is missing
-        value = "ff" + value
-    value = int(value, base=16)
-    return QtGui.QColor.fromRgba(value)
+    color = QtGui.QColor(value)
+    return color if color.isValid() else QtGui.QColor('black')

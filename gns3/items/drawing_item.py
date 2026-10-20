@@ -19,6 +19,7 @@ from ..qt import QtCore, QtWidgets, qslot, QtGui, sip_is_deleted
 from .utils import colorFromSvg
 
 import uuid
+import math
 import hashlib
 import base64
 import json
@@ -414,7 +415,7 @@ class DrawingItem:
         style = ""
         pen = self.pen()
         if hasattr(self, "brush"):  # Line don't have a brush
-            element.set("fill", "#{}".format(hex(self.brush().color().rgba())[4:]))
+            element.set("fill", self.brush().color().name())
             element.set("fill-opacity", str(self.brush().color().alphaF()))
 
         dasharray = self.QT_DASH_TO_SVG[pen.style()]
@@ -424,8 +425,9 @@ class DrawingItem:
             pass  # Solid line
         else:
             element.set("stroke-dasharray", dasharray)
-        element.set("stroke-width", str(pen.width()))
-        element.set("stroke", "#" + hex(pen.color().rgba())[4:])
+        element.set("stroke-width", format(pen.widthF(), ".15g"))
+        element.set("stroke", pen.color().name())
+        element.set("stroke-opacity", str(pen.color().alphaF()))
         return element
 
     def _penFromSVGElement(self, svg):
@@ -436,9 +438,14 @@ class DrawingItem:
         """
         pen = QtGui.QPen()
         if svg.get("stroke-width"):
-            pen.setWidth(int(svg.get("stroke-width")))
+            width = float(svg.get("stroke-width").removesuffix('px'))
+            if not math.isfinite(width) or width < 0:
+                raise ValueError('Invalid SVG stroke width')
+            pen.setWidthF(width)
         if svg.get("stroke"):
-            pen.setColor(colorFromSvg(svg.get("stroke")))
+            color = colorFromSvg(svg.get("stroke"))
+            color.setAlphaF(max(0, min(1, float(svg.get('stroke-opacity', 1)))))
+            pen.setColor(color)
         # Map SVG stroke style (border of the element to the Qt version)
         if not svg.get("stroke"):
             pen.setStyle(QtCore.Qt.PenStyle.NoPen)

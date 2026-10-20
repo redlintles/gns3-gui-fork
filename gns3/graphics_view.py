@@ -266,7 +266,7 @@ class GraphicsView(QtWidgets.QGraphicsView):
         """
 
         if enabled:
-            self._lines.cancel()
+            self._cancelCreationTools('link')
             self.setCursor(QtCore.Qt.CursorShape.CrossCursor)
         else:
             if self._newlink and self._newlink in self.scene().items():
@@ -274,6 +274,18 @@ class GraphicsView(QtWidgets.QGraphicsView):
             self._newlink = None
             self.setCursor(QtCore.Qt.CursorShape.ArrowCursor)
         self._adding_link = enabled
+
+    def _cancelCreationTools(self, keep):
+        self.cancelShapeDrawing()
+        self._lines.cancel()
+        if keep != 'link':
+            self.addingLinkSlot(False)
+            self._main_window.uiAddLinkAction.setChecked(False)
+        for name, action in (('note', 'uiAddNoteAction'), ('rectangle', 'uiDrawRectangleAction'),
+                             ('ellipse', 'uiDrawEllipseAction')):
+            setattr(self, '_adding_' + name, False)
+            getattr(self._main_window, action).setChecked(name == keep)
+        self._groups.selection_pending = self._groups.selection_started = False
 
     def addNote(self, state):
         """
@@ -283,7 +295,7 @@ class GraphicsView(QtWidgets.QGraphicsView):
         """
 
         if state:
-            self._lines.cancel()
+            self._cancelCreationTools('note')
             self._adding_note = True
             self.setCursor(QtCore.Qt.CursorShape.IBeamCursor)
         else:
@@ -298,7 +310,7 @@ class GraphicsView(QtWidgets.QGraphicsView):
         """
 
         if state:
-            self._lines.cancel()
+            self._cancelCreationTools('rectangle')
             self._adding_rectangle = True
             self.setCursor(QtCore.Qt.CursorShape.PointingHandCursor)
         else:
@@ -313,7 +325,7 @@ class GraphicsView(QtWidgets.QGraphicsView):
         """
 
         if state:
-            self._lines.cancel()
+            self._cancelCreationTools('ellipse')
             self._adding_ellipse = True
             self.setCursor(QtCore.Qt.CursorShape.PointingHandCursor)
         else:

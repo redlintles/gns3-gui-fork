@@ -58,8 +58,13 @@ class LineItem(QtWidgets.QGraphicsLineItem, DrawingItem):
             painter.save()
             painter.setPen(QtGui.QPen(QtGui.QColor('#3484c6'), 0))
             painter.setBrush(QtGui.QColor('white'))
+            device = painter.worldTransform()
             for point in (self.line().p1(), self.line().p2()):
-                painter.drawRect(QtCore.QRectF(point.x() - 4, point.y() - 4, 8, 8))
+                painter.save()
+                painter.resetTransform()
+                center = device.map(point)
+                painter.drawRect(QtCore.QRectF(center.x() - 4, center.y() - 4, 8, 8))
+                painter.restore()
             painter.restore()
 
     def toSvg(self):

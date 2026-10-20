@@ -589,7 +589,15 @@ class Topology(QtCore.QObject):
             type = "image"
         if group is not None:
             type = "group"
-        self._main_window.uiGraphicsView.createDrawingItem(type, drawing_data["x"], drawing_data["y"], drawing_data["z"], locked=drawing_data["locked"], rotation=drawing_data["rotation"], drawing_id=drawing_data["drawing_id"], svg=drawing_data["svg"])
+        try:
+            self._main_window.uiGraphicsView.createDrawingItem(type, drawing_data["x"], drawing_data["y"], drawing_data["z"], locked=drawing_data["locked"], rotation=drawing_data["rotation"], drawing_id=drawing_data["drawing_id"], svg=drawing_data["svg"])
+        except (ValueError, TypeError, OverflowError) as error:
+            if type == 'group':
+                log.error('Invalid canvas group: %s', error)
+                return
+            log.warning('Unsupported editable SVG; loading as image: %s', error)
+            self._main_window.uiGraphicsView.createDrawingItem('image', drawing_data['x'], drawing_data['y'], drawing_data['z'],
+                locked=drawing_data['locked'], rotation=drawing_data['rotation'], drawing_id=drawing_data['drawing_id'], svg=drawing_data['svg'])
 
     @staticmethod
     def instance():

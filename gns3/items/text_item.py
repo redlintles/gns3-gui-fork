@@ -130,7 +130,7 @@ class TextItem(QtWidgets.QGraphicsTextItem, DrawingItem):
             text.set("text-decoration", "line-through")
         elif self.font().underline():
             text.set("text-decoration", "underline")
-        text.set("fill", "#" + hex(self.defaultTextColor().rgba())[4:])
+        text.set("fill", self.defaultTextColor().name())
         text.set("fill-opacity", str(self.defaultTextColor().alphaF()))
         text.text = self.toPlainText() or " "
 

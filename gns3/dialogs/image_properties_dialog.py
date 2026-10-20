@@ -30,13 +30,15 @@ class ImagePropertiesDialog(QtWidgets.QDialog):
 
     def widthChanged(self, value):
         if self.keepAspect.isChecked():
-            blocker = QtCore.QSignalBlocker(self.heightEdit)
-            self.heightEdit.setValue(value / self.ratio)
+            width = max(self.widthEdit.minimum(), self.heightEdit.minimum() * self.ratio,
+                        min(value, self.widthEdit.maximum(), self.heightEdit.maximum() * self.ratio))
+            blockers = [QtCore.QSignalBlocker(field) for field in (self.widthEdit, self.heightEdit)]
+            self.widthEdit.setValue(width)
+            self.heightEdit.setValue(width / self.ratio)
 
     def heightChanged(self, value):
         if self.keepAspect.isChecked():
-            blocker = QtCore.QSignalBlocker(self.widthEdit)
-            self.widthEdit.setValue(value * self.ratio)
+            self.widthChanged(value * self.ratio)
 
     @classmethod
     def getDimensions(cls, parent, width, height):
