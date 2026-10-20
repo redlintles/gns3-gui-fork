@@ -226,31 +226,41 @@ class UpdateManager(QtCore.QObject):
         return False
 
     def _extractTgz(self, tgz):
-        if os.path.exists(tgz):
-            log.info('Extract update %s', tgz)
-            with tarfile.open(tgz, 'r:gz') as tar:
-                # Tar add a folder with the name of archive in first position
-                # we need to drop it
-                members = tar.getmembers()[1:]
-                for member in members:
-                    # Path separator is always / even on windows
-                    member.name = member.name.split("/", 1)[1]
-                def is_within_directory(directory, target):
-
-                    abs_directory = os.path.abspath(directory)
-                    abs_target = os.path.abspath(target)
-
-                    prefix = os.path.commonprefix([abs_directory, abs_target])
-
-                    return prefix == abs_directory
-
-                def safe_extract(tar, path=".", members=None, *, numeric_owner=False):
-
-                    for member in tar.getmembers():
-                        member_path = os.path.join(path, member.name)
-                        if not is_within_directory(path, member_path):
-                            raise Exception("Attempted Path Traversal in Tar File")
-
-                    tar.extractall(path, members, numeric_owner=numeric_owner)
-
-                safe_extract(tar, path=self._package_directory, members=members)
+        if not os.path.exists(tgz):
+            return
+        log.info('Extract update %s', tgz)
+        with tarfile.open(tgz, 'r:gz') as tar:
+            members = tar.getmembers()
+            if not members:
+                return
+            root = members[0].name.split('/', 1)[0]
+            destination = os.path.realpath(self._package_directory)
+            safe_members = []
+            # Validate the complete archive before replacing any installed file.
+            for member in members:
+                parts = member.name.split('/')
+                if (not root or root in ('.', '..') or parts[0] != root or
+                        any(part == '..' for part in parts) or '\\' in member.name or
+                        member.name.startswith('/') or not (member.isfile() or member.isdir())):
+                    raise ValueError('Unsafe update archive member')
+                relative = '/'.join(parts[1:])
+                if not relative:
+                    if not member.isdir():
+                        raise ValueError('Update archive requires a top-level directory')
+                    continue
+                target = os.path.realpath(os.path.join(destination, relative))
+                try:
+                    inside = os.path.commonpath([destination, target]) == destination
+                except ValueError:
+                    inside = False
+                if not inside or ':' in relative:
+                    raise ValueError('Update archive escapes installation directory')
+                import copy
+                cleaned = copy.copy(member)
+                cleaned.name = relative
+                cleaned.mode &= 0o755
+                safe_members.append(cleaned)
+            # The explicit checks above also protect Python 3.9–3.11, where
+            # extraction filters are unavailable. Links/devices are rejected.
+            options = {'filter': 'data'} if hasattr(tarfile, 'data_filter') else {}
+            tar.extractall(self._package_directory, safe_members, **options)

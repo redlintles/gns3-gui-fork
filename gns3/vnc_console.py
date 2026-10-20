@@ -23,6 +23,7 @@ import sys
 import os
 import shlex
 import subprocess
+from .utils.console_command import console_command, split_command
 
 from .controller import Controller
 
@@ -45,33 +46,21 @@ def vncConsole(node, port, command):
     name = node.name()
     host = node.consoleHost()
 
-    # replace the place-holders by the actual values
-    command = command.replace("%h", host)
-    command = command.replace("%p", str(port))
-    command = command.replace("%D", str(port - 5900))
-    command = command.replace("%d", name.replace('"', '\\"'))
-    command = command.replace("%P", node.project().name().replace('"', '\\"'))
-    command = command.replace("%i", node.project().id())
-    command = command.replace("%n", str(node.id()))
-    command = command.replace("%c", Controller.instance().httpClient().fullUrl())
-
-    command = command.replace("{host}", host)
-    command = command.replace("{port}", str(port))
-    command = command.replace("{display}", str(port - 5900))
-    command = command.replace("{name}", name.replace('"', '\\"'))
-    command = command.replace("{project}", node.project().name().replace('"', '\\"'))
-    command = command.replace("{project_id}", node.project().id())
-    command = command.replace("{node_id}", str(node.id()))
-    command = command.replace("{url}", Controller.instance().httpClient().fullUrl())
+    try:
+        args = console_command(command, dict(host=host, port=port, display=int(port) - 5900, name=name,
+            project=node.project().name(), project_id=node.project().id(), node_id=node.id(),
+            url=Controller.instance().httpClient().fullUrl()))
+    except ValueError as error:
+        log.error('Invalid console parameters: %s', error)
+        return
 
     try:
         log.debug('starting VNC program "{}"'.format(command))
         if sys.platform.startswith("win"):
             # use the string on Windows
-            subprocess.Popen(command, env=os.environ)
+            subprocess.Popen(args, env=os.environ)
         else:
             # use arguments on other platforms
-            args = shlex.split(command)
             subprocess.Popen(args, env=os.environ)
     except (OSError, ValueError, subprocess.SubprocessError) as e:
         log.error("Could not start VNC program with command '{}': {}".format(command, e))

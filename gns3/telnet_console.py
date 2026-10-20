@@ -25,6 +25,7 @@ import os
 import sys
 import shlex
 import subprocess
+from .utils.console_command import console_command, split_command
 import psutil
 import shutil
 
@@ -88,11 +89,11 @@ class ConsoleThread(QtCore.QThread):
 
         if sys.platform.startswith("win"):
             # use the string on Windows
-            subprocess.Popen(command, env=os.environ)
+            subprocess.Popen(split_command(command) if isinstance(command, str) else command, env=os.environ)
         else:
             # use arguments on other platforms
             try:
-                args = shlex.split(command)
+                args = split_command(command) if isinstance(command, str) else command
             except ValueError:
                 self.consoleError.emit("Syntax error in command: '{}'".format(command))
                 return
@@ -119,26 +120,17 @@ class ConsoleThread(QtCore.QThread):
         host = self._host
         port = self._port
 
-        # replace the place-holders by the actual values
-        command = self._command.replace("%h", host)
-        command = command.replace("%p", str(port))
-        command = command.replace("%d", self._name.replace('"', '\\"'))
-        command = command.replace("%P", self._node.project().name().replace('"', '\\"'))
-        command = command.replace("%i", self._node.project().id())
-        command = command.replace("%n", str(self._node.id()))
-        command = command.replace("%c", Controller.instance().httpClient().fullUrl())
-
-        command = command.replace("{host}", host)
-        command = command.replace("{port}", str(port))
-        command = command.replace("{name}", self._name.replace('"', '\\"'))
-        command = command.replace("{project}", self._node.project().name().replace('"', '\\"'))
-        command = command.replace("{project_id}", self._node.project().id())
-        command = command.replace("{node_id}", str(self._node.id()))
-        command = command.replace("{url}", Controller.instance().httpClient().fullUrl())
+        try:
+            command = console_command(self._command, dict(host=host, port=port, name=self._name,
+                project=self._node.project().name(), project_id=self._node.project().id(),
+                node_id=self._node.id(), url=Controller.instance().httpClient().fullUrl()))
+        except ValueError as error:
+            self.consoleError.emit(str(error))
+            return
 
         # If the console use an apple script we lock to avoid multiple console
         # to interact at the same time
-        if sys.platform.startswith("darwin") and "osascript" in command:
+        if sys.platform.startswith("darwin") and any("osascript" in part for part in command):
             console_mutex.lock()
 
         try:
@@ -147,7 +139,7 @@ class ConsoleThread(QtCore.QThread):
             self.consoleError.emit("Could not start Telnet console with command '{}': {}".format(command, e))
         finally:
             log.debug('Telnet console {}:{} closed'.format(host, port))
-            if sys.platform.startswith("darwin") and "osascript" in command:
+            if sys.platform.startswith("darwin") and any("osascript" in part for part in command):
                 console_mutex.unlock()
 
 

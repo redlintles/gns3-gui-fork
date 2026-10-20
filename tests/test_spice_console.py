@@ -22,7 +22,7 @@ from unittest.mock import patch
 from gns3.spice_console import spiceConsole
 
 
-def test_spice_console_on_linux_and_mac(vpcs_device):
+def test_spice_console_on_linux_and_mac(vpcs_device, controller):
 
     with patch('subprocess.Popen') as popen, \
             patch('sys.platform', new="linux"):
@@ -32,15 +32,16 @@ def test_spice_console_on_linux_and_mac(vpcs_device):
         spiceConsole(vpcs_device, '2525', 'command {host} {port}')
         popen.assert_called_with(shlex.split('command localhost 2525'), env=os.environ)
 
-def test_spice_console_on_windows(vpcs_device):
+def test_spice_console_on_windows(vpcs_device, controller):
 
     with patch('subprocess.Popen') as p, \
-            patch('sys.platform', new="win"):
+            patch('sys.platform', new="win"), \
+            patch('gns3.utils.console_command.split_command', side_effect=shlex.split):
         vpcs_device.settings()["console_host"] = "localhost"
         spiceConsole(vpcs_device, '2525', 'command %h %p')
-        p.assert_called_with('command localhost 2525', env=os.environ)
+        p.assert_called_with(['command','localhost','2525'], env=os.environ)
         spiceConsole(vpcs_device, '2525', 'command {host} {port}')
-        p.assert_called_with('command localhost 2525', env=os.environ)
+        p.assert_called_with(['command','localhost','2525'], env=os.environ)
 
 # def test_spice_console_on_linux_with_popen_issues():
 #     with patch('subprocess.Popen', side_effect=OSError("Dummy")), \
@@ -50,7 +51,7 @@ def test_spice_console_on_windows(vpcs_device):
 #             spiceConsole('localhost', '2525', 'command %h %p')
 
 
-def test_spice_console_with_ipv6_support(vpcs_device):
+def test_spice_console_with_ipv6_support(vpcs_device, controller):
 
     with patch('subprocess.Popen') as popen, \
             patch('sys.platform', new="linux"):

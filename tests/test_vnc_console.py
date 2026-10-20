@@ -21,7 +21,7 @@ import shlex
 from unittest.mock import patch
 from gns3.vnc_console import vncConsole
 
-def test_vnc_console_on_linux_and_mac(vpcs_device):
+def test_vnc_console_on_linux_and_mac(vpcs_device, controller):
 
     with patch('subprocess.Popen') as p, \
             patch('sys.platform', new="linux"):
@@ -32,18 +32,19 @@ def test_vnc_console_on_linux_and_mac(vpcs_device):
             p.assert_called_with(shlex.split('command localhost 6000 100'), env=os.environ)
 
 
-def test_vnc_console_on_windows(vpcs_device):
+def test_vnc_console_on_windows(vpcs_device, controller):
 
     with patch('subprocess.Popen') as p, \
-            patch('sys.platform', new="win"):
+            patch('sys.platform', new="win"), \
+            patch('gns3.utils.console_command.split_command', side_effect=shlex.split):
             vpcs_device.settings()["console_host"] = "localhost"
             vncConsole(vpcs_device, 6000, 'command %h %p %D')
-            p.assert_called_with('command localhost 6000 100', env=os.environ)
+            p.assert_called_with(['command','localhost','6000','100'], env=os.environ)
             vncConsole(vpcs_device, 6000, 'command {host} {port} {display}')
-            p.assert_called_with('command localhost 6000 100', env=os.environ)
+            p.assert_called_with(['command','localhost','6000','100'], env=os.environ)
 
 
-# def test_vnc_console_on_linux_with_popen_issues(vpcs_device):
+# def test_vnc_console_on_linux_with_popen_issues(vpcs_device, controller):
 #     with patch('subprocess.Popen', side_effect=subprocess.SubprocessError()), \
 #             patch('sys.platform', new="linux"):
 #         vpcs_device.settings()["console_host"] = "localhost"
