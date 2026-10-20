@@ -731,6 +731,14 @@ class Project(QtCore.QObject):
 
     def _event_received(self, result, *args, **kwargs):
         event = result.get("action", "")
+        if event == "link.updated" and not kwargs.get("history_replay"):
+            endpoints = result.get("event", {}).get("nodes")
+            if isinstance(endpoints, list) and len(endpoints) < 2:
+                # Server applies link_style before attaching endpoints on POST.
+                # This notification describes an unfinished link, not an edit.
+                # A complete link.created/HTTP response follows on success.
+                log.debug("Ignoring transitional link update before endpoints are attached")
+                return
         kind = {"node": "nodes", "link": "links", "drawing": "drawings"}.get(event.split(".")[0])
         if kind and not kwargs.get("history_replay"):
             if self.history.replaying:
