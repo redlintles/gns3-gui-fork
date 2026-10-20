@@ -1,0 +1,29 @@
+F....                                                                    [100%]
+=================================== FAILURES ===================================
+_________________________ test_image_ratio_boundary[1] _________________________
+
+canvas = <gns3.graphics_view.GraphicsView object at 0x7e43e86e00f0>, width = 1
+
+    @pytest.mark.parametrize('width',[1,2,3,100,1000000])
+    def test_image_ratio_boundary(canvas,width):
+        from gns3.dialogs.image_properties_dialog import ImagePropertiesDialog
+        d=ImagePropertiesDialog(canvas,100,50)
+        d.widthEdit.setValue(width)
+        info={'width':d.widthEdit.value(),'height':d.heightEdit.value(),'keep':d.keepAspect.isChecked()}
+>       assert abs(d.widthEdit.value()/d.heightEdit.value()-2)<.02,info
+E       AssertionError: {'height': 1.0, 'keep': True, 'width': 1.0}
+E       assert 1.0 < 0.02
+E        +  where 1.0 = abs(((1.0 / 1.0) - 2))
+E        +    where 1.0 = <built-in method value of QDoubleSpinBox object at 0x7e43e86e14f0>()
+E        +      where <built-in method value of QDoubleSpinBox object at 0x7e43e86e14f0> = <PyQt6.QtWidgets.QDoubleSpinBox object at 0x7e43e86e14f0>.value
+E        +        where <PyQt6.QtWidgets.QDoubleSpinBox object at 0x7e43e86e14f0> = <gns3.dialogs.image_properties_dialog.ImagePropertiesDialog object at 0x7e43e86c8690>.widthEdit
+E        +    and   1.0 = <built-in method value of QDoubleSpinBox object at 0x7e43e86e1590>()
+E        +      where <built-in method value of QDoubleSpinBox object at 0x7e43e86e1590> = <PyQt6.QtWidgets.QDoubleSpinBox object at 0x7e43e86e1590>.value
+E        +        where <PyQt6.QtWidgets.QDoubleSpinBox object at 0x7e43e86e1590> = <gns3.dialogs.image_properties_dialog.ImagePropertiesDialog object at 0x7e43e86c8690>.heightEdit
+
+tests/items/probe_exploratory_sequences.py:134: AssertionError
+------------------------------ Captured log setup ------------------------------
+ERROR    gns3.local_config:local_config.py:270 Could not read the config file /tmp/tmpafnxdvgh: Expecting value: line 1 column 1 (char 0)
+=========================== short test summary info ============================
+FAILED tests/items/probe_exploratory_sequences.py::test_image_ratio_boundary[1]
+1 failed, 4 passed, 73 deselected in 0.22s

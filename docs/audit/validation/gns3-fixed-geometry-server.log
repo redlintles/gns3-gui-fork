@@ -1,0 +1,47 @@
+{
+  "after_drag_rect": [
+    80.0,
+    30.0
+  ],
+  "position": [
+    160.0,
+    130.0
+  ],
+  "history_invalid": "",
+  "cursor": 3,
+  "server_drawings": [
+    {
+      "drawing_id": "ee116352-0456-41d1-aafe-7f685cb84292",
+      "locked": false,
+      "project_id": "e4b7ccd2-d7b8-49d4-9fcb-b438ec7b440d",
+      "rotation": 0,
+      "svg": "<svg width=\"80\" height=\"30\"><rect width=\"80\" height=\"30\" fill=\"#ffffff\" fill-opacity=\"1.0\" stroke-width=\"2\" stroke=\"#000000\" stroke-opacity=\"1.0\" /><metadata id=\"gns3-canvas-item\">ee116352-0456-41d1-aafe-7f685cb84292</metadata></svg>",
+      "x": 160,
+      "y": 130,
+      "z": 0
+    },
+    {
+      "drawing_id": "04f2a10d-c4c4-4e0f-b17b-1f027c0200ff",
+      "locked": false,
+      "project_id": "e4b7ccd2-d7b8-49d4-9fcb-b438ec7b440d",
+      "rotation": 0,
+      "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"107.0\" height=\"79.0\"><metadata id=\"gns3-canvas-group\">{\"version\": 2, \"revision\": 5, \"name\": \"Exploration\", \"drawing_id\": \"04f2a10d-c4c4-4e0f-b17b-1f027c0200ff\", \"identity\": \"04f2a10d-c4c4-4e0f-b17b-1f027c0200ff\", \"origin\": {\"x\": 146.7, \"y\": 88.7}, \"style\": {\"shape\": \"rect\", \"border_color\": \"#ff3484c6\", \"border_width\": 1, \"border_style\": 1, \"fill_color\": \"#00000000\"}, \"size\": {\"width\": 107.0, \"height\": 79.0}, \"children\": [{\"type\": \"drawing\", \"id\": \"ee116352-0456-41d1-aafe-7f685cb84292\", \"key\": \"ee116352-0456-41d1-aafe-7f685cb84292\", \"x\": 13.300000000000011, \"y\": 41.3}]}</metadata><text x=\"0\" y=\"16\" fill=\"#3484c6\">Exploration</text></svg>",
+      "x": 146,
+      "y": 88,
+      "z": 0
+    }
+  ],
+  "undo_rect": [
+    80.0,
+    40.0
+  ],
+  "redo_rect": [
+    80.0,
+    30.0
+  ],
+  "reopened_rect": [
+    80.0,
+    30.0
+  ],
+  "reopened_history_invalid": ""
+}

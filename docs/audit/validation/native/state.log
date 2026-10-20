@@ -1,0 +1,116 @@
+00-grouped {'name': 'Hub1', 'xy': (-60.0, 0.0), 'parent': True, 'visible': True, 'renderer': True, 'clipped': True, 'pixels': 3559}
+00-grouped {'name': 'Hub2', 'xy': (60.000000000000014, 0.0), 'parent': True, 'visible': True, 'renderer': True, 'clipped': True, 'pixels': 3533}
+01-detach-first {'name': 'Hub1', 'xy': (-275.0, -16.0), 'parent': False, 'visible': True, 'renderer': True, 'clipped': False, 'pixels': 1965}
+01-detach-first {'name': 'Hub2', 'xy': (60.000000000000014, 0.0), 'parent': True, 'visible': True, 'renderer': True, 'clipped': True, 'pixels': 3533}
+replay-00-undo {'pixels_in_old_position': 0, 'pixels_in_current_position': 1883, 'graphics_count': 1, 'parent': True, 'position': (-60.0, 0.0)}
+replay-00-redo {'pixels_in_old_position': 0, 'pixels_in_current_position': 1883, 'graphics_count': 1, 'parent': False, 'position': (-275.0, -16.0)}
+replay-01-undo {'pixels_in_old_position': 0, 'pixels_in_current_position': 1883, 'graphics_count': 1, 'parent': True, 'position': (-60.0, 0.0)}
+replay-01-redo {'pixels_in_old_position': 0, 'pixels_in_current_position': 1883, 'graphics_count': 1, 'parent': False, 'position': (-275.0, -16.0)}
+replay-02-undo {'pixels_in_old_position': 0, 'pixels_in_current_position': 1883, 'graphics_count': 1, 'parent': True, 'position': (-60.0, 0.0)}
+replay-02-redo {'pixels_in_old_position': 0, 'pixels_in_current_position': 1883, 'graphics_count': 1, 'parent': False, 'position': (-275.0, -16.0)}
+replay-03-undo {'pixels_in_old_position': 0, 'pixels_in_current_position': 1883, 'graphics_count': 1, 'parent': True, 'position': (-60.0, 0.0)}
+replay-03-redo {'pixels_in_old_position': 0, 'pixels_in_current_position': 1883, 'graphics_count': 1, 'parent': False, 'position': (-275.0, -16.0)}
+replay-04-undo {'pixels_in_old_position': 0, 'pixels_in_current_position': 1883, 'graphics_count': 1, 'parent': True, 'position': (-60.0, 0.0)}
+replay-04-redo {'pixels_in_old_position': 0, 'pixels_in_current_position': 1883, 'graphics_count': 1, 'parent': False, 'position': (-275.0, -16.0)}
+replay-05-undo {'pixels_in_old_position': 0, 'pixels_in_current_position': 1883, 'graphics_count': 1, 'parent': True, 'position': (-60.0, 0.0)}
+replay-05-redo {'pixels_in_old_position': 0, 'pixels_in_current_position': 1883, 'graphics_count': 1, 'parent': False, 'position': (-275.0, -16.0)}
+02-detach-second {'name': 'Hub1', 'xy': (-275.0, -16.0), 'parent': False, 'visible': True, 'renderer': True, 'clipped': False, 'pixels': 3588}
+02-detach-second {'name': 'Hub2', 'xy': (203.0, -16.0), 'parent': False, 'visible': True, 'renderer': True, 'clipped': False, 'pixels': 1878}
+3-added {'name': 'Hub1', 'xy': (-275.0, -16.0), 'parent': False, 'visible': True, 'renderer': True, 'clipped': False, 'pixels': 3588}
+3-added {'name': 'Hub2', 'xy': (203.0, -16.0), 'parent': False, 'visible': True, 'renderer': True, 'clipped': False, 'pixels': 1878}
+3-added {'name': 'Hub3', 'xy': (-30.0, 0.0), 'parent': True, 'visible': True, 'renderer': True, 'clipped': True, 'pixels': 3533}
+3-detached {'name': 'Hub1', 'xy': (-275.0, -16.0), 'parent': False, 'visible': True, 'renderer': True, 'clipped': False, 'pixels': 3588}
+3-detached {'name': 'Hub2', 'xy': (203.0, -16.0), 'parent': False, 'visible': True, 'renderer': True, 'clipped': False, 'pixels': 3586}
+3-detached {'name': 'Hub3', 'xy': (-275.0, 134.0), 'parent': False, 'visible': True, 'renderer': True, 'clipped': False, 'pixels': 1979}
+4-added {'name': 'Hub1', 'xy': (-275.0, -16.0), 'parent': False, 'visible': True, 'renderer': True, 'clipped': False, 'pixels': 3588}
+4-added {'name': 'Hub2', 'xy': (203.0, -16.0), 'parent': False, 'visible': True, 'renderer': True, 'clipped': False, 'pixels': 3586}
+4-added {'name': 'Hub3', 'xy': (-275.0, 134.0), 'parent': False, 'visible': True, 'renderer': True, 'clipped': False, 'pixels': 1979}
+4-added {'name': 'Hub4', 'xy': (-30.0, 0.0), 'parent': True, 'visible': True, 'renderer': True, 'clipped': True, 'pixels': 3533}
+4-detached {'name': 'Hub1', 'xy': (-275.0, -16.0), 'parent': False, 'visible': True, 'renderer': True, 'clipped': False, 'pixels': 3588}
+4-detached {'name': 'Hub2', 'xy': (203.0, -16.0), 'parent': False, 'visible': True, 'renderer': True, 'clipped': False, 'pixels': 3586}
+4-detached {'name': 'Hub3', 'xy': (-275.0, 134.0), 'parent': False, 'visible': True, 'renderer': True, 'clipped': False, 'pixels': 3565}
+4-detached {'name': 'Hub4', 'xy': (-135.0, 134.0), 'parent': False, 'visible': True, 'renderer': True, 'clipped': False, 'pixels': 1946}
+5-added {'name': 'Hub1', 'xy': (-275.0, -16.0), 'parent': False, 'visible': True, 'renderer': True, 'clipped': False, 'pixels': 3588}
+5-added {'name': 'Hub2', 'xy': (203.0, -16.0), 'parent': False, 'visible': True, 'renderer': True, 'clipped': False, 'pixels': 3586}
+5-added {'name': 'Hub3', 'xy': (-275.0, 134.0), 'parent': False, 'visible': True, 'renderer': True, 'clipped': False, 'pixels': 3565}
+5-added {'name': 'Hub4', 'xy': (-135.0, 134.0), 'parent': False, 'visible': True, 'renderer': True, 'clipped': False, 'pixels': 1946}
+5-added {'name': 'Hub5', 'xy': (-30.0, 0.0), 'parent': True, 'visible': True, 'renderer': True, 'clipped': True, 'pixels': 3533}
+5-detached {'name': 'Hub1', 'xy': (-275.0, -16.0), 'parent': False, 'visible': True, 'renderer': True, 'clipped': False, 'pixels': 3588}
+5-detached {'name': 'Hub2', 'xy': (203.0, -16.0), 'parent': False, 'visible': True, 'renderer': True, 'clipped': False, 'pixels': 3586}
+5-detached {'name': 'Hub3', 'xy': (-275.0, 134.0), 'parent': False, 'visible': True, 'renderer': True, 'clipped': False, 'pixels': 3565}
+5-detached {'name': 'Hub4', 'xy': (-135.0, 134.0), 'parent': False, 'visible': True, 'renderer': True, 'clipped': False, 'pixels': 3534}
+5-detached {'name': 'Hub5', 'xy': (0.0, 134.0), 'parent': False, 'visible': True, 'renderer': True, 'clipped': False, 'pixels': 1945}
+6-added {'name': 'Hub1', 'xy': (-275.0, -16.0), 'parent': False, 'visible': True, 'renderer': True, 'clipped': False, 'pixels': 3588}
+6-added {'name': 'Hub2', 'xy': (203.0, -16.0), 'parent': False, 'visible': True, 'renderer': True, 'clipped': False, 'pixels': 3586}
+6-added {'name': 'Hub3', 'xy': (-275.0, 134.0), 'parent': False, 'visible': True, 'renderer': True, 'clipped': False, 'pixels': 3565}
+6-added {'name': 'Hub4', 'xy': (-135.0, 134.0), 'parent': False, 'visible': True, 'renderer': True, 'clipped': False, 'pixels': 3534}
+6-added {'name': 'Hub5', 'xy': (0.0, 134.0), 'parent': False, 'visible': True, 'renderer': True, 'clipped': False, 'pixels': 1945}
+6-added {'name': 'Hub6', 'xy': (-30.0, 0.0), 'parent': True, 'visible': True, 'renderer': True, 'clipped': True, 'pixels': 3533}
+6-detached {'name': 'Hub1', 'xy': (-275.0, -16.0), 'parent': False, 'visible': True, 'renderer': True, 'clipped': False, 'pixels': 3588}
+6-detached {'name': 'Hub2', 'xy': (203.0, -16.0), 'parent': False, 'visible': True, 'renderer': True, 'clipped': False, 'pixels': 3586}
+6-detached {'name': 'Hub3', 'xy': (-275.0, 134.0), 'parent': False, 'visible': True, 'renderer': True, 'clipped': False, 'pixels': 3565}
+6-detached {'name': 'Hub4', 'xy': (-135.0, 134.0), 'parent': False, 'visible': True, 'renderer': True, 'clipped': False, 'pixels': 3534}
+6-detached {'name': 'Hub5', 'xy': (0.0, 134.0), 'parent': False, 'visible': True, 'renderer': True, 'clipped': False, 'pixels': 3558}
+6-detached {'name': 'Hub6', 'xy': (144.0, 134.0), 'parent': False, 'visible': True, 'renderer': True, 'clipped': False, 'pixels': 1951}
+7-added {'name': 'Hub1', 'xy': (-275.0, -16.0), 'parent': False, 'visible': True, 'renderer': True, 'clipped': False, 'pixels': 3588}
+7-added {'name': 'Hub2', 'xy': (203.0, -16.0), 'parent': False, 'visible': True, 'renderer': True, 'clipped': False, 'pixels': 3586}
+7-added {'name': 'Hub3', 'xy': (-275.0, 134.0), 'parent': False, 'visible': True, 'renderer': True, 'clipped': False, 'pixels': 3565}
+7-added {'name': 'Hub4', 'xy': (-135.0, 134.0), 'parent': False, 'visible': True, 'renderer': True, 'clipped': False, 'pixels': 3534}
+7-added {'name': 'Hub5', 'xy': (0.0, 134.0), 'parent': False, 'visible': True, 'renderer': True, 'clipped': False, 'pixels': 3558}
+7-added {'name': 'Hub6', 'xy': (144.0, 134.0), 'parent': False, 'visible': True, 'renderer': True, 'clipped': False, 'pixels': 1951}
+7-added {'name': 'Hub7', 'xy': (-30.0, 0.0), 'parent': True, 'visible': True, 'renderer': True, 'clipped': True, 'pixels': 3533}
+7-detached {'name': 'Hub1', 'xy': (-275.0, -16.0), 'parent': False, 'visible': True, 'renderer': True, 'clipped': False, 'pixels': 3588}
+7-detached {'name': 'Hub2', 'xy': (203.0, -16.0), 'parent': False, 'visible': True, 'renderer': True, 'clipped': False, 'pixels': 3586}
+7-detached {'name': 'Hub3', 'xy': (-275.0, 134.0), 'parent': False, 'visible': True, 'renderer': True, 'clipped': False, 'pixels': 3565}
+7-detached {'name': 'Hub4', 'xy': (-135.0, 134.0), 'parent': False, 'visible': True, 'renderer': True, 'clipped': False, 'pixels': 3534}
+7-detached {'name': 'Hub5', 'xy': (0.0, 134.0), 'parent': False, 'visible': True, 'renderer': True, 'clipped': False, 'pixels': 3558}
+7-detached {'name': 'Hub6', 'xy': (144.0, 134.0), 'parent': False, 'visible': True, 'renderer': True, 'clipped': False, 'pixels': 3559}
+7-detached {'name': 'Hub7', 'xy': (-275.0, -186.0), 'parent': False, 'visible': True, 'renderer': True, 'clipped': False, 'pixels': 1990}
+8-added {'name': 'Hub1', 'xy': (-275.0, -16.0), 'parent': False, 'visible': True, 'renderer': True, 'clipped': False, 'pixels': 3588}
+8-added {'name': 'Hub2', 'xy': (203.0, -16.0), 'parent': False, 'visible': True, 'renderer': True, 'clipped': False, 'pixels': 3586}
+8-added {'name': 'Hub3', 'xy': (-275.0, 134.0), 'parent': False, 'visible': True, 'renderer': True, 'clipped': False, 'pixels': 3565}
+8-added {'name': 'Hub4', 'xy': (-135.0, 134.0), 'parent': False, 'visible': True, 'renderer': True, 'clipped': False, 'pixels': 3534}
+8-added {'name': 'Hub5', 'xy': (0.0, 134.0), 'parent': False, 'visible': True, 'renderer': True, 'clipped': False, 'pixels': 3558}
+8-added {'name': 'Hub6', 'xy': (144.0, 134.0), 'parent': False, 'visible': True, 'renderer': True, 'clipped': False, 'pixels': 3559}
+8-added {'name': 'Hub7', 'xy': (-275.0, -186.0), 'parent': False, 'visible': True, 'renderer': True, 'clipped': False, 'pixels': 1990}
+8-added {'name': 'Hub8', 'xy': (-30.0, 0.0), 'parent': True, 'visible': True, 'renderer': True, 'clipped': True, 'pixels': 3533}
+8-detached {'name': 'Hub1', 'xy': (-275.0, -16.0), 'parent': False, 'visible': True, 'renderer': True, 'clipped': False, 'pixels': 3588}
+8-detached {'name': 'Hub2', 'xy': (203.0, -16.0), 'parent': False, 'visible': True, 'renderer': True, 'clipped': False, 'pixels': 3586}
+8-detached {'name': 'Hub3', 'xy': (-275.0, 134.0), 'parent': False, 'visible': True, 'renderer': True, 'clipped': False, 'pixels': 3565}
+8-detached {'name': 'Hub4', 'xy': (-135.0, 134.0), 'parent': False, 'visible': True, 'renderer': True, 'clipped': False, 'pixels': 3534}
+8-detached {'name': 'Hub5', 'xy': (0.0, 134.0), 'parent': False, 'visible': True, 'renderer': True, 'clipped': False, 'pixels': 3558}
+8-detached {'name': 'Hub6', 'xy': (144.0, 134.0), 'parent': False, 'visible': True, 'renderer': True, 'clipped': False, 'pixels': 3559}
+8-detached {'name': 'Hub7', 'xy': (-275.0, -186.0), 'parent': False, 'visible': True, 'renderer': True, 'clipped': False, 'pixels': 3517}
+8-detached {'name': 'Hub8', 'xy': (-135.0, -186.0), 'parent': False, 'visible': True, 'renderer': True, 'clipped': False, 'pixels': 1946}
+09-undo-last {'name': 'Hub1', 'xy': (-275.0, -16.0), 'parent': False, 'visible': True, 'renderer': True, 'clipped': False, 'pixels': 3588}
+09-undo-last {'name': 'Hub2', 'xy': (203.0, -16.0), 'parent': False, 'visible': True, 'renderer': True, 'clipped': False, 'pixels': 3586}
+09-undo-last {'name': 'Hub3', 'xy': (-275.0, 134.0), 'parent': False, 'visible': True, 'renderer': True, 'clipped': False, 'pixels': 3565}
+09-undo-last {'name': 'Hub4', 'xy': (-135.0, 134.0), 'parent': False, 'visible': True, 'renderer': True, 'clipped': False, 'pixels': 3534}
+09-undo-last {'name': 'Hub5', 'xy': (0.0, 134.0), 'parent': False, 'visible': True, 'renderer': True, 'clipped': False, 'pixels': 3558}
+09-undo-last {'name': 'Hub6', 'xy': (144.0, 134.0), 'parent': False, 'visible': True, 'renderer': True, 'clipped': False, 'pixels': 3559}
+09-undo-last {'name': 'Hub7', 'xy': (-275.0, -186.0), 'parent': False, 'visible': True, 'renderer': True, 'clipped': False, 'pixels': 3517}
+09-undo-last {'name': 'Hub8', 'xy': (-30.0, 0.0), 'parent': True, 'visible': True, 'renderer': True, 'clipped': True, 'pixels': 1946}
+10-redo-last {'name': 'Hub1', 'xy': (-275.0, -16.0), 'parent': False, 'visible': True, 'renderer': True, 'clipped': False, 'pixels': 3588}
+10-redo-last {'name': 'Hub2', 'xy': (203.0, -16.0), 'parent': False, 'visible': True, 'renderer': True, 'clipped': False, 'pixels': 3586}
+10-redo-last {'name': 'Hub3', 'xy': (-275.0, 134.0), 'parent': False, 'visible': True, 'renderer': True, 'clipped': False, 'pixels': 3565}
+10-redo-last {'name': 'Hub4', 'xy': (-135.0, 134.0), 'parent': False, 'visible': True, 'renderer': True, 'clipped': False, 'pixels': 3534}
+10-redo-last {'name': 'Hub5', 'xy': (0.0, 134.0), 'parent': False, 'visible': True, 'renderer': True, 'clipped': False, 'pixels': 3558}
+10-redo-last {'name': 'Hub6', 'xy': (144.0, 134.0), 'parent': False, 'visible': True, 'renderer': True, 'clipped': False, 'pixels': 3559}
+10-redo-last {'name': 'Hub7', 'xy': (-275.0, -186.0), 'parent': False, 'visible': True, 'renderer': True, 'clipped': False, 'pixels': 3517}
+10-redo-last {'name': 'Hub8', 'xy': (-135.0, -186.0), 'parent': False, 'visible': True, 'renderer': True, 'clipped': False, 'pixels': 1946}
+11-reopened {'name': 'Hub1', 'xy': (-275.0, -16.0), 'parent': False, 'visible': True, 'renderer': True, 'clipped': False, 'pixels': 3588}
+11-reopened {'name': 'Hub2', 'xy': (203.0, -16.0), 'parent': False, 'visible': True, 'renderer': True, 'clipped': False, 'pixels': 3586}
+11-reopened {'name': 'Hub3', 'xy': (-275.0, 134.0), 'parent': False, 'visible': True, 'renderer': True, 'clipped': False, 'pixels': 3565}
+11-reopened {'name': 'Hub4', 'xy': (-135.0, 134.0), 'parent': False, 'visible': True, 'renderer': True, 'clipped': False, 'pixels': 3534}
+11-reopened {'name': 'Hub5', 'xy': (0.0, 134.0), 'parent': False, 'visible': True, 'renderer': True, 'clipped': False, 'pixels': 3558}
+11-reopened {'name': 'Hub6', 'xy': (144.0, 134.0), 'parent': False, 'visible': True, 'renderer': True, 'clipped': False, 'pixels': 3559}
+11-reopened {'name': 'Hub7', 'xy': (-275.0, -186.0), 'parent': False, 'visible': True, 'renderer': True, 'clipped': False, 'pixels': 3517}
+11-reopened {'name': 'Hub8', 'xy': (-135.0, -186.0), 'parent': False, 'visible': True, 'renderer': True, 'clipped': False, 'pixels': 3496}
+12-reopened-redo {'name': 'Hub1', 'xy': (-275.0, -16.0), 'parent': False, 'visible': True, 'renderer': True, 'clipped': False, 'pixels': 3588}
+12-reopened-redo {'name': 'Hub2', 'xy': (203.0, -16.0), 'parent': False, 'visible': True, 'renderer': True, 'clipped': False, 'pixels': 3586}
+12-reopened-redo {'name': 'Hub3', 'xy': (-275.0, 134.0), 'parent': False, 'visible': True, 'renderer': True, 'clipped': False, 'pixels': 3565}
+12-reopened-redo {'name': 'Hub4', 'xy': (-135.0, 134.0), 'parent': False, 'visible': True, 'renderer': True, 'clipped': False, 'pixels': 3534}
+12-reopened-redo {'name': 'Hub5', 'xy': (0.0, 134.0), 'parent': False, 'visible': True, 'renderer': True, 'clipped': False, 'pixels': 3558}
+12-reopened-redo {'name': 'Hub6', 'xy': (144.0, 134.0), 'parent': False, 'visible': True, 'renderer': True, 'clipped': False, 'pixels': 3559}
+12-reopened-redo {'name': 'Hub7', 'xy': (-275.0, -186.0), 'parent': False, 'visible': True, 'renderer': True, 'clipped': False, 'pixels': 3517}
+12-reopened-redo {'name': 'Hub8', 'xy': (-135.0, -186.0), 'parent': False, 'visible': True, 'renderer': True, 'clipped': False, 'pixels': 3496}

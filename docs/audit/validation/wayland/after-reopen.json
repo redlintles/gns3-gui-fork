@@ -1,0 +1,2546 @@
+{
+  "cursor": 24,
+  "target": 24,
+  "recovery": "",
+  "entries": [
+    {
+      "description": "New device Hub1",
+      "changes": {
+        "nodes/a066f057-dbb2-421f-b33a-dae39b5e6b95": {
+          "before": null,
+          "after": {
+            "compute_id": "local",
+            "console": null,
+            "console_auto_start": false,
+            "console_type": "none",
+            "custom_adapters": [],
+            "first_port_name": null,
+            "label": {
+              "rotation": 0,
+              "style": null,
+              "text": "Hub1",
+              "x": null,
+              "y": -26
+            },
+            "locked": false,
+            "name": "Hub1",
+            "node_id": "a066f057-dbb2-421f-b33a-dae39b5e6b95",
+            "node_type": "ethernet_hub",
+            "port_name_format": "Ethernet{0}",
+            "port_segment_size": 0,
+            "properties": {
+              "ports_mapping": [
+                {
+                  "name": "Ethernet0",
+                  "port_number": 0
+                },
+                {
+                  "name": "Ethernet1",
+                  "port_number": 1
+                },
+                {
+                  "name": "Ethernet2",
+                  "port_number": 2
+                },
+                {
+                  "name": "Ethernet3",
+                  "port_number": 3
+                },
+                {
+                  "name": "Ethernet4",
+                  "port_number": 4
+                },
+                {
+                  "name": "Ethernet5",
+                  "port_number": 5
+                },
+                {
+                  "name": "Ethernet6",
+                  "port_number": 6
+                },
+                {
+                  "name": "Ethernet7",
+                  "port_number": 7
+                }
+              ]
+            },
+            "symbol": ":/symbols/hub.svg",
+            "x": -60,
+            "y": 0,
+            "z": 1
+          }
+        }
+      }
+    },
+    {
+      "description": "Change Hub1 properties",
+      "changes": {
+        "nodes/a066f057-dbb2-421f-b33a-dae39b5e6b95": {
+          "before": {
+            "compute_id": "local",
+            "console": null,
+            "console_auto_start": false,
+            "console_type": "none",
+            "custom_adapters": [],
+            "first_port_name": null,
+            "label": {
+              "rotation": 0,
+              "style": null,
+              "text": "Hub1",
+              "x": null,
+              "y": -26
+            },
+            "locked": false,
+            "name": "Hub1",
+            "node_id": "a066f057-dbb2-421f-b33a-dae39b5e6b95",
+            "node_type": "ethernet_hub",
+            "port_name_format": "Ethernet{0}",
+            "port_segment_size": 0,
+            "properties": {
+              "ports_mapping": [
+                {
+                  "name": "Ethernet0",
+                  "port_number": 0
+                },
+                {
+                  "name": "Ethernet1",
+                  "port_number": 1
+                },
+                {
+                  "name": "Ethernet2",
+                  "port_number": 2
+                },
+                {
+                  "name": "Ethernet3",
+                  "port_number": 3
+                },
+                {
+                  "name": "Ethernet4",
+                  "port_number": 4
+                },
+                {
+                  "name": "Ethernet5",
+                  "port_number": 5
+                },
+                {
+                  "name": "Ethernet6",
+                  "port_number": 6
+                },
+                {
+                  "name": "Ethernet7",
+                  "port_number": 7
+                }
+              ]
+            },
+            "symbol": ":/symbols/hub.svg",
+            "x": -60,
+            "y": 0,
+            "z": 1
+          },
+          "after": {
+            "compute_id": "local",
+            "console": null,
+            "console_auto_start": false,
+            "console_type": "none",
+            "custom_adapters": [],
+            "first_port_name": null,
+            "label": {
+              "rotation": 0,
+              "style": "font-family: TypeWriter;font-size: 10.0;font-weight: bold;fill: #000000;fill-opacity: 1.0;",
+              "text": "Hub1",
+              "x": 14,
+              "y": -25
+            },
+            "locked": false,
+            "name": "Hub1",
+            "node_id": "a066f057-dbb2-421f-b33a-dae39b5e6b95",
+            "node_type": "ethernet_hub",
+            "port_name_format": "Ethernet{0}",
+            "port_segment_size": 0,
+            "properties": {
+              "ports_mapping": [
+                {
+                  "name": "Ethernet0",
+                  "port_number": 0
+                },
+                {
+                  "name": "Ethernet1",
+                  "port_number": 1
+                },
+                {
+                  "name": "Ethernet2",
+                  "port_number": 2
+                },
+                {
+                  "name": "Ethernet3",
+                  "port_number": 3
+                },
+                {
+                  "name": "Ethernet4",
+                  "port_number": 4
+                },
+                {
+                  "name": "Ethernet5",
+                  "port_number": 5
+                },
+                {
+                  "name": "Ethernet6",
+                  "port_number": 6
+                },
+                {
+                  "name": "Ethernet7",
+                  "port_number": 7
+                }
+              ]
+            },
+            "symbol": ":/symbols/hub.svg",
+            "x": -60,
+            "y": 0,
+            "z": 1
+          }
+        }
+      }
+    },
+    {
+      "description": "New device Hub2",
+      "changes": {
+        "nodes/f2cd79db-4469-44f1-bff5-9727f762a02f": {
+          "before": null,
+          "after": {
+            "compute_id": "local",
+            "console": null,
+            "console_auto_start": false,
+            "console_type": "none",
+            "custom_adapters": [],
+            "first_port_name": null,
+            "label": {
+              "rotation": 0,
+              "style": "font-family: TypeWriter;font-size: 10.0;font-weight: bold;fill: #000000;fill-opacity: 1.0;",
+              "text": "Hub2",
+              "x": 14,
+              "y": -25
+            },
+            "locked": false,
+            "name": "Hub2",
+            "node_id": "f2cd79db-4469-44f1-bff5-9727f762a02f",
+            "node_type": "ethernet_hub",
+            "port_name_format": "Ethernet{0}",
+            "port_segment_size": 0,
+            "properties": {
+              "ports_mapping": [
+                {
+                  "name": "Ethernet0",
+                  "port_number": 0
+                },
+                {
+                  "name": "Ethernet1",
+                  "port_number": 1
+                },
+                {
+                  "name": "Ethernet2",
+                  "port_number": 2
+                },
+                {
+                  "name": "Ethernet3",
+                  "port_number": 3
+                },
+                {
+                  "name": "Ethernet4",
+                  "port_number": 4
+                },
+                {
+                  "name": "Ethernet5",
+                  "port_number": 5
+                },
+                {
+                  "name": "Ethernet6",
+                  "port_number": 6
+                },
+                {
+                  "name": "Ethernet7",
+                  "port_number": 7
+                }
+              ]
+            },
+            "symbol": ":/symbols/hub.svg",
+            "x": 60,
+            "y": 0,
+            "z": 1
+          }
+        }
+      }
+    },
+    {
+      "description": "Create container \u2014 Container",
+      "changes": {
+        "drawings/96c68d6d-b54d-4c00-99f6-41818a85a977": {
+          "before": null,
+          "after": {
+            "drawing_id": "96c68d6d-b54d-4c00-99f6-41818a85a977",
+            "locked": false,
+            "rotation": 0,
+            "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"250\" height=\"66\"><metadata id=\"gns3-canvas-group\">{\"children\":[{\"id\":\"a066f057-dbb2-421f-b33a-dae39b5e6b95\",\"key\":\"Hub1\",\"type\":\"node\",\"x\":28.799999999999997,\"y\":28.8},{\"id\":\"f2cd79db-4469-44f1-bff5-9727f762a02f\",\"key\":\"Hub2\",\"type\":\"node\",\"x\":148.8,\"y\":28.8}],\"drawing_id\":\"96c68d6d-b54d-4c00-99f6-41818a85a977\",\"identity\":\"96c68d6d-b54d-4c00-99f6-41818a85a977\",\"name\":\"Container\",\"origin\":{\"x\":-88.8,\"y\":-28.8},\"revision\":0,\"size\":{\"height\":66,\"width\":250},\"style\":{\"border_color\":\"#ff3484c6\",\"border_style\":1,\"border_width\":1,\"fill_color\":\"#00000000\",\"shape\":\"rect\"},\"version\":2}</metadata><text x=\"0\" y=\"16\" fill=\"#3484c6\">Container</text></svg>",
+            "x": -88,
+            "y": -28,
+            "z": 0
+          }
+        }
+      }
+    },
+    {
+      "description": "Remove device Hub1 from container Container \u2014 Container",
+      "changes": {
+        "drawings/96c68d6d-b54d-4c00-99f6-41818a85a977": {
+          "before": {
+            "drawing_id": "96c68d6d-b54d-4c00-99f6-41818a85a977",
+            "locked": false,
+            "rotation": 0,
+            "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"250\" height=\"66\"><metadata id=\"gns3-canvas-group\">{\"children\":[{\"id\":\"a066f057-dbb2-421f-b33a-dae39b5e6b95\",\"key\":\"Hub1\",\"type\":\"node\",\"x\":28.799999999999997,\"y\":28.8},{\"id\":\"f2cd79db-4469-44f1-bff5-9727f762a02f\",\"key\":\"Hub2\",\"type\":\"node\",\"x\":148.8,\"y\":28.8}],\"drawing_id\":\"96c68d6d-b54d-4c00-99f6-41818a85a977\",\"identity\":\"96c68d6d-b54d-4c00-99f6-41818a85a977\",\"name\":\"Container\",\"origin\":{\"x\":-88.8,\"y\":-28.8},\"revision\":0,\"size\":{\"height\":66,\"width\":250},\"style\":{\"border_color\":\"#ff3484c6\",\"border_style\":1,\"border_width\":1,\"fill_color\":\"#00000000\",\"shape\":\"rect\"},\"version\":2}</metadata><text x=\"0\" y=\"16\" fill=\"#3484c6\">Container</text></svg>",
+            "x": -88,
+            "y": -28,
+            "z": 0
+          },
+          "after": {
+            "drawing_id": "96c68d6d-b54d-4c00-99f6-41818a85a977",
+            "locked": false,
+            "rotation": 0,
+            "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"250\" height=\"66\"><metadata id=\"gns3-canvas-group\">{\"children\":[{\"id\":\"f2cd79db-4469-44f1-bff5-9727f762a02f\",\"key\":\"Hub2\",\"type\":\"node\",\"x\":148.8,\"y\":28.8}],\"drawing_id\":\"96c68d6d-b54d-4c00-99f6-41818a85a977\",\"identity\":\"96c68d6d-b54d-4c00-99f6-41818a85a977\",\"name\":\"Container\",\"origin\":{\"x\":-88.8,\"y\":-28.8},\"revision\":0,\"size\":{\"height\":66,\"width\":250},\"style\":{\"border_color\":\"#ff3484c6\",\"border_style\":1,\"border_width\":1,\"fill_color\":\"#00000000\",\"shape\":\"rect\"},\"version\":2}</metadata><text x=\"0\" y=\"16\" fill=\"#3484c6\">Container</text></svg>",
+            "x": -88,
+            "y": -28,
+            "z": 0
+          }
+        },
+        "nodes/a066f057-dbb2-421f-b33a-dae39b5e6b95": {
+          "before": {
+            "compute_id": "local",
+            "console": null,
+            "console_auto_start": false,
+            "console_type": "none",
+            "custom_adapters": [],
+            "first_port_name": null,
+            "label": {
+              "rotation": 0,
+              "style": "font-family: TypeWriter;font-size: 10.0;font-weight: bold;fill: #000000;fill-opacity: 1.0;",
+              "text": "Hub1",
+              "x": 14,
+              "y": -25
+            },
+            "locked": false,
+            "name": "Hub1",
+            "node_id": "a066f057-dbb2-421f-b33a-dae39b5e6b95",
+            "node_type": "ethernet_hub",
+            "port_name_format": "Ethernet{0}",
+            "port_segment_size": 0,
+            "properties": {
+              "ports_mapping": [
+                {
+                  "name": "Ethernet0",
+                  "port_number": 0
+                },
+                {
+                  "name": "Ethernet1",
+                  "port_number": 1
+                },
+                {
+                  "name": "Ethernet2",
+                  "port_number": 2
+                },
+                {
+                  "name": "Ethernet3",
+                  "port_number": 3
+                },
+                {
+                  "name": "Ethernet4",
+                  "port_number": 4
+                },
+                {
+                  "name": "Ethernet5",
+                  "port_number": 5
+                },
+                {
+                  "name": "Ethernet6",
+                  "port_number": 6
+                },
+                {
+                  "name": "Ethernet7",
+                  "port_number": 7
+                }
+              ]
+            },
+            "symbol": ":/symbols/hub.svg",
+            "x": -60,
+            "y": 0,
+            "z": 1
+          },
+          "after": {
+            "compute_id": "local",
+            "console": null,
+            "console_auto_start": false,
+            "console_type": "none",
+            "custom_adapters": [],
+            "first_port_name": null,
+            "label": {
+              "rotation": 0,
+              "style": "font-family: TypeWriter;font-size: 10.0;font-weight: bold;fill: #000000;fill-opacity: 1.0;",
+              "text": "Hub1",
+              "x": 14,
+              "y": -25
+            },
+            "locked": false,
+            "name": "Hub1",
+            "node_id": "a066f057-dbb2-421f-b33a-dae39b5e6b95",
+            "node_type": "ethernet_hub",
+            "port_name_format": "Ethernet{0}",
+            "port_segment_size": 0,
+            "properties": {
+              "ports_mapping": [
+                {
+                  "name": "Ethernet0",
+                  "port_number": 0
+                },
+                {
+                  "name": "Ethernet1",
+                  "port_number": 1
+                },
+                {
+                  "name": "Ethernet2",
+                  "port_number": 2
+                },
+                {
+                  "name": "Ethernet3",
+                  "port_number": 3
+                },
+                {
+                  "name": "Ethernet4",
+                  "port_number": 4
+                },
+                {
+                  "name": "Ethernet5",
+                  "port_number": 5
+                },
+                {
+                  "name": "Ethernet6",
+                  "port_number": 6
+                },
+                {
+                  "name": "Ethernet7",
+                  "port_number": 7
+                }
+              ]
+            },
+            "symbol": ":/symbols/hub.svg",
+            "x": -275,
+            "y": -16,
+            "z": 1
+          }
+        }
+      }
+    },
+    {
+      "description": "Remove device Hub2 from container Container \u2014 Container",
+      "changes": {
+        "drawings/96c68d6d-b54d-4c00-99f6-41818a85a977": {
+          "before": {
+            "drawing_id": "96c68d6d-b54d-4c00-99f6-41818a85a977",
+            "locked": false,
+            "rotation": 0,
+            "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"250\" height=\"66\"><metadata id=\"gns3-canvas-group\">{\"children\":[{\"id\":\"f2cd79db-4469-44f1-bff5-9727f762a02f\",\"key\":\"Hub2\",\"type\":\"node\",\"x\":148.8,\"y\":28.8}],\"drawing_id\":\"96c68d6d-b54d-4c00-99f6-41818a85a977\",\"identity\":\"96c68d6d-b54d-4c00-99f6-41818a85a977\",\"name\":\"Container\",\"origin\":{\"x\":-88.8,\"y\":-28.8},\"revision\":0,\"size\":{\"height\":66,\"width\":250},\"style\":{\"border_color\":\"#ff3484c6\",\"border_style\":1,\"border_width\":1,\"fill_color\":\"#00000000\",\"shape\":\"rect\"},\"version\":2}</metadata><text x=\"0\" y=\"16\" fill=\"#3484c6\">Container</text></svg>",
+            "x": -88,
+            "y": -28,
+            "z": 0
+          },
+          "after": {
+            "drawing_id": "96c68d6d-b54d-4c00-99f6-41818a85a977",
+            "locked": false,
+            "rotation": 0,
+            "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"250\" height=\"66\"><metadata id=\"gns3-canvas-group\">{\"children\":[],\"drawing_id\":\"96c68d6d-b54d-4c00-99f6-41818a85a977\",\"identity\":\"96c68d6d-b54d-4c00-99f6-41818a85a977\",\"name\":\"Container\",\"origin\":{\"x\":-88.8,\"y\":-28.8},\"revision\":0,\"size\":{\"height\":66,\"width\":250},\"style\":{\"border_color\":\"#ff3484c6\",\"border_style\":1,\"border_width\":1,\"fill_color\":\"#00000000\",\"shape\":\"rect\"},\"version\":2}</metadata><text x=\"0\" y=\"16\" fill=\"#3484c6\">Container</text></svg>",
+            "x": -88,
+            "y": -28,
+            "z": 0
+          }
+        },
+        "nodes/f2cd79db-4469-44f1-bff5-9727f762a02f": {
+          "before": {
+            "compute_id": "local",
+            "console": null,
+            "console_auto_start": false,
+            "console_type": "none",
+            "custom_adapters": [],
+            "first_port_name": null,
+            "label": {
+              "rotation": 0,
+              "style": "font-family: TypeWriter;font-size: 10.0;font-weight: bold;fill: #000000;fill-opacity: 1.0;",
+              "text": "Hub2",
+              "x": 14,
+              "y": -25
+            },
+            "locked": false,
+            "name": "Hub2",
+            "node_id": "f2cd79db-4469-44f1-bff5-9727f762a02f",
+            "node_type": "ethernet_hub",
+            "port_name_format": "Ethernet{0}",
+            "port_segment_size": 0,
+            "properties": {
+              "ports_mapping": [
+                {
+                  "name": "Ethernet0",
+                  "port_number": 0
+                },
+                {
+                  "name": "Ethernet1",
+                  "port_number": 1
+                },
+                {
+                  "name": "Ethernet2",
+                  "port_number": 2
+                },
+                {
+                  "name": "Ethernet3",
+                  "port_number": 3
+                },
+                {
+                  "name": "Ethernet4",
+                  "port_number": 4
+                },
+                {
+                  "name": "Ethernet5",
+                  "port_number": 5
+                },
+                {
+                  "name": "Ethernet6",
+                  "port_number": 6
+                },
+                {
+                  "name": "Ethernet7",
+                  "port_number": 7
+                }
+              ]
+            },
+            "symbol": ":/symbols/hub.svg",
+            "x": 60,
+            "y": 0,
+            "z": 1
+          },
+          "after": {
+            "compute_id": "local",
+            "console": null,
+            "console_auto_start": false,
+            "console_type": "none",
+            "custom_adapters": [],
+            "first_port_name": null,
+            "label": {
+              "rotation": 0,
+              "style": "font-family: TypeWriter;font-size: 10.0;font-weight: bold;fill: #000000;fill-opacity: 1.0;",
+              "text": "Hub2",
+              "x": 14,
+              "y": -25
+            },
+            "locked": false,
+            "name": "Hub2",
+            "node_id": "f2cd79db-4469-44f1-bff5-9727f762a02f",
+            "node_type": "ethernet_hub",
+            "port_name_format": "Ethernet{0}",
+            "port_segment_size": 0,
+            "properties": {
+              "ports_mapping": [
+                {
+                  "name": "Ethernet0",
+                  "port_number": 0
+                },
+                {
+                  "name": "Ethernet1",
+                  "port_number": 1
+                },
+                {
+                  "name": "Ethernet2",
+                  "port_number": 2
+                },
+                {
+                  "name": "Ethernet3",
+                  "port_number": 3
+                },
+                {
+                  "name": "Ethernet4",
+                  "port_number": 4
+                },
+                {
+                  "name": "Ethernet5",
+                  "port_number": 5
+                },
+                {
+                  "name": "Ethernet6",
+                  "port_number": 6
+                },
+                {
+                  "name": "Ethernet7",
+                  "port_number": 7
+                }
+              ]
+            },
+            "symbol": ":/symbols/hub.svg",
+            "x": 203,
+            "y": -16,
+            "z": 1
+          }
+        }
+      }
+    },
+    {
+      "description": "New device Hub3",
+      "changes": {
+        "nodes/5ec593f4-5bf4-4395-9011-0f65ae502f4c": {
+          "before": null,
+          "after": {
+            "compute_id": "local",
+            "console": null,
+            "console_auto_start": false,
+            "console_type": "none",
+            "custom_adapters": [],
+            "first_port_name": null,
+            "label": {
+              "rotation": 0,
+              "style": "font-family: TypeWriter;font-size: 10.0;font-weight: bold;fill: #000000;fill-opacity: 1.0;",
+              "text": "Hub3",
+              "x": 14,
+              "y": -25
+            },
+            "locked": false,
+            "name": "Hub3",
+            "node_id": "5ec593f4-5bf4-4395-9011-0f65ae502f4c",
+            "node_type": "ethernet_hub",
+            "port_name_format": "Ethernet{0}",
+            "port_segment_size": 0,
+            "properties": {
+              "ports_mapping": [
+                {
+                  "name": "Ethernet0",
+                  "port_number": 0
+                },
+                {
+                  "name": "Ethernet1",
+                  "port_number": 1
+                },
+                {
+                  "name": "Ethernet2",
+                  "port_number": 2
+                },
+                {
+                  "name": "Ethernet3",
+                  "port_number": 3
+                },
+                {
+                  "name": "Ethernet4",
+                  "port_number": 4
+                },
+                {
+                  "name": "Ethernet5",
+                  "port_number": 5
+                },
+                {
+                  "name": "Ethernet6",
+                  "port_number": 6
+                },
+                {
+                  "name": "Ethernet7",
+                  "port_number": 7
+                }
+              ]
+            },
+            "symbol": ":/symbols/hub.svg",
+            "x": -30,
+            "y": 0,
+            "z": 1
+          }
+        }
+      }
+    },
+    {
+      "description": "Add device to container \u2014 Container",
+      "changes": {
+        "drawings/96c68d6d-b54d-4c00-99f6-41818a85a977": {
+          "before": {
+            "drawing_id": "96c68d6d-b54d-4c00-99f6-41818a85a977",
+            "locked": false,
+            "rotation": 0,
+            "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"250\" height=\"66\"><metadata id=\"gns3-canvas-group\">{\"children\":[],\"drawing_id\":\"96c68d6d-b54d-4c00-99f6-41818a85a977\",\"identity\":\"96c68d6d-b54d-4c00-99f6-41818a85a977\",\"name\":\"Container\",\"origin\":{\"x\":-88.8,\"y\":-28.8},\"revision\":0,\"size\":{\"height\":66,\"width\":250},\"style\":{\"border_color\":\"#ff3484c6\",\"border_style\":1,\"border_width\":1,\"fill_color\":\"#00000000\",\"shape\":\"rect\"},\"version\":2}</metadata><text x=\"0\" y=\"16\" fill=\"#3484c6\">Container</text></svg>",
+            "x": -88,
+            "y": -28,
+            "z": 0
+          },
+          "after": {
+            "drawing_id": "96c68d6d-b54d-4c00-99f6-41818a85a977",
+            "locked": false,
+            "rotation": 0,
+            "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"250\" height=\"66\"><metadata id=\"gns3-canvas-group\">{\"children\":[{\"id\":\"5ec593f4-5bf4-4395-9011-0f65ae502f4c\",\"key\":\"Hub3\",\"type\":\"node\",\"x\":58.8,\"y\":28.8}],\"drawing_id\":\"96c68d6d-b54d-4c00-99f6-41818a85a977\",\"identity\":\"96c68d6d-b54d-4c00-99f6-41818a85a977\",\"name\":\"Container\",\"origin\":{\"x\":-88.8,\"y\":-28.8},\"revision\":0,\"size\":{\"height\":66,\"width\":250},\"style\":{\"border_color\":\"#ff3484c6\",\"border_style\":1,\"border_width\":1,\"fill_color\":\"#00000000\",\"shape\":\"rect\"},\"version\":2}</metadata><text x=\"0\" y=\"16\" fill=\"#3484c6\">Container</text></svg>",
+            "x": -88,
+            "y": -28,
+            "z": 0
+          }
+        }
+      }
+    },
+    {
+      "description": "Remove device Hub3 from container Container \u2014 Container",
+      "changes": {
+        "drawings/96c68d6d-b54d-4c00-99f6-41818a85a977": {
+          "before": {
+            "drawing_id": "96c68d6d-b54d-4c00-99f6-41818a85a977",
+            "locked": false,
+            "rotation": 0,
+            "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"250\" height=\"66\"><metadata id=\"gns3-canvas-group\">{\"children\":[{\"id\":\"5ec593f4-5bf4-4395-9011-0f65ae502f4c\",\"key\":\"Hub3\",\"type\":\"node\",\"x\":58.8,\"y\":28.8}],\"drawing_id\":\"96c68d6d-b54d-4c00-99f6-41818a85a977\",\"identity\":\"96c68d6d-b54d-4c00-99f6-41818a85a977\",\"name\":\"Container\",\"origin\":{\"x\":-88.8,\"y\":-28.8},\"revision\":0,\"size\":{\"height\":66,\"width\":250},\"style\":{\"border_color\":\"#ff3484c6\",\"border_style\":1,\"border_width\":1,\"fill_color\":\"#00000000\",\"shape\":\"rect\"},\"version\":2}</metadata><text x=\"0\" y=\"16\" fill=\"#3484c6\">Container</text></svg>",
+            "x": -88,
+            "y": -28,
+            "z": 0
+          },
+          "after": {
+            "drawing_id": "96c68d6d-b54d-4c00-99f6-41818a85a977",
+            "locked": false,
+            "rotation": 0,
+            "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"250\" height=\"66\"><metadata id=\"gns3-canvas-group\">{\"children\":[],\"drawing_id\":\"96c68d6d-b54d-4c00-99f6-41818a85a977\",\"identity\":\"96c68d6d-b54d-4c00-99f6-41818a85a977\",\"name\":\"Container\",\"origin\":{\"x\":-88.8,\"y\":-28.8},\"revision\":0,\"size\":{\"height\":66,\"width\":250},\"style\":{\"border_color\":\"#ff3484c6\",\"border_style\":1,\"border_width\":1,\"fill_color\":\"#00000000\",\"shape\":\"rect\"},\"version\":2}</metadata><text x=\"0\" y=\"16\" fill=\"#3484c6\">Container</text></svg>",
+            "x": -88,
+            "y": -28,
+            "z": 0
+          }
+        },
+        "nodes/5ec593f4-5bf4-4395-9011-0f65ae502f4c": {
+          "before": {
+            "compute_id": "local",
+            "console": null,
+            "console_auto_start": false,
+            "console_type": "none",
+            "custom_adapters": [],
+            "first_port_name": null,
+            "label": {
+              "rotation": 0,
+              "style": "font-family: TypeWriter;font-size: 10.0;font-weight: bold;fill: #000000;fill-opacity: 1.0;",
+              "text": "Hub3",
+              "x": 14,
+              "y": -25
+            },
+            "locked": false,
+            "name": "Hub3",
+            "node_id": "5ec593f4-5bf4-4395-9011-0f65ae502f4c",
+            "node_type": "ethernet_hub",
+            "port_name_format": "Ethernet{0}",
+            "port_segment_size": 0,
+            "properties": {
+              "ports_mapping": [
+                {
+                  "name": "Ethernet0",
+                  "port_number": 0
+                },
+                {
+                  "name": "Ethernet1",
+                  "port_number": 1
+                },
+                {
+                  "name": "Ethernet2",
+                  "port_number": 2
+                },
+                {
+                  "name": "Ethernet3",
+                  "port_number": 3
+                },
+                {
+                  "name": "Ethernet4",
+                  "port_number": 4
+                },
+                {
+                  "name": "Ethernet5",
+                  "port_number": 5
+                },
+                {
+                  "name": "Ethernet6",
+                  "port_number": 6
+                },
+                {
+                  "name": "Ethernet7",
+                  "port_number": 7
+                }
+              ]
+            },
+            "symbol": ":/symbols/hub.svg",
+            "x": -30,
+            "y": 0,
+            "z": 1
+          },
+          "after": {
+            "compute_id": "local",
+            "console": null,
+            "console_auto_start": false,
+            "console_type": "none",
+            "custom_adapters": [],
+            "first_port_name": null,
+            "label": {
+              "rotation": 0,
+              "style": "font-family: TypeWriter;font-size: 10.0;font-weight: bold;fill: #000000;fill-opacity: 1.0;",
+              "text": "Hub3",
+              "x": 14,
+              "y": -25
+            },
+            "locked": false,
+            "name": "Hub3",
+            "node_id": "5ec593f4-5bf4-4395-9011-0f65ae502f4c",
+            "node_type": "ethernet_hub",
+            "port_name_format": "Ethernet{0}",
+            "port_segment_size": 0,
+            "properties": {
+              "ports_mapping": [
+                {
+                  "name": "Ethernet0",
+                  "port_number": 0
+                },
+                {
+                  "name": "Ethernet1",
+                  "port_number": 1
+                },
+                {
+                  "name": "Ethernet2",
+                  "port_number": 2
+                },
+                {
+                  "name": "Ethernet3",
+                  "port_number": 3
+                },
+                {
+                  "name": "Ethernet4",
+                  "port_number": 4
+                },
+                {
+                  "name": "Ethernet5",
+                  "port_number": 5
+                },
+                {
+                  "name": "Ethernet6",
+                  "port_number": 6
+                },
+                {
+                  "name": "Ethernet7",
+                  "port_number": 7
+                }
+              ]
+            },
+            "symbol": ":/symbols/hub.svg",
+            "x": -275,
+            "y": 134,
+            "z": 1
+          }
+        }
+      }
+    },
+    {
+      "description": "New device Hub4",
+      "changes": {
+        "nodes/a0d0a9c4-9b65-48d0-b43c-eb6a8f51ea60": {
+          "before": null,
+          "after": {
+            "compute_id": "local",
+            "console": null,
+            "console_auto_start": false,
+            "console_type": "none",
+            "custom_adapters": [],
+            "first_port_name": null,
+            "label": {
+              "rotation": 0,
+              "style": "font-family: TypeWriter;font-size: 10.0;font-weight: bold;fill: #000000;fill-opacity: 1.0;",
+              "text": "Hub4",
+              "x": 14,
+              "y": -25
+            },
+            "locked": false,
+            "name": "Hub4",
+            "node_id": "a0d0a9c4-9b65-48d0-b43c-eb6a8f51ea60",
+            "node_type": "ethernet_hub",
+            "port_name_format": "Ethernet{0}",
+            "port_segment_size": 0,
+            "properties": {
+              "ports_mapping": [
+                {
+                  "name": "Ethernet0",
+                  "port_number": 0
+                },
+                {
+                  "name": "Ethernet1",
+                  "port_number": 1
+                },
+                {
+                  "name": "Ethernet2",
+                  "port_number": 2
+                },
+                {
+                  "name": "Ethernet3",
+                  "port_number": 3
+                },
+                {
+                  "name": "Ethernet4",
+                  "port_number": 4
+                },
+                {
+                  "name": "Ethernet5",
+                  "port_number": 5
+                },
+                {
+                  "name": "Ethernet6",
+                  "port_number": 6
+                },
+                {
+                  "name": "Ethernet7",
+                  "port_number": 7
+                }
+              ]
+            },
+            "symbol": ":/symbols/hub.svg",
+            "x": -30,
+            "y": 0,
+            "z": 1
+          }
+        }
+      }
+    },
+    {
+      "description": "Add device to container \u2014 Container",
+      "changes": {
+        "drawings/96c68d6d-b54d-4c00-99f6-41818a85a977": {
+          "before": {
+            "drawing_id": "96c68d6d-b54d-4c00-99f6-41818a85a977",
+            "locked": false,
+            "rotation": 0,
+            "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"250\" height=\"66\"><metadata id=\"gns3-canvas-group\">{\"children\":[],\"drawing_id\":\"96c68d6d-b54d-4c00-99f6-41818a85a977\",\"identity\":\"96c68d6d-b54d-4c00-99f6-41818a85a977\",\"name\":\"Container\",\"origin\":{\"x\":-88.8,\"y\":-28.8},\"revision\":0,\"size\":{\"height\":66,\"width\":250},\"style\":{\"border_color\":\"#ff3484c6\",\"border_style\":1,\"border_width\":1,\"fill_color\":\"#00000000\",\"shape\":\"rect\"},\"version\":2}</metadata><text x=\"0\" y=\"16\" fill=\"#3484c6\">Container</text></svg>",
+            "x": -88,
+            "y": -28,
+            "z": 0
+          },
+          "after": {
+            "drawing_id": "96c68d6d-b54d-4c00-99f6-41818a85a977",
+            "locked": false,
+            "rotation": 0,
+            "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"250\" height=\"66\"><metadata id=\"gns3-canvas-group\">{\"children\":[{\"id\":\"a0d0a9c4-9b65-48d0-b43c-eb6a8f51ea60\",\"key\":\"Hub4\",\"type\":\"node\",\"x\":58.8,\"y\":28.8}],\"drawing_id\":\"96c68d6d-b54d-4c00-99f6-41818a85a977\",\"identity\":\"96c68d6d-b54d-4c00-99f6-41818a85a977\",\"name\":\"Container\",\"origin\":{\"x\":-88.8,\"y\":-28.8},\"revision\":0,\"size\":{\"height\":66,\"width\":250},\"style\":{\"border_color\":\"#ff3484c6\",\"border_style\":1,\"border_width\":1,\"fill_color\":\"#00000000\",\"shape\":\"rect\"},\"version\":2}</metadata><text x=\"0\" y=\"16\" fill=\"#3484c6\">Container</text></svg>",
+            "x": -88,
+            "y": -28,
+            "z": 0
+          }
+        }
+      }
+    },
+    {
+      "description": "Remove device Hub4 from container Container \u2014 Container",
+      "changes": {
+        "drawings/96c68d6d-b54d-4c00-99f6-41818a85a977": {
+          "before": {
+            "drawing_id": "96c68d6d-b54d-4c00-99f6-41818a85a977",
+            "locked": false,
+            "rotation": 0,
+            "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"250\" height=\"66\"><metadata id=\"gns3-canvas-group\">{\"children\":[{\"id\":\"a0d0a9c4-9b65-48d0-b43c-eb6a8f51ea60\",\"key\":\"Hub4\",\"type\":\"node\",\"x\":58.8,\"y\":28.8}],\"drawing_id\":\"96c68d6d-b54d-4c00-99f6-41818a85a977\",\"identity\":\"96c68d6d-b54d-4c00-99f6-41818a85a977\",\"name\":\"Container\",\"origin\":{\"x\":-88.8,\"y\":-28.8},\"revision\":0,\"size\":{\"height\":66,\"width\":250},\"style\":{\"border_color\":\"#ff3484c6\",\"border_style\":1,\"border_width\":1,\"fill_color\":\"#00000000\",\"shape\":\"rect\"},\"version\":2}</metadata><text x=\"0\" y=\"16\" fill=\"#3484c6\">Container</text></svg>",
+            "x": -88,
+            "y": -28,
+            "z": 0
+          },
+          "after": {
+            "drawing_id": "96c68d6d-b54d-4c00-99f6-41818a85a977",
+            "locked": false,
+            "rotation": 0,
+            "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"250\" height=\"66\"><metadata id=\"gns3-canvas-group\">{\"children\":[],\"drawing_id\":\"96c68d6d-b54d-4c00-99f6-41818a85a977\",\"identity\":\"96c68d6d-b54d-4c00-99f6-41818a85a977\",\"name\":\"Container\",\"origin\":{\"x\":-88.8,\"y\":-28.8},\"revision\":0,\"size\":{\"height\":66,\"width\":250},\"style\":{\"border_color\":\"#ff3484c6\",\"border_style\":1,\"border_width\":1,\"fill_color\":\"#00000000\",\"shape\":\"rect\"},\"version\":2}</metadata><text x=\"0\" y=\"16\" fill=\"#3484c6\">Container</text></svg>",
+            "x": -88,
+            "y": -28,
+            "z": 0
+          }
+        },
+        "nodes/a0d0a9c4-9b65-48d0-b43c-eb6a8f51ea60": {
+          "before": {
+            "compute_id": "local",
+            "console": null,
+            "console_auto_start": false,
+            "console_type": "none",
+            "custom_adapters": [],
+            "first_port_name": null,
+            "label": {
+              "rotation": 0,
+              "style": "font-family: TypeWriter;font-size: 10.0;font-weight: bold;fill: #000000;fill-opacity: 1.0;",
+              "text": "Hub4",
+              "x": 14,
+              "y": -25
+            },
+            "locked": false,
+            "name": "Hub4",
+            "node_id": "a0d0a9c4-9b65-48d0-b43c-eb6a8f51ea60",
+            "node_type": "ethernet_hub",
+            "port_name_format": "Ethernet{0}",
+            "port_segment_size": 0,
+            "properties": {
+              "ports_mapping": [
+                {
+                  "name": "Ethernet0",
+                  "port_number": 0
+                },
+                {
+                  "name": "Ethernet1",
+                  "port_number": 1
+                },
+                {
+                  "name": "Ethernet2",
+                  "port_number": 2
+                },
+                {
+                  "name": "Ethernet3",
+                  "port_number": 3
+                },
+                {
+                  "name": "Ethernet4",
+                  "port_number": 4
+                },
+                {
+                  "name": "Ethernet5",
+                  "port_number": 5
+                },
+                {
+                  "name": "Ethernet6",
+                  "port_number": 6
+                },
+                {
+                  "name": "Ethernet7",
+                  "port_number": 7
+                }
+              ]
+            },
+            "symbol": ":/symbols/hub.svg",
+            "x": -30,
+            "y": 0,
+            "z": 1
+          },
+          "after": {
+            "compute_id": "local",
+            "console": null,
+            "console_auto_start": false,
+            "console_type": "none",
+            "custom_adapters": [],
+            "first_port_name": null,
+            "label": {
+              "rotation": 0,
+              "style": "font-family: TypeWriter;font-size: 10.0;font-weight: bold;fill: #000000;fill-opacity: 1.0;",
+              "text": "Hub4",
+              "x": 14,
+              "y": -25
+            },
+            "locked": false,
+            "name": "Hub4",
+            "node_id": "a0d0a9c4-9b65-48d0-b43c-eb6a8f51ea60",
+            "node_type": "ethernet_hub",
+            "port_name_format": "Ethernet{0}",
+            "port_segment_size": 0,
+            "properties": {
+              "ports_mapping": [
+                {
+                  "name": "Ethernet0",
+                  "port_number": 0
+                },
+                {
+                  "name": "Ethernet1",
+                  "port_number": 1
+                },
+                {
+                  "name": "Ethernet2",
+                  "port_number": 2
+                },
+                {
+                  "name": "Ethernet3",
+                  "port_number": 3
+                },
+                {
+                  "name": "Ethernet4",
+                  "port_number": 4
+                },
+                {
+                  "name": "Ethernet5",
+                  "port_number": 5
+                },
+                {
+                  "name": "Ethernet6",
+                  "port_number": 6
+                },
+                {
+                  "name": "Ethernet7",
+                  "port_number": 7
+                }
+              ]
+            },
+            "symbol": ":/symbols/hub.svg",
+            "x": -135,
+            "y": 134,
+            "z": 1
+          }
+        }
+      }
+    },
+    {
+      "description": "New device Hub5",
+      "changes": {
+        "nodes/a5b243b4-ab91-40c9-96d3-03f4ce80f8a2": {
+          "before": null,
+          "after": {
+            "compute_id": "local",
+            "console": null,
+            "console_auto_start": false,
+            "console_type": "none",
+            "custom_adapters": [],
+            "first_port_name": null,
+            "label": {
+              "rotation": 0,
+              "style": "font-family: TypeWriter;font-size: 10.0;font-weight: bold;fill: #000000;fill-opacity: 1.0;",
+              "text": "Hub5",
+              "x": 14,
+              "y": -25
+            },
+            "locked": false,
+            "name": "Hub5",
+            "node_id": "a5b243b4-ab91-40c9-96d3-03f4ce80f8a2",
+            "node_type": "ethernet_hub",
+            "port_name_format": "Ethernet{0}",
+            "port_segment_size": 0,
+            "properties": {
+              "ports_mapping": [
+                {
+                  "name": "Ethernet0",
+                  "port_number": 0
+                },
+                {
+                  "name": "Ethernet1",
+                  "port_number": 1
+                },
+                {
+                  "name": "Ethernet2",
+                  "port_number": 2
+                },
+                {
+                  "name": "Ethernet3",
+                  "port_number": 3
+                },
+                {
+                  "name": "Ethernet4",
+                  "port_number": 4
+                },
+                {
+                  "name": "Ethernet5",
+                  "port_number": 5
+                },
+                {
+                  "name": "Ethernet6",
+                  "port_number": 6
+                },
+                {
+                  "name": "Ethernet7",
+                  "port_number": 7
+                }
+              ]
+            },
+            "symbol": ":/symbols/hub.svg",
+            "x": -30,
+            "y": 0,
+            "z": 1
+          }
+        }
+      }
+    },
+    {
+      "description": "Add device to container \u2014 Container",
+      "changes": {
+        "drawings/96c68d6d-b54d-4c00-99f6-41818a85a977": {
+          "before": {
+            "drawing_id": "96c68d6d-b54d-4c00-99f6-41818a85a977",
+            "locked": false,
+            "rotation": 0,
+            "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"250\" height=\"66\"><metadata id=\"gns3-canvas-group\">{\"children\":[],\"drawing_id\":\"96c68d6d-b54d-4c00-99f6-41818a85a977\",\"identity\":\"96c68d6d-b54d-4c00-99f6-41818a85a977\",\"name\":\"Container\",\"origin\":{\"x\":-88.8,\"y\":-28.8},\"revision\":0,\"size\":{\"height\":66,\"width\":250},\"style\":{\"border_color\":\"#ff3484c6\",\"border_style\":1,\"border_width\":1,\"fill_color\":\"#00000000\",\"shape\":\"rect\"},\"version\":2}</metadata><text x=\"0\" y=\"16\" fill=\"#3484c6\">Container</text></svg>",
+            "x": -88,
+            "y": -28,
+            "z": 0
+          },
+          "after": {
+            "drawing_id": "96c68d6d-b54d-4c00-99f6-41818a85a977",
+            "locked": false,
+            "rotation": 0,
+            "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"250\" height=\"66\"><metadata id=\"gns3-canvas-group\">{\"children\":[{\"id\":\"a5b243b4-ab91-40c9-96d3-03f4ce80f8a2\",\"key\":\"Hub5\",\"type\":\"node\",\"x\":58.8,\"y\":28.8}],\"drawing_id\":\"96c68d6d-b54d-4c00-99f6-41818a85a977\",\"identity\":\"96c68d6d-b54d-4c00-99f6-41818a85a977\",\"name\":\"Container\",\"origin\":{\"x\":-88.8,\"y\":-28.8},\"revision\":0,\"size\":{\"height\":66,\"width\":250},\"style\":{\"border_color\":\"#ff3484c6\",\"border_style\":1,\"border_width\":1,\"fill_color\":\"#00000000\",\"shape\":\"rect\"},\"version\":2}</metadata><text x=\"0\" y=\"16\" fill=\"#3484c6\">Container</text></svg>",
+            "x": -88,
+            "y": -28,
+            "z": 0
+          }
+        }
+      }
+    },
+    {
+      "description": "Remove device Hub5 from container Container \u2014 Container",
+      "changes": {
+        "drawings/96c68d6d-b54d-4c00-99f6-41818a85a977": {
+          "before": {
+            "drawing_id": "96c68d6d-b54d-4c00-99f6-41818a85a977",
+            "locked": false,
+            "rotation": 0,
+            "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"250\" height=\"66\"><metadata id=\"gns3-canvas-group\">{\"children\":[{\"id\":\"a5b243b4-ab91-40c9-96d3-03f4ce80f8a2\",\"key\":\"Hub5\",\"type\":\"node\",\"x\":58.8,\"y\":28.8}],\"drawing_id\":\"96c68d6d-b54d-4c00-99f6-41818a85a977\",\"identity\":\"96c68d6d-b54d-4c00-99f6-41818a85a977\",\"name\":\"Container\",\"origin\":{\"x\":-88.8,\"y\":-28.8},\"revision\":0,\"size\":{\"height\":66,\"width\":250},\"style\":{\"border_color\":\"#ff3484c6\",\"border_style\":1,\"border_width\":1,\"fill_color\":\"#00000000\",\"shape\":\"rect\"},\"version\":2}</metadata><text x=\"0\" y=\"16\" fill=\"#3484c6\">Container</text></svg>",
+            "x": -88,
+            "y": -28,
+            "z": 0
+          },
+          "after": {
+            "drawing_id": "96c68d6d-b54d-4c00-99f6-41818a85a977",
+            "locked": false,
+            "rotation": 0,
+            "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"250\" height=\"66\"><metadata id=\"gns3-canvas-group\">{\"children\":[],\"drawing_id\":\"96c68d6d-b54d-4c00-99f6-41818a85a977\",\"identity\":\"96c68d6d-b54d-4c00-99f6-41818a85a977\",\"name\":\"Container\",\"origin\":{\"x\":-88.8,\"y\":-28.8},\"revision\":0,\"size\":{\"height\":66,\"width\":250},\"style\":{\"border_color\":\"#ff3484c6\",\"border_style\":1,\"border_width\":1,\"fill_color\":\"#00000000\",\"shape\":\"rect\"},\"version\":2}</metadata><text x=\"0\" y=\"16\" fill=\"#3484c6\">Container</text></svg>",
+            "x": -88,
+            "y": -28,
+            "z": 0
+          }
+        },
+        "nodes/a5b243b4-ab91-40c9-96d3-03f4ce80f8a2": {
+          "before": {
+            "compute_id": "local",
+            "console": null,
+            "console_auto_start": false,
+            "console_type": "none",
+            "custom_adapters": [],
+            "first_port_name": null,
+            "label": {
+              "rotation": 0,
+              "style": "font-family: TypeWriter;font-size: 10.0;font-weight: bold;fill: #000000;fill-opacity: 1.0;",
+              "text": "Hub5",
+              "x": 14,
+              "y": -25
+            },
+            "locked": false,
+            "name": "Hub5",
+            "node_id": "a5b243b4-ab91-40c9-96d3-03f4ce80f8a2",
+            "node_type": "ethernet_hub",
+            "port_name_format": "Ethernet{0}",
+            "port_segment_size": 0,
+            "properties": {
+              "ports_mapping": [
+                {
+                  "name": "Ethernet0",
+                  "port_number": 0
+                },
+                {
+                  "name": "Ethernet1",
+                  "port_number": 1
+                },
+                {
+                  "name": "Ethernet2",
+                  "port_number": 2
+                },
+                {
+                  "name": "Ethernet3",
+                  "port_number": 3
+                },
+                {
+                  "name": "Ethernet4",
+                  "port_number": 4
+                },
+                {
+                  "name": "Ethernet5",
+                  "port_number": 5
+                },
+                {
+                  "name": "Ethernet6",
+                  "port_number": 6
+                },
+                {
+                  "name": "Ethernet7",
+                  "port_number": 7
+                }
+              ]
+            },
+            "symbol": ":/symbols/hub.svg",
+            "x": -30,
+            "y": 0,
+            "z": 1
+          },
+          "after": {
+            "compute_id": "local",
+            "console": null,
+            "console_auto_start": false,
+            "console_type": "none",
+            "custom_adapters": [],
+            "first_port_name": null,
+            "label": {
+              "rotation": 0,
+              "style": "font-family: TypeWriter;font-size: 10.0;font-weight: bold;fill: #000000;fill-opacity: 1.0;",
+              "text": "Hub5",
+              "x": 14,
+              "y": -25
+            },
+            "locked": false,
+            "name": "Hub5",
+            "node_id": "a5b243b4-ab91-40c9-96d3-03f4ce80f8a2",
+            "node_type": "ethernet_hub",
+            "port_name_format": "Ethernet{0}",
+            "port_segment_size": 0,
+            "properties": {
+              "ports_mapping": [
+                {
+                  "name": "Ethernet0",
+                  "port_number": 0
+                },
+                {
+                  "name": "Ethernet1",
+                  "port_number": 1
+                },
+                {
+                  "name": "Ethernet2",
+                  "port_number": 2
+                },
+                {
+                  "name": "Ethernet3",
+                  "port_number": 3
+                },
+                {
+                  "name": "Ethernet4",
+                  "port_number": 4
+                },
+                {
+                  "name": "Ethernet5",
+                  "port_number": 5
+                },
+                {
+                  "name": "Ethernet6",
+                  "port_number": 6
+                },
+                {
+                  "name": "Ethernet7",
+                  "port_number": 7
+                }
+              ]
+            },
+            "symbol": ":/symbols/hub.svg",
+            "x": 0,
+            "y": 134,
+            "z": 1
+          }
+        }
+      }
+    },
+    {
+      "description": "New device Hub6",
+      "changes": {
+        "nodes/c0a715ed-05e6-42b1-bff5-c5bff7616582": {
+          "before": null,
+          "after": {
+            "compute_id": "local",
+            "console": null,
+            "console_auto_start": false,
+            "console_type": "none",
+            "custom_adapters": [],
+            "first_port_name": null,
+            "label": {
+              "rotation": 0,
+              "style": "font-family: TypeWriter;font-size: 10.0;font-weight: bold;fill: #000000;fill-opacity: 1.0;",
+              "text": "Hub6",
+              "x": 14,
+              "y": -25
+            },
+            "locked": false,
+            "name": "Hub6",
+            "node_id": "c0a715ed-05e6-42b1-bff5-c5bff7616582",
+            "node_type": "ethernet_hub",
+            "port_name_format": "Ethernet{0}",
+            "port_segment_size": 0,
+            "properties": {
+              "ports_mapping": [
+                {
+                  "name": "Ethernet0",
+                  "port_number": 0
+                },
+                {
+                  "name": "Ethernet1",
+                  "port_number": 1
+                },
+                {
+                  "name": "Ethernet2",
+                  "port_number": 2
+                },
+                {
+                  "name": "Ethernet3",
+                  "port_number": 3
+                },
+                {
+                  "name": "Ethernet4",
+                  "port_number": 4
+                },
+                {
+                  "name": "Ethernet5",
+                  "port_number": 5
+                },
+                {
+                  "name": "Ethernet6",
+                  "port_number": 6
+                },
+                {
+                  "name": "Ethernet7",
+                  "port_number": 7
+                }
+              ]
+            },
+            "symbol": ":/symbols/hub.svg",
+            "x": -30,
+            "y": 0,
+            "z": 1
+          }
+        }
+      }
+    },
+    {
+      "description": "Add device to container \u2014 Container",
+      "changes": {
+        "drawings/96c68d6d-b54d-4c00-99f6-41818a85a977": {
+          "before": {
+            "drawing_id": "96c68d6d-b54d-4c00-99f6-41818a85a977",
+            "locked": false,
+            "rotation": 0,
+            "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"250\" height=\"66\"><metadata id=\"gns3-canvas-group\">{\"children\":[],\"drawing_id\":\"96c68d6d-b54d-4c00-99f6-41818a85a977\",\"identity\":\"96c68d6d-b54d-4c00-99f6-41818a85a977\",\"name\":\"Container\",\"origin\":{\"x\":-88.8,\"y\":-28.8},\"revision\":0,\"size\":{\"height\":66,\"width\":250},\"style\":{\"border_color\":\"#ff3484c6\",\"border_style\":1,\"border_width\":1,\"fill_color\":\"#00000000\",\"shape\":\"rect\"},\"version\":2}</metadata><text x=\"0\" y=\"16\" fill=\"#3484c6\">Container</text></svg>",
+            "x": -88,
+            "y": -28,
+            "z": 0
+          },
+          "after": {
+            "drawing_id": "96c68d6d-b54d-4c00-99f6-41818a85a977",
+            "locked": false,
+            "rotation": 0,
+            "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"250\" height=\"66\"><metadata id=\"gns3-canvas-group\">{\"children\":[{\"id\":\"c0a715ed-05e6-42b1-bff5-c5bff7616582\",\"key\":\"Hub6\",\"type\":\"node\",\"x\":58.8,\"y\":28.8}],\"drawing_id\":\"96c68d6d-b54d-4c00-99f6-41818a85a977\",\"identity\":\"96c68d6d-b54d-4c00-99f6-41818a85a977\",\"name\":\"Container\",\"origin\":{\"x\":-88.8,\"y\":-28.8},\"revision\":0,\"size\":{\"height\":66,\"width\":250},\"style\":{\"border_color\":\"#ff3484c6\",\"border_style\":1,\"border_width\":1,\"fill_color\":\"#00000000\",\"shape\":\"rect\"},\"version\":2}</metadata><text x=\"0\" y=\"16\" fill=\"#3484c6\">Container</text></svg>",
+            "x": -88,
+            "y": -28,
+            "z": 0
+          }
+        }
+      }
+    },
+    {
+      "description": "Remove device Hub6 from container Container \u2014 Container",
+      "changes": {
+        "drawings/96c68d6d-b54d-4c00-99f6-41818a85a977": {
+          "before": {
+            "drawing_id": "96c68d6d-b54d-4c00-99f6-41818a85a977",
+            "locked": false,
+            "rotation": 0,
+            "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"250\" height=\"66\"><metadata id=\"gns3-canvas-group\">{\"children\":[{\"id\":\"c0a715ed-05e6-42b1-bff5-c5bff7616582\",\"key\":\"Hub6\",\"type\":\"node\",\"x\":58.8,\"y\":28.8}],\"drawing_id\":\"96c68d6d-b54d-4c00-99f6-41818a85a977\",\"identity\":\"96c68d6d-b54d-4c00-99f6-41818a85a977\",\"name\":\"Container\",\"origin\":{\"x\":-88.8,\"y\":-28.8},\"revision\":0,\"size\":{\"height\":66,\"width\":250},\"style\":{\"border_color\":\"#ff3484c6\",\"border_style\":1,\"border_width\":1,\"fill_color\":\"#00000000\",\"shape\":\"rect\"},\"version\":2}</metadata><text x=\"0\" y=\"16\" fill=\"#3484c6\">Container</text></svg>",
+            "x": -88,
+            "y": -28,
+            "z": 0
+          },
+          "after": {
+            "drawing_id": "96c68d6d-b54d-4c00-99f6-41818a85a977",
+            "locked": false,
+            "rotation": 0,
+            "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"250\" height=\"66\"><metadata id=\"gns3-canvas-group\">{\"children\":[],\"drawing_id\":\"96c68d6d-b54d-4c00-99f6-41818a85a977\",\"identity\":\"96c68d6d-b54d-4c00-99f6-41818a85a977\",\"name\":\"Container\",\"origin\":{\"x\":-88.8,\"y\":-28.8},\"revision\":0,\"size\":{\"height\":66,\"width\":250},\"style\":{\"border_color\":\"#ff3484c6\",\"border_style\":1,\"border_width\":1,\"fill_color\":\"#00000000\",\"shape\":\"rect\"},\"version\":2}</metadata><text x=\"0\" y=\"16\" fill=\"#3484c6\">Container</text></svg>",
+            "x": -88,
+            "y": -28,
+            "z": 0
+          }
+        },
+        "nodes/c0a715ed-05e6-42b1-bff5-c5bff7616582": {
+          "before": {
+            "compute_id": "local",
+            "console": null,
+            "console_auto_start": false,
+            "console_type": "none",
+            "custom_adapters": [],
+            "first_port_name": null,
+            "label": {
+              "rotation": 0,
+              "style": "font-family: TypeWriter;font-size: 10.0;font-weight: bold;fill: #000000;fill-opacity: 1.0;",
+              "text": "Hub6",
+              "x": 14,
+              "y": -25
+            },
+            "locked": false,
+            "name": "Hub6",
+            "node_id": "c0a715ed-05e6-42b1-bff5-c5bff7616582",
+            "node_type": "ethernet_hub",
+            "port_name_format": "Ethernet{0}",
+            "port_segment_size": 0,
+            "properties": {
+              "ports_mapping": [
+                {
+                  "name": "Ethernet0",
+                  "port_number": 0
+                },
+                {
+                  "name": "Ethernet1",
+                  "port_number": 1
+                },
+                {
+                  "name": "Ethernet2",
+                  "port_number": 2
+                },
+                {
+                  "name": "Ethernet3",
+                  "port_number": 3
+                },
+                {
+                  "name": "Ethernet4",
+                  "port_number": 4
+                },
+                {
+                  "name": "Ethernet5",
+                  "port_number": 5
+                },
+                {
+                  "name": "Ethernet6",
+                  "port_number": 6
+                },
+                {
+                  "name": "Ethernet7",
+                  "port_number": 7
+                }
+              ]
+            },
+            "symbol": ":/symbols/hub.svg",
+            "x": -30,
+            "y": 0,
+            "z": 1
+          },
+          "after": {
+            "compute_id": "local",
+            "console": null,
+            "console_auto_start": false,
+            "console_type": "none",
+            "custom_adapters": [],
+            "first_port_name": null,
+            "label": {
+              "rotation": 0,
+              "style": "font-family: TypeWriter;font-size: 10.0;font-weight: bold;fill: #000000;fill-opacity: 1.0;",
+              "text": "Hub6",
+              "x": 14,
+              "y": -25
+            },
+            "locked": false,
+            "name": "Hub6",
+            "node_id": "c0a715ed-05e6-42b1-bff5-c5bff7616582",
+            "node_type": "ethernet_hub",
+            "port_name_format": "Ethernet{0}",
+            "port_segment_size": 0,
+            "properties": {
+              "ports_mapping": [
+                {
+                  "name": "Ethernet0",
+                  "port_number": 0
+                },
+                {
+                  "name": "Ethernet1",
+                  "port_number": 1
+                },
+                {
+                  "name": "Ethernet2",
+                  "port_number": 2
+                },
+                {
+                  "name": "Ethernet3",
+                  "port_number": 3
+                },
+                {
+                  "name": "Ethernet4",
+                  "port_number": 4
+                },
+                {
+                  "name": "Ethernet5",
+                  "port_number": 5
+                },
+                {
+                  "name": "Ethernet6",
+                  "port_number": 6
+                },
+                {
+                  "name": "Ethernet7",
+                  "port_number": 7
+                }
+              ]
+            },
+            "symbol": ":/symbols/hub.svg",
+            "x": 144,
+            "y": 134,
+            "z": 1
+          }
+        }
+      }
+    },
+    {
+      "description": "New device Hub7",
+      "changes": {
+        "nodes/2e6f913b-4c94-4e93-a187-a03fd76024c1": {
+          "before": null,
+          "after": {
+            "compute_id": "local",
+            "console": null,
+            "console_auto_start": false,
+            "console_type": "none",
+            "custom_adapters": [],
+            "first_port_name": null,
+            "label": {
+              "rotation": 0,
+              "style": "font-family: TypeWriter;font-size: 10.0;font-weight: bold;fill: #000000;fill-opacity: 1.0;",
+              "text": "Hub7",
+              "x": 14,
+              "y": -25
+            },
+            "locked": false,
+            "name": "Hub7",
+            "node_id": "2e6f913b-4c94-4e93-a187-a03fd76024c1",
+            "node_type": "ethernet_hub",
+            "port_name_format": "Ethernet{0}",
+            "port_segment_size": 0,
+            "properties": {
+              "ports_mapping": [
+                {
+                  "name": "Ethernet0",
+                  "port_number": 0
+                },
+                {
+                  "name": "Ethernet1",
+                  "port_number": 1
+                },
+                {
+                  "name": "Ethernet2",
+                  "port_number": 2
+                },
+                {
+                  "name": "Ethernet3",
+                  "port_number": 3
+                },
+                {
+                  "name": "Ethernet4",
+                  "port_number": 4
+                },
+                {
+                  "name": "Ethernet5",
+                  "port_number": 5
+                },
+                {
+                  "name": "Ethernet6",
+                  "port_number": 6
+                },
+                {
+                  "name": "Ethernet7",
+                  "port_number": 7
+                }
+              ]
+            },
+            "symbol": ":/symbols/hub.svg",
+            "x": -30,
+            "y": 0,
+            "z": 1
+          }
+        }
+      }
+    },
+    {
+      "description": "Add device to container \u2014 Container",
+      "changes": {
+        "drawings/96c68d6d-b54d-4c00-99f6-41818a85a977": {
+          "before": {
+            "drawing_id": "96c68d6d-b54d-4c00-99f6-41818a85a977",
+            "locked": false,
+            "rotation": 0,
+            "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"250\" height=\"66\"><metadata id=\"gns3-canvas-group\">{\"children\":[],\"drawing_id\":\"96c68d6d-b54d-4c00-99f6-41818a85a977\",\"identity\":\"96c68d6d-b54d-4c00-99f6-41818a85a977\",\"name\":\"Container\",\"origin\":{\"x\":-88.8,\"y\":-28.8},\"revision\":0,\"size\":{\"height\":66,\"width\":250},\"style\":{\"border_color\":\"#ff3484c6\",\"border_style\":1,\"border_width\":1,\"fill_color\":\"#00000000\",\"shape\":\"rect\"},\"version\":2}</metadata><text x=\"0\" y=\"16\" fill=\"#3484c6\">Container</text></svg>",
+            "x": -88,
+            "y": -28,
+            "z": 0
+          },
+          "after": {
+            "drawing_id": "96c68d6d-b54d-4c00-99f6-41818a85a977",
+            "locked": false,
+            "rotation": 0,
+            "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"250\" height=\"66\"><metadata id=\"gns3-canvas-group\">{\"children\":[{\"id\":\"2e6f913b-4c94-4e93-a187-a03fd76024c1\",\"key\":\"Hub7\",\"type\":\"node\",\"x\":58.8,\"y\":28.8}],\"drawing_id\":\"96c68d6d-b54d-4c00-99f6-41818a85a977\",\"identity\":\"96c68d6d-b54d-4c00-99f6-41818a85a977\",\"name\":\"Container\",\"origin\":{\"x\":-88.8,\"y\":-28.8},\"revision\":0,\"size\":{\"height\":66,\"width\":250},\"style\":{\"border_color\":\"#ff3484c6\",\"border_style\":1,\"border_width\":1,\"fill_color\":\"#00000000\",\"shape\":\"rect\"},\"version\":2}</metadata><text x=\"0\" y=\"16\" fill=\"#3484c6\">Container</text></svg>",
+            "x": -88,
+            "y": -28,
+            "z": 0
+          }
+        }
+      }
+    },
+    {
+      "description": "Remove device Hub7 from container Container \u2014 Container",
+      "changes": {
+        "drawings/96c68d6d-b54d-4c00-99f6-41818a85a977": {
+          "before": {
+            "drawing_id": "96c68d6d-b54d-4c00-99f6-41818a85a977",
+            "locked": false,
+            "rotation": 0,
+            "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"250\" height=\"66\"><metadata id=\"gns3-canvas-group\">{\"children\":[{\"id\":\"2e6f913b-4c94-4e93-a187-a03fd76024c1\",\"key\":\"Hub7\",\"type\":\"node\",\"x\":58.8,\"y\":28.8}],\"drawing_id\":\"96c68d6d-b54d-4c00-99f6-41818a85a977\",\"identity\":\"96c68d6d-b54d-4c00-99f6-41818a85a977\",\"name\":\"Container\",\"origin\":{\"x\":-88.8,\"y\":-28.8},\"revision\":0,\"size\":{\"height\":66,\"width\":250},\"style\":{\"border_color\":\"#ff3484c6\",\"border_style\":1,\"border_width\":1,\"fill_color\":\"#00000000\",\"shape\":\"rect\"},\"version\":2}</metadata><text x=\"0\" y=\"16\" fill=\"#3484c6\">Container</text></svg>",
+            "x": -88,
+            "y": -28,
+            "z": 0
+          },
+          "after": {
+            "drawing_id": "96c68d6d-b54d-4c00-99f6-41818a85a977",
+            "locked": false,
+            "rotation": 0,
+            "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"250\" height=\"66\"><metadata id=\"gns3-canvas-group\">{\"children\":[],\"drawing_id\":\"96c68d6d-b54d-4c00-99f6-41818a85a977\",\"identity\":\"96c68d6d-b54d-4c00-99f6-41818a85a977\",\"name\":\"Container\",\"origin\":{\"x\":-88.8,\"y\":-28.8},\"revision\":0,\"size\":{\"height\":66,\"width\":250},\"style\":{\"border_color\":\"#ff3484c6\",\"border_style\":1,\"border_width\":1,\"fill_color\":\"#00000000\",\"shape\":\"rect\"},\"version\":2}</metadata><text x=\"0\" y=\"16\" fill=\"#3484c6\">Container</text></svg>",
+            "x": -88,
+            "y": -28,
+            "z": 0
+          }
+        },
+        "nodes/2e6f913b-4c94-4e93-a187-a03fd76024c1": {
+          "before": {
+            "compute_id": "local",
+            "console": null,
+            "console_auto_start": false,
+            "console_type": "none",
+            "custom_adapters": [],
+            "first_port_name": null,
+            "label": {
+              "rotation": 0,
+              "style": "font-family: TypeWriter;font-size: 10.0;font-weight: bold;fill: #000000;fill-opacity: 1.0;",
+              "text": "Hub7",
+              "x": 14,
+              "y": -25
+            },
+            "locked": false,
+            "name": "Hub7",
+            "node_id": "2e6f913b-4c94-4e93-a187-a03fd76024c1",
+            "node_type": "ethernet_hub",
+            "port_name_format": "Ethernet{0}",
+            "port_segment_size": 0,
+            "properties": {
+              "ports_mapping": [
+                {
+                  "name": "Ethernet0",
+                  "port_number": 0
+                },
+                {
+                  "name": "Ethernet1",
+                  "port_number": 1
+                },
+                {
+                  "name": "Ethernet2",
+                  "port_number": 2
+                },
+                {
+                  "name": "Ethernet3",
+                  "port_number": 3
+                },
+                {
+                  "name": "Ethernet4",
+                  "port_number": 4
+                },
+                {
+                  "name": "Ethernet5",
+                  "port_number": 5
+                },
+                {
+                  "name": "Ethernet6",
+                  "port_number": 6
+                },
+                {
+                  "name": "Ethernet7",
+                  "port_number": 7
+                }
+              ]
+            },
+            "symbol": ":/symbols/hub.svg",
+            "x": -30,
+            "y": 0,
+            "z": 1
+          },
+          "after": {
+            "compute_id": "local",
+            "console": null,
+            "console_auto_start": false,
+            "console_type": "none",
+            "custom_adapters": [],
+            "first_port_name": null,
+            "label": {
+              "rotation": 0,
+              "style": "font-family: TypeWriter;font-size: 10.0;font-weight: bold;fill: #000000;fill-opacity: 1.0;",
+              "text": "Hub7",
+              "x": 14,
+              "y": -25
+            },
+            "locked": false,
+            "name": "Hub7",
+            "node_id": "2e6f913b-4c94-4e93-a187-a03fd76024c1",
+            "node_type": "ethernet_hub",
+            "port_name_format": "Ethernet{0}",
+            "port_segment_size": 0,
+            "properties": {
+              "ports_mapping": [
+                {
+                  "name": "Ethernet0",
+                  "port_number": 0
+                },
+                {
+                  "name": "Ethernet1",
+                  "port_number": 1
+                },
+                {
+                  "name": "Ethernet2",
+                  "port_number": 2
+                },
+                {
+                  "name": "Ethernet3",
+                  "port_number": 3
+                },
+                {
+                  "name": "Ethernet4",
+                  "port_number": 4
+                },
+                {
+                  "name": "Ethernet5",
+                  "port_number": 5
+                },
+                {
+                  "name": "Ethernet6",
+                  "port_number": 6
+                },
+                {
+                  "name": "Ethernet7",
+                  "port_number": 7
+                }
+              ]
+            },
+            "symbol": ":/symbols/hub.svg",
+            "x": -275,
+            "y": -186,
+            "z": 1
+          }
+        }
+      }
+    },
+    {
+      "description": "New device Hub8",
+      "changes": {
+        "nodes/e33fbbba-d00b-475b-8f83-2776dc0414e1": {
+          "before": null,
+          "after": {
+            "compute_id": "local",
+            "console": null,
+            "console_auto_start": false,
+            "console_type": "none",
+            "custom_adapters": [],
+            "first_port_name": null,
+            "label": {
+              "rotation": 0,
+              "style": "font-family: TypeWriter;font-size: 10.0;font-weight: bold;fill: #000000;fill-opacity: 1.0;",
+              "text": "Hub8",
+              "x": 14,
+              "y": -25
+            },
+            "locked": false,
+            "name": "Hub8",
+            "node_id": "e33fbbba-d00b-475b-8f83-2776dc0414e1",
+            "node_type": "ethernet_hub",
+            "port_name_format": "Ethernet{0}",
+            "port_segment_size": 0,
+            "properties": {
+              "ports_mapping": [
+                {
+                  "name": "Ethernet0",
+                  "port_number": 0
+                },
+                {
+                  "name": "Ethernet1",
+                  "port_number": 1
+                },
+                {
+                  "name": "Ethernet2",
+                  "port_number": 2
+                },
+                {
+                  "name": "Ethernet3",
+                  "port_number": 3
+                },
+                {
+                  "name": "Ethernet4",
+                  "port_number": 4
+                },
+                {
+                  "name": "Ethernet5",
+                  "port_number": 5
+                },
+                {
+                  "name": "Ethernet6",
+                  "port_number": 6
+                },
+                {
+                  "name": "Ethernet7",
+                  "port_number": 7
+                }
+              ]
+            },
+            "symbol": ":/symbols/hub.svg",
+            "x": -30,
+            "y": 0,
+            "z": 1
+          }
+        }
+      }
+    },
+    {
+      "description": "Add device to container \u2014 Container",
+      "changes": {
+        "drawings/96c68d6d-b54d-4c00-99f6-41818a85a977": {
+          "before": {
+            "drawing_id": "96c68d6d-b54d-4c00-99f6-41818a85a977",
+            "locked": false,
+            "rotation": 0,
+            "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"250\" height=\"66\"><metadata id=\"gns3-canvas-group\">{\"children\":[],\"drawing_id\":\"96c68d6d-b54d-4c00-99f6-41818a85a977\",\"identity\":\"96c68d6d-b54d-4c00-99f6-41818a85a977\",\"name\":\"Container\",\"origin\":{\"x\":-88.8,\"y\":-28.8},\"revision\":0,\"size\":{\"height\":66,\"width\":250},\"style\":{\"border_color\":\"#ff3484c6\",\"border_style\":1,\"border_width\":1,\"fill_color\":\"#00000000\",\"shape\":\"rect\"},\"version\":2}</metadata><text x=\"0\" y=\"16\" fill=\"#3484c6\">Container</text></svg>",
+            "x": -88,
+            "y": -28,
+            "z": 0
+          },
+          "after": {
+            "drawing_id": "96c68d6d-b54d-4c00-99f6-41818a85a977",
+            "locked": false,
+            "rotation": 0,
+            "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"250\" height=\"66\"><metadata id=\"gns3-canvas-group\">{\"children\":[{\"id\":\"e33fbbba-d00b-475b-8f83-2776dc0414e1\",\"key\":\"Hub8\",\"type\":\"node\",\"x\":58.8,\"y\":28.8}],\"drawing_id\":\"96c68d6d-b54d-4c00-99f6-41818a85a977\",\"identity\":\"96c68d6d-b54d-4c00-99f6-41818a85a977\",\"name\":\"Container\",\"origin\":{\"x\":-88.8,\"y\":-28.8},\"revision\":0,\"size\":{\"height\":66,\"width\":250},\"style\":{\"border_color\":\"#ff3484c6\",\"border_style\":1,\"border_width\":1,\"fill_color\":\"#00000000\",\"shape\":\"rect\"},\"version\":2}</metadata><text x=\"0\" y=\"16\" fill=\"#3484c6\">Container</text></svg>",
+            "x": -88,
+            "y": -28,
+            "z": 0
+          }
+        }
+      }
+    },
+    {
+      "description": "Remove device Hub8 from container Container \u2014 Container",
+      "changes": {
+        "drawings/96c68d6d-b54d-4c00-99f6-41818a85a977": {
+          "before": {
+            "drawing_id": "96c68d6d-b54d-4c00-99f6-41818a85a977",
+            "locked": false,
+            "rotation": 0,
+            "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"250\" height=\"66\"><metadata id=\"gns3-canvas-group\">{\"children\":[{\"id\":\"e33fbbba-d00b-475b-8f83-2776dc0414e1\",\"key\":\"Hub8\",\"type\":\"node\",\"x\":58.8,\"y\":28.8}],\"drawing_id\":\"96c68d6d-b54d-4c00-99f6-41818a85a977\",\"identity\":\"96c68d6d-b54d-4c00-99f6-41818a85a977\",\"name\":\"Container\",\"origin\":{\"x\":-88.8,\"y\":-28.8},\"revision\":0,\"size\":{\"height\":66,\"width\":250},\"style\":{\"border_color\":\"#ff3484c6\",\"border_style\":1,\"border_width\":1,\"fill_color\":\"#00000000\",\"shape\":\"rect\"},\"version\":2}</metadata><text x=\"0\" y=\"16\" fill=\"#3484c6\">Container</text></svg>",
+            "x": -88,
+            "y": -28,
+            "z": 0
+          },
+          "after": {
+            "drawing_id": "96c68d6d-b54d-4c00-99f6-41818a85a977",
+            "locked": false,
+            "rotation": 0,
+            "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"250\" height=\"66\"><metadata id=\"gns3-canvas-group\">{\"children\":[],\"drawing_id\":\"96c68d6d-b54d-4c00-99f6-41818a85a977\",\"identity\":\"96c68d6d-b54d-4c00-99f6-41818a85a977\",\"name\":\"Container\",\"origin\":{\"x\":-88.8,\"y\":-28.8},\"revision\":0,\"size\":{\"height\":66,\"width\":250},\"style\":{\"border_color\":\"#ff3484c6\",\"border_style\":1,\"border_width\":1,\"fill_color\":\"#00000000\",\"shape\":\"rect\"},\"version\":2}</metadata><text x=\"0\" y=\"16\" fill=\"#3484c6\">Container</text></svg>",
+            "x": -88,
+            "y": -28,
+            "z": 0
+          }
+        },
+        "nodes/e33fbbba-d00b-475b-8f83-2776dc0414e1": {
+          "before": {
+            "compute_id": "local",
+            "console": null,
+            "console_auto_start": false,
+            "console_type": "none",
+            "custom_adapters": [],
+            "first_port_name": null,
+            "label": {
+              "rotation": 0,
+              "style": "font-family: TypeWriter;font-size: 10.0;font-weight: bold;fill: #000000;fill-opacity: 1.0;",
+              "text": "Hub8",
+              "x": 14,
+              "y": -25
+            },
+            "locked": false,
+            "name": "Hub8",
+            "node_id": "e33fbbba-d00b-475b-8f83-2776dc0414e1",
+            "node_type": "ethernet_hub",
+            "port_name_format": "Ethernet{0}",
+            "port_segment_size": 0,
+            "properties": {
+              "ports_mapping": [
+                {
+                  "name": "Ethernet0",
+                  "port_number": 0
+                },
+                {
+                  "name": "Ethernet1",
+                  "port_number": 1
+                },
+                {
+                  "name": "Ethernet2",
+                  "port_number": 2
+                },
+                {
+                  "name": "Ethernet3",
+                  "port_number": 3
+                },
+                {
+                  "name": "Ethernet4",
+                  "port_number": 4
+                },
+                {
+                  "name": "Ethernet5",
+                  "port_number": 5
+                },
+                {
+                  "name": "Ethernet6",
+                  "port_number": 6
+                },
+                {
+                  "name": "Ethernet7",
+                  "port_number": 7
+                }
+              ]
+            },
+            "symbol": ":/symbols/hub.svg",
+            "x": -30,
+            "y": 0,
+            "z": 1
+          },
+          "after": {
+            "compute_id": "local",
+            "console": null,
+            "console_auto_start": false,
+            "console_type": "none",
+            "custom_adapters": [],
+            "first_port_name": null,
+            "label": {
+              "rotation": 0,
+              "style": "font-family: TypeWriter;font-size: 10.0;font-weight: bold;fill: #000000;fill-opacity: 1.0;",
+              "text": "Hub8",
+              "x": 14,
+              "y": -25
+            },
+            "locked": false,
+            "name": "Hub8",
+            "node_id": "e33fbbba-d00b-475b-8f83-2776dc0414e1",
+            "node_type": "ethernet_hub",
+            "port_name_format": "Ethernet{0}",
+            "port_segment_size": 0,
+            "properties": {
+              "ports_mapping": [
+                {
+                  "name": "Ethernet0",
+                  "port_number": 0
+                },
+                {
+                  "name": "Ethernet1",
+                  "port_number": 1
+                },
+                {
+                  "name": "Ethernet2",
+                  "port_number": 2
+                },
+                {
+                  "name": "Ethernet3",
+                  "port_number": 3
+                },
+                {
+                  "name": "Ethernet4",
+                  "port_number": 4
+                },
+                {
+                  "name": "Ethernet5",
+                  "port_number": 5
+                },
+                {
+                  "name": "Ethernet6",
+                  "port_number": 6
+                },
+                {
+                  "name": "Ethernet7",
+                  "port_number": 7
+                }
+              ]
+            },
+            "symbol": ":/symbols/hub.svg",
+            "x": -135,
+            "y": -186,
+            "z": 1
+          }
+        }
+      }
+    }
+  ],
+  "state": {
+    "nodes/a066f057-dbb2-421f-b33a-dae39b5e6b95": {
+      "compute_id": "local",
+      "console": null,
+      "console_auto_start": false,
+      "console_type": "none",
+      "custom_adapters": [],
+      "first_port_name": null,
+      "label": {
+        "rotation": 0,
+        "style": "font-family: TypeWriter;font-size: 10.0;font-weight: bold;fill: #000000;fill-opacity: 1.0;",
+        "text": "Hub1",
+        "x": 14,
+        "y": -25
+      },
+      "locked": false,
+      "name": "Hub1",
+      "node_id": "a066f057-dbb2-421f-b33a-dae39b5e6b95",
+      "node_type": "ethernet_hub",
+      "port_name_format": "Ethernet{0}",
+      "port_segment_size": 0,
+      "properties": {
+        "ports_mapping": [
+          {
+            "name": "Ethernet0",
+            "port_number": 0
+          },
+          {
+            "name": "Ethernet1",
+            "port_number": 1
+          },
+          {
+            "name": "Ethernet2",
+            "port_number": 2
+          },
+          {
+            "name": "Ethernet3",
+            "port_number": 3
+          },
+          {
+            "name": "Ethernet4",
+            "port_number": 4
+          },
+          {
+            "name": "Ethernet5",
+            "port_number": 5
+          },
+          {
+            "name": "Ethernet6",
+            "port_number": 6
+          },
+          {
+            "name": "Ethernet7",
+            "port_number": 7
+          }
+        ]
+      },
+      "symbol": ":/symbols/hub.svg",
+      "x": -275,
+      "y": -16,
+      "z": 1
+    },
+    "nodes/f2cd79db-4469-44f1-bff5-9727f762a02f": {
+      "compute_id": "local",
+      "console": null,
+      "console_auto_start": false,
+      "console_type": "none",
+      "custom_adapters": [],
+      "first_port_name": null,
+      "label": {
+        "rotation": 0,
+        "style": "font-family: TypeWriter;font-size: 10.0;font-weight: bold;fill: #000000;fill-opacity: 1.0;",
+        "text": "Hub2",
+        "x": 14,
+        "y": -25
+      },
+      "locked": false,
+      "name": "Hub2",
+      "node_id": "f2cd79db-4469-44f1-bff5-9727f762a02f",
+      "node_type": "ethernet_hub",
+      "port_name_format": "Ethernet{0}",
+      "port_segment_size": 0,
+      "properties": {
+        "ports_mapping": [
+          {
+            "name": "Ethernet0",
+            "port_number": 0
+          },
+          {
+            "name": "Ethernet1",
+            "port_number": 1
+          },
+          {
+            "name": "Ethernet2",
+            "port_number": 2
+          },
+          {
+            "name": "Ethernet3",
+            "port_number": 3
+          },
+          {
+            "name": "Ethernet4",
+            "port_number": 4
+          },
+          {
+            "name": "Ethernet5",
+            "port_number": 5
+          },
+          {
+            "name": "Ethernet6",
+            "port_number": 6
+          },
+          {
+            "name": "Ethernet7",
+            "port_number": 7
+          }
+        ]
+      },
+      "symbol": ":/symbols/hub.svg",
+      "x": 203,
+      "y": -16,
+      "z": 1
+    },
+    "drawings/96c68d6d-b54d-4c00-99f6-41818a85a977": {
+      "drawing_id": "96c68d6d-b54d-4c00-99f6-41818a85a977",
+      "locked": false,
+      "rotation": 0,
+      "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"250\" height=\"66\"><metadata id=\"gns3-canvas-group\">{\"children\":[],\"drawing_id\":\"96c68d6d-b54d-4c00-99f6-41818a85a977\",\"identity\":\"96c68d6d-b54d-4c00-99f6-41818a85a977\",\"name\":\"Container\",\"origin\":{\"x\":-88.8,\"y\":-28.8},\"revision\":0,\"size\":{\"height\":66,\"width\":250},\"style\":{\"border_color\":\"#ff3484c6\",\"border_style\":1,\"border_width\":1,\"fill_color\":\"#00000000\",\"shape\":\"rect\"},\"version\":2}</metadata><text x=\"0\" y=\"16\" fill=\"#3484c6\">Container</text></svg>",
+      "x": -88,
+      "y": -28,
+      "z": 0
+    },
+    "nodes/5ec593f4-5bf4-4395-9011-0f65ae502f4c": {
+      "compute_id": "local",
+      "console": null,
+      "console_auto_start": false,
+      "console_type": "none",
+      "custom_adapters": [],
+      "first_port_name": null,
+      "label": {
+        "rotation": 0,
+        "style": "font-family: TypeWriter;font-size: 10.0;font-weight: bold;fill: #000000;fill-opacity: 1.0;",
+        "text": "Hub3",
+        "x": 14,
+        "y": -25
+      },
+      "locked": false,
+      "name": "Hub3",
+      "node_id": "5ec593f4-5bf4-4395-9011-0f65ae502f4c",
+      "node_type": "ethernet_hub",
+      "port_name_format": "Ethernet{0}",
+      "port_segment_size": 0,
+      "properties": {
+        "ports_mapping": [
+          {
+            "name": "Ethernet0",
+            "port_number": 0
+          },
+          {
+            "name": "Ethernet1",
+            "port_number": 1
+          },
+          {
+            "name": "Ethernet2",
+            "port_number": 2
+          },
+          {
+            "name": "Ethernet3",
+            "port_number": 3
+          },
+          {
+            "name": "Ethernet4",
+            "port_number": 4
+          },
+          {
+            "name": "Ethernet5",
+            "port_number": 5
+          },
+          {
+            "name": "Ethernet6",
+            "port_number": 6
+          },
+          {
+            "name": "Ethernet7",
+            "port_number": 7
+          }
+        ]
+      },
+      "symbol": ":/symbols/hub.svg",
+      "x": -275,
+      "y": 134,
+      "z": 1
+    },
+    "nodes/a0d0a9c4-9b65-48d0-b43c-eb6a8f51ea60": {
+      "compute_id": "local",
+      "console": null,
+      "console_auto_start": false,
+      "console_type": "none",
+      "custom_adapters": [],
+      "first_port_name": null,
+      "label": {
+        "rotation": 0,
+        "style": "font-family: TypeWriter;font-size: 10.0;font-weight: bold;fill: #000000;fill-opacity: 1.0;",
+        "text": "Hub4",
+        "x": 14,
+        "y": -25
+      },
+      "locked": false,
+      "name": "Hub4",
+      "node_id": "a0d0a9c4-9b65-48d0-b43c-eb6a8f51ea60",
+      "node_type": "ethernet_hub",
+      "port_name_format": "Ethernet{0}",
+      "port_segment_size": 0,
+      "properties": {
+        "ports_mapping": [
+          {
+            "name": "Ethernet0",
+            "port_number": 0
+          },
+          {
+            "name": "Ethernet1",
+            "port_number": 1
+          },
+          {
+            "name": "Ethernet2",
+            "port_number": 2
+          },
+          {
+            "name": "Ethernet3",
+            "port_number": 3
+          },
+          {
+            "name": "Ethernet4",
+            "port_number": 4
+          },
+          {
+            "name": "Ethernet5",
+            "port_number": 5
+          },
+          {
+            "name": "Ethernet6",
+            "port_number": 6
+          },
+          {
+            "name": "Ethernet7",
+            "port_number": 7
+          }
+        ]
+      },
+      "symbol": ":/symbols/hub.svg",
+      "x": -135,
+      "y": 134,
+      "z": 1
+    },
+    "nodes/a5b243b4-ab91-40c9-96d3-03f4ce80f8a2": {
+      "compute_id": "local",
+      "console": null,
+      "console_auto_start": false,
+      "console_type": "none",
+      "custom_adapters": [],
+      "first_port_name": null,
+      "label": {
+        "rotation": 0,
+        "style": "font-family: TypeWriter;font-size: 10.0;font-weight: bold;fill: #000000;fill-opacity: 1.0;",
+        "text": "Hub5",
+        "x": 14,
+        "y": -25
+      },
+      "locked": false,
+      "name": "Hub5",
+      "node_id": "a5b243b4-ab91-40c9-96d3-03f4ce80f8a2",
+      "node_type": "ethernet_hub",
+      "port_name_format": "Ethernet{0}",
+      "port_segment_size": 0,
+      "properties": {
+        "ports_mapping": [
+          {
+            "name": "Ethernet0",
+            "port_number": 0
+          },
+          {
+            "name": "Ethernet1",
+            "port_number": 1
+          },
+          {
+            "name": "Ethernet2",
+            "port_number": 2
+          },
+          {
+            "name": "Ethernet3",
+            "port_number": 3
+          },
+          {
+            "name": "Ethernet4",
+            "port_number": 4
+          },
+          {
+            "name": "Ethernet5",
+            "port_number": 5
+          },
+          {
+            "name": "Ethernet6",
+            "port_number": 6
+          },
+          {
+            "name": "Ethernet7",
+            "port_number": 7
+          }
+        ]
+      },
+      "symbol": ":/symbols/hub.svg",
+      "x": 0,
+      "y": 134,
+      "z": 1
+    },
+    "nodes/c0a715ed-05e6-42b1-bff5-c5bff7616582": {
+      "compute_id": "local",
+      "console": null,
+      "console_auto_start": false,
+      "console_type": "none",
+      "custom_adapters": [],
+      "first_port_name": null,
+      "label": {
+        "rotation": 0,
+        "style": "font-family: TypeWriter;font-size: 10.0;font-weight: bold;fill: #000000;fill-opacity: 1.0;",
+        "text": "Hub6",
+        "x": 14,
+        "y": -25
+      },
+      "locked": false,
+      "name": "Hub6",
+      "node_id": "c0a715ed-05e6-42b1-bff5-c5bff7616582",
+      "node_type": "ethernet_hub",
+      "port_name_format": "Ethernet{0}",
+      "port_segment_size": 0,
+      "properties": {
+        "ports_mapping": [
+          {
+            "name": "Ethernet0",
+            "port_number": 0
+          },
+          {
+            "name": "Ethernet1",
+            "port_number": 1
+          },
+          {
+            "name": "Ethernet2",
+            "port_number": 2
+          },
+          {
+            "name": "Ethernet3",
+            "port_number": 3
+          },
+          {
+            "name": "Ethernet4",
+            "port_number": 4
+          },
+          {
+            "name": "Ethernet5",
+            "port_number": 5
+          },
+          {
+            "name": "Ethernet6",
+            "port_number": 6
+          },
+          {
+            "name": "Ethernet7",
+            "port_number": 7
+          }
+        ]
+      },
+      "symbol": ":/symbols/hub.svg",
+      "x": 144,
+      "y": 134,
+      "z": 1
+    },
+    "nodes/2e6f913b-4c94-4e93-a187-a03fd76024c1": {
+      "compute_id": "local",
+      "console": null,
+      "console_auto_start": false,
+      "console_type": "none",
+      "custom_adapters": [],
+      "first_port_name": null,
+      "label": {
+        "rotation": 0,
+        "style": "font-family: TypeWriter;font-size: 10.0;font-weight: bold;fill: #000000;fill-opacity: 1.0;",
+        "text": "Hub7",
+        "x": 14,
+        "y": -25
+      },
+      "locked": false,
+      "name": "Hub7",
+      "node_id": "2e6f913b-4c94-4e93-a187-a03fd76024c1",
+      "node_type": "ethernet_hub",
+      "port_name_format": "Ethernet{0}",
+      "port_segment_size": 0,
+      "properties": {
+        "ports_mapping": [
+          {
+            "name": "Ethernet0",
+            "port_number": 0
+          },
+          {
+            "name": "Ethernet1",
+            "port_number": 1
+          },
+          {
+            "name": "Ethernet2",
+            "port_number": 2
+          },
+          {
+            "name": "Ethernet3",
+            "port_number": 3
+          },
+          {
+            "name": "Ethernet4",
+            "port_number": 4
+          },
+          {
+            "name": "Ethernet5",
+            "port_number": 5
+          },
+          {
+            "name": "Ethernet6",
+            "port_number": 6
+          },
+          {
+            "name": "Ethernet7",
+            "port_number": 7
+          }
+        ]
+      },
+      "symbol": ":/symbols/hub.svg",
+      "x": -275,
+      "y": -186,
+      "z": 1
+    },
+    "nodes/e33fbbba-d00b-475b-8f83-2776dc0414e1": {
+      "compute_id": "local",
+      "console": null,
+      "console_auto_start": false,
+      "console_type": "none",
+      "custom_adapters": [],
+      "first_port_name": null,
+      "label": {
+        "rotation": 0,
+        "style": "font-family: TypeWriter;font-size: 10.0;font-weight: bold;fill: #000000;fill-opacity: 1.0;",
+        "text": "Hub8",
+        "x": 14,
+        "y": -25
+      },
+      "locked": false,
+      "name": "Hub8",
+      "node_id": "e33fbbba-d00b-475b-8f83-2776dc0414e1",
+      "node_type": "ethernet_hub",
+      "port_name_format": "Ethernet{0}",
+      "port_segment_size": 0,
+      "properties": {
+        "ports_mapping": [
+          {
+            "name": "Ethernet0",
+            "port_number": 0
+          },
+          {
+            "name": "Ethernet1",
+            "port_number": 1
+          },
+          {
+            "name": "Ethernet2",
+            "port_number": 2
+          },
+          {
+            "name": "Ethernet3",
+            "port_number": 3
+          },
+          {
+            "name": "Ethernet4",
+            "port_number": 4
+          },
+          {
+            "name": "Ethernet5",
+            "port_number": 5
+          },
+          {
+            "name": "Ethernet6",
+            "port_number": 6
+          },
+          {
+            "name": "Ethernet7",
+            "port_number": 7
+          }
+        ]
+      },
+      "symbol": ":/symbols/hub.svg",
+      "x": -135,
+      "y": -186,
+      "z": 1
+    }
+  }
+}

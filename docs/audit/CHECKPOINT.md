@@ -3,7 +3,7 @@
 Branch: codex/canvas-all-improvements; base 6073b656. Produção preservada no
 checkout principal. Implementação no worktree /tmp/gns3-audit-fixes.
 
-Pendentes: B01 resize, B02 lock, B03 ferramentas, B04/B05 alpha, B06 proporção,
+Registro inicial (pendências posteriormente resolvidas): B01 resize, B02 lock, B03 ferramentas, B04/B05 alpha, B06 proporção,
 B07 remapeamento, B08 reconexão, B09 SVG fracionário, B10 alças.
 Segurança: testes inertes reproduziram escrita fora do diretório de update e
 injeção de argumentos via título de console; subprocessos não foram executados.
@@ -20,3 +20,10 @@ no SVG, leitura de espessura fracionária. B06: dois campos limitados em conjunt
 B09: fallback de SVG não editável. B10: alça pintada em pixels do viewport.
 Testes existentes de itens: 311 aprovados; regressões reduzidas: 30 aprovadas
 (incluindo uma regressão de rebind, que será commitada na etapa 2).
+
+## Concluído
+
+B01–B10 e SEC01/SEC02 corrigidos e cobertos por regressões. Duas suítes completas:
+587 passed, 2 skipped em cada Qt. Integração com servidor, export/import e simulação
+nativa X11/Wayland passaram. Consulte FINDINGS_AND_FIXES.md e SECURITY_AUDIT.md.
+R01/S01 e plataformas Windows/macOS nativas permanecem limitações explícitas.

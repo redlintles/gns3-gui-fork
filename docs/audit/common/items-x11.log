@@ -1,0 +1,67 @@
+..FF                                                                     [100%]
+=================================== FAILURES ===================================
+___________ test_valid_fractional_svg_does_not_abort_project_loading ___________
+
+canvas = <gns3.graphics_view.GraphicsView object at 0x793e66fc8cd0>
+
+    def test_valid_fractional_svg_does_not_abort_project_loading(canvas):
+        from gns3.project import Project
+        from gns3.topology import Topology
+        topo=Topology.instance();old=(topo._main_window,topo._project,topo._drawings,canvas._topology)
+        p=Project();p.setId(str(uuid.uuid4()));topo._main_window=canvas._main_window;topo._project=p;topo._drawings=[];canvas._topology=topo
+        payload={'drawing_id':str(uuid.uuid4()),'x':0,'y':0,'z':0,'locked':False,'rotation':0,
+                 'svg':'<svg width="100" height="50"><line x1="0" y1="0" x2="100" y2="50" stroke="#123456" stroke-width="2.5"/></svg>'}
+        caught=None
+        try:
+            try:p._listDrawingsCallback([payload])
+            except Exception as error:caught={'type':type(error).__name__,'message':str(error)}
+            (OUT/'fractional-svg-load.json').write_text(json.dumps({'exception':caught,'history_ready':p.history.ready,'created_drawings':len(topo._drawings),'payload':payload},indent=2))
+>           assert caught is None,caught
+E           AssertionError: {'message': "invalid literal for int() with base 10: '2.5'", 'type': 'ValueError'}
+E           assert {'message': "invalid literal for int() with base 10: '2.5'", 'type': 'ValueError'} is None
+
+tests/items/probe_common_failures.py:46: AssertionError
+------------------------------ Captured log setup ------------------------------
+ERROR    gns3.local_config:local_config.py:270 Could not read the config file /tmp/tmpk2ck7j57: Expecting value: line 1 column 1 (char 0)
+________ test_zoomed_visible_line_handle_resizes_instead_of_moving_body ________
+
+canvas = <gns3.graphics_view.GraphicsView object at 0x793e66e189b0>
+
+    def test_zoomed_visible_line_handle_resizes_instead_of_moving_body(canvas):
+        from gns3.qt import QtGui
+        canvas.window().resize(1100,800);canvas.window().show();canvas.resize(1000,700)
+        canvas._main_window.uiShowGridAction.isChecked.return_value=False
+        canvas.setSceneRect(-200,-200,500,400)
+        line=canvas.createDrawingItem('line',0,0,0,create=False);line.setLine(0,0,60,0);line.setSelected(True)
+        canvas.scale(5,5);canvas.centerOn(30,0);QTest.qWait(30)
+        first=line.mapToScene(line.line().p1());second=line.mapToScene(line.line().p2())
+        center=canvas.mapFromScene(second);click=center+QtCore.QPoint(12,0)
+        assert canvas.viewport().rect().contains(click)
+        # A 4-scene-unit handle paints 20px either side of its center at this zoom.
+        assert abs(click.x()-center.x())<4*canvas.transform().m11()
+        canvas.window().grab().save(str(OUT/'zoom-handle-before.png'))
+        QTest.mousePress(canvas.viewport(),QtCore.Qt.MouseButton.LeftButton,pos=click)
+        mode='endpoint' if canvas._lines._resize is not None else 'body'
+        QTest.mouseMove(canvas.viewport(),click+QtCore.QPoint(30,0))
+        QTest.mouseRelease(canvas.viewport(),QtCore.Qt.MouseButton.LeftButton,pos=click+QtCore.QPoint(30,0))
+        after_first=line.mapToScene(line.line().p1());after_second=line.mapToScene(line.line().p2())
+        observed={'zoom':5,'click_offset_px':12,'painted_handle_halfwidth_px':20,'mode':mode,
+                  'first_before':[first.x(),first.y()],'first_after':[after_first.x(),after_first.y()],
+                  'second_before':[second.x(),second.y()],'second_after':[after_second.x(),after_second.y()]}
+        (OUT/'zoom-handle.json').write_text(json.dumps(observed,indent=2))
+        canvas.window().grab().save(str(OUT/'zoom-handle-after.png'))
+>       assert QtCore.QLineF(first,after_first).length()<.001,observed
+E       AssertionError: {'click_offset_px': 12, 'first_after': [6.0, 0.0], 'first_before': [0.0, 0.0], 'mode': 'body', ...}
+E       assert 6.0 < 0.001
+E        +  where 6.0 = <built-in method length of QLineF object at 0x793e66fdc2d0>()
+E        +    where <built-in method length of QLineF object at 0x793e66fdc2d0> = PyQt6.QtCore.QLineF(0.0, 0.0, 6.0, 0.0).length
+E        +      where PyQt6.QtCore.QLineF(0.0, 0.0, 6.0, 0.0) = <class 'PyQt6.QtCore.QLineF'>(PyQt6.QtCore.QPointF(), PyQt6.QtCore.QPointF(6.0, 0.0))
+E        +        where <class 'PyQt6.QtCore.QLineF'> = QtCore.QLineF
+
+tests/items/probe_common_failures.py:73: AssertionError
+------------------------------ Captured log setup ------------------------------
+ERROR    gns3.local_config:local_config.py:270 Could not read the config file /tmp/tmpb4dn1bcl: Expecting value: line 1 column 1 (char 0)
+=========================== short test summary info ============================
+FAILED tests/items/probe_common_failures.py::test_valid_fractional_svg_does_not_abort_project_loading
+FAILED tests/items/probe_common_failures.py::test_zoomed_visible_line_handle_resizes_instead_of_moving_body
+2 failed, 2 passed in 0.35s

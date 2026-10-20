@@ -1,0 +1,13 @@
+{
+  "old_id": "0620813c-5ad9-4c2e-aa39-e6c13c1579ef",
+  "new_id": "3395ddcf-2cca-4220-acc1-6490fe552bfa",
+  "original_text": "Reference 0620813c-5ad9-4c2e-aa39-e6c13c1579ef",
+  "canvas_after_undo": "Reference 0620813c-5ad9-4c2e-aa39-e6c13c1579ef",
+  "server_svg": "<svg width=\"329\" height=\"26\"><text font-family=\"TypeWriter\" font-size=\"10.0\" font-weight=\"bold\" fill=\"#000000\" fill-opacity=\"1.0\">Reference 0620813c-5ad9-4c2e-aa39-e6c13c1579ef</text></svg>",
+  "history_svg": "<svg width=\"329\" height=\"26\"><text font-family=\"TypeWriter\" font-size=\"10.0\" font-weight=\"bold\" fill=\"#000000\" fill-opacity=\"1.0\">Reference 3395ddcf-2cca-4220-acc1-6490fe552bfa</text></svg>",
+  "history_invalid": "",
+  "cursor_before_close": 5,
+  "canvas_after_reopen": "Reference 0620813c-5ad9-4c2e-aa39-e6c13c1579ef",
+  "cursor_after_reopen": 0,
+  "recovery": "Previous entries were archived because they no longer match this topology. New changes are recorded normally."
+}

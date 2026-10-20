@@ -1,0 +1,32 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+______________________ test_tool_switch_draws_wrong_kind _______________________
+
+real_main_window = <gns3.main_window.MainWindow object at 0x7bc9049c3bb0>
+
+    def test_tool_switch_draws_wrong_kind(real_main_window):
+        from gns3.items.rectangle_item import RectangleItem
+        from gns3.items.ellipse_item import EllipseItem
+        w=real_main_window;v=w.uiGraphicsView
+        w.resize(1000,800);w.show();v.setEnabled(True);w.uiAnnotationToolBar.setEnabled(True)
+        w.uiDrawRectangleAction.trigger();w.uiDrawEllipseAction.trigger()
+        a,b=QtCore.QPoint(120,120),QtCore.QPoint(300,240)
+        with patch('gns3.graphics_view.StyleEditorDialog.exec',return_value=QtWidgets.QDialog.DialogCode.Accepted):
+            QTest.mousePress(v.viewport(),QtCore.Qt.MouseButton.LeftButton,pos=a)
+            QTest.mouseMove(v.viewport(),b)
+            QTest.mouseRelease(v.viewport(),QtCore.Qt.MouseButton.LeftButton,pos=b)
+        made=[i for i in v.scene().items() if isinstance(i,(RectangleItem,EllipseItem))]
+        (OUT/'tool-wrong-shape.json').write_text(json.dumps({'created':[type(i).__name__ for i in made], 'state':state(v)},indent=2))
+        w.grab().save(str(OUT/'tool-wrong-shape.png'))
+>       assert len(made)==1 and isinstance(made[0],EllipseItem),[type(i).__name__ for i in made]
+E       AssertionError: ['RectangleItem']
+E       assert (1 == 1 and False)
+E        +  where 1 = len([<gns3.items.rectangle_item.RectangleItem object at 0x7bc90418e210>])
+E        +  and   False = isinstance(<gns3.items.rectangle_item.RectangleItem object at 0x7bc90418e210>, <class 'gns3.items.ellipse_item.EllipseItem'>)
+
+tests/items/probe_exploratory_sequences.py:150: AssertionError
+------------------------------ Captured log setup ------------------------------
+ERROR    gns3.local_config:local_config.py:270 Could not read the config file /tmp/tmps0n3zph2: Expecting value: line 1 column 1 (char 0)
+=========================== short test summary info ============================
+FAILED tests/items/probe_exploratory_sequences.py::test_tool_switch_draws_wrong_kind
+1 failed, 77 deselected in 0.41s

@@ -1,0 +1,22 @@
+{
+  "zoom": 5,
+  "click_offset_px": 12,
+  "painted_handle_halfwidth_px": 20,
+  "mode": "body",
+  "first_before": [
+    0.0,
+    0.0
+  ],
+  "first_after": [
+    6.0,
+    0.0
+  ],
+  "second_before": [
+    60.0,
+    0.0
+  ],
+  "second_after": [
+    66.0,
+    0.0
+  ]
+}
