@@ -84,23 +84,23 @@ def note(text, x, y):
 
 a = note('LAN 1', -180, -80)
 b = note('LAN 2', 70, 30)
-capture(view, 'Containers: selecione elementos do laboratorio')
+capture(view, 'Containers: select elements in your lab')
 container = view._groups.add('Campus', [a, b])
-capture(view, 'Container criado: notas e desenhos ficam na mesma hierarquia')
+capture(view, 'Container created: notes and drawings share a hierarchy')
 for i in range(1, 5):
     container.setPos(container.pos()+QtCore.QPointF(25, 10))
-    capture(view, 'Mover o container transporta seus filhos')
+    capture(view, 'Moving the container moves its children together')
 container.setStyle(dict(shape='ellipse', fill_color='#2088aaee', border_color='#ff2463aa', border_width=3, border_style=1))
-capture(view, 'Style: mude a forma e a aparencia do container')
+capture(view, 'Style: change the container shape and appearance')
 save('containers')
 
 for factor in (1, 1.1, 1.1, 1.1, 1/1.1, 1/1.1):
     view.scaleView(factor, QtCore.QPoint(470, 270))
-    capture(view, 'Zoom: ampliar e reduzir ao redor do ponto escolhido')
+    capture(view, 'Zoom: magnify around the chosen point')
 QTest.mousePress(view.viewport(), QtCore.Qt.MouseButton.LeftButton, pos=QtCore.QPoint(60, 430))
 for x in (90, 130, 170):
     QTest.mouseMove(view.viewport(), QtCore.QPoint(x, 450))
-    capture(view, 'Hand: arraste uma area vazia para navegar')
+    capture(view, 'Hand: drag an empty area to pan')
 QTest.mouseRelease(view.viewport(), QtCore.Qt.MouseButton.LeftButton, pos=QtCore.QPoint(170, 450))
 save('navigation')
 
@@ -109,10 +109,10 @@ view._adding_rectangle = True
 QTest.mousePress(view.viewport(), QtCore.Qt.MouseButton.LeftButton, pos=QtCore.QPoint(200, 170))
 for x, y in ((240, 195), (300, 230), (400, 290), (490, 340)):
     QTest.mouseMove(view.viewport(), QtCore.QPoint(x, y))
-    capture(view, 'Formas: pressione e arraste para definir o tamanho')
+    capture(view, 'Shapes: press and drag to define the size')
 with patch('gns3.graphics_view.StyleEditorDialog.exec', return_value=QtWidgets.QDialog.DialogCode.Accepted):
     QTest.mouseRelease(view.viewport(), QtCore.Qt.MouseButton.LeftButton, pos=QtCore.QPoint(490, 340))
-capture(view, 'Confirmar o estilo cria a forma; Esc cancela o rascunho')
+capture(view, 'Confirm the style to create the shape; Esc cancels the draft')
 save('shapes')
 
 view.scene().clear(); view._adding_rectangle = False
@@ -121,33 +121,33 @@ QTest.mouseClick(view.viewport(), QtCore.Qt.MouseButton.LeftButton, pos=QtCore.Q
 for x, y in ((250, 200), (330, 250), (460, 330), (600, 260)):
     event = QtGui.QMouseEvent(QtCore.QEvent.Type.MouseMove, QtCore.QPointF(x,y), QtCore.QPointF(view.viewport().mapToGlobal(QtCore.QPoint(x,y))), QtCore.Qt.MouseButton.NoButton, QtCore.Qt.MouseButton.NoButton, QtCore.Qt.KeyboardModifier.NoModifier)
     app.sendEvent(view.viewport(), event)
-    capture(view, 'Linhas: primeiro clique fixa a origem; mova para prever')
+    capture(view, 'Lines: click to set the origin; move to preview')
 with patch('gns3.dialogs.line_properties_dialog.LinePropertiesDialog.exec', return_value=QtWidgets.QDialog.DialogCode.Accepted):
     QTest.mouseClick(view.viewport(), QtCore.Qt.MouseButton.LeftButton, pos=QtCore.QPoint(600,260))
-capture(view, 'Segundo clique define a ponta; confirme em Line properties')
+capture(view, 'Click again to set the endpoint; confirm in Line properties')
 save('lines')
 
 view.scene().clear()
-item = note('Laboratorio de redes', -160, -30)
+item = note('Network lab', -160, -30)
 dialog = TextEditorDialog(view, [item]); dialog.show()
-capture(dialog, 'Notas: texto, familia, tamanho e estilos na criacao')
-dialog.uiPlainTextEdit.setPlainText('Campus principal\nLaboratorio de redes')
+capture(dialog, 'Notes: choose text, font, size and styles before creation')
+dialog.uiPlainTextEdit.setPlainText('Main campus\nNetwork lab')
 dialog.fontSize.setValue(26); dialog.underline.setChecked(True)
-capture(dialog, 'A caixa de texto mostra a previa da tipografia')
-dialog.accept(); capture(view, 'Confirme para aplicar a nota ao canvas')
+capture(dialog, 'The text editor previews your typography')
+dialog.accept(); capture(view, 'Confirm to apply the note to the canvas')
 save('typography')
 
 view.scene().clear()
 dialog = ImagePropertiesDialog(view, 128, 128); dialog.show()
-capture(dialog, 'Imagens: defina dimensoes antes de importar')
+capture(dialog, 'Images: set dimensions before importing')
 dialog.widthEdit.setValue(230)
-capture(dialog, 'Keep aspect ratio sincroniza largura e altura')
+capture(dialog, 'Keep aspect ratio synchronizes width and height')
 dialog.close()
 item = ImageItem(image_path='resources/images/gns3_icon_128x128.png', pos=QtCore.QPointF(-130,-130))
 view.scene().addItem(item); item.setSelected(True)
 for size in (128, 170, 210, 260):
     item.setDimensions(size, size)
-    capture(view, 'Imagem no canvas: dimensoes e proporcao preservadas no SVG')
+    capture(view, 'Canvas image: dimensions and aspect ratio stored in SVG')
 save('images')
 window.close()
 window.deleteLater()
@@ -155,9 +155,9 @@ app.sendPostedEvents(None, QtCore.QEvent.Type.DeferredDelete)
 
 # These are actual native screenshots already committed with real-server validation.
 for filename, caption in [
-    ('replay-before-undo.png', 'Historico: estado antes de desfazer'),
-    ('replay-after-undo.png', 'Undo: associacao e posicao anteriores restauradas'),
-    ('replay-after-redo.png', 'Redo: reaplique a operacao'),
+    ('replay-before-undo.png', 'History: state before Undo'),
+    ('replay-after-undo.png', 'Undo: previous membership and position restored'),
+    ('replay-after-redo.png', 'Redo: reapply the operation'),
 ]:
     compose(Image.open(Path('docs/history/visibility')/filename).convert('RGB'), caption)
 save('history')
