@@ -1,0 +1,17 @@
+{
+  "exception": {
+    "type": "ValueError",
+    "message": "invalid literal for int() with base 10: '2.5'"
+  },
+  "history_ready": false,
+  "created_drawings": 0,
+  "payload": {
+    "drawing_id": "7390c7c0-da78-4904-9bae-32fd97032fa3",
+    "x": 0,
+    "y": 0,
+    "z": 0,
+    "locked": false,
+    "rotation": 0,
+    "svg": "<svg width=\"100\" height=\"50\"><line x1=\"0\" y1=\"0\" x2=\"100\" y2=\"50\" stroke=\"#123456\" stroke-width=\"2.5\"/></svg>"
+  }
+}

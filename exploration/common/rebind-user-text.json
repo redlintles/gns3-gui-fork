@@ -1,0 +1,8 @@
+{
+  "old_link_id": "5d4a3987-48c9-54a4-b128-2f98d6a6ad9b",
+  "new_link_id": "88954b4c-fcc8-47dd-9bb2-6f2057587b1e",
+  "server_svg": "<svg width=\"500\" height=\"30\"><text>Reference 5d4a3987-48c9-54a4-b128-2f98d6a6ad9b</text></svg>",
+  "history_svg": "<svg width=\"500\" height=\"30\"><text>Reference 88954b4c-fcc8-47dd-9bb2-6f2057587b1e</text></svg>",
+  "invalid": "",
+  "reopen_validation_error": "Saved history does not match the server topology"
+}

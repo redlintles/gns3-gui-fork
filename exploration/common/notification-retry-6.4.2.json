@@ -1,0 +1,48 @@
+{
+  "qt_build": "6.4.2",
+  "qt_runtime": "6.4.2",
+  "pyqt": "6.6.1",
+  "events": [
+    {
+      "ms": 3.357,
+      "error_handlers": 2,
+      "text_handlers": 1
+    },
+    {
+      "ms": 3.813,
+      "error_handlers": 3,
+      "text_handlers": 2
+    },
+    {
+      "ms": 4.231,
+      "error_handlers": 5,
+      "text_handlers": 4
+    },
+    {
+      "ms": 5.029,
+      "error_handlers": 9,
+      "text_handlers": 8
+    },
+    {
+      "ms": 6.464,
+      "error_handlers": 17,
+      "text_handlers": 16
+    },
+    {
+      "ms": 9.758,
+      "error_handlers": 33,
+      "text_handlers": 32
+    },
+    {
+      "ms": 15.457,
+      "error_handlers": 65,
+      "text_handlers": 64
+    },
+    {
+      "ms": 36.261,
+      "error_handlers": 129,
+      "text_handlers": 128
+    }
+  ],
+  "one_message_dispatches": 128
+}

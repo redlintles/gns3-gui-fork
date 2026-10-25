@@ -1,0 +1,47 @@
+{
+  "after_drag_rect": [
+    80.0,
+    -59.0
+  ],
+  "position": [
+    160.0,
+    219.7
+  ],
+  "history_invalid": "",
+  "cursor": 3,
+  "server_drawings": [
+    {
+      "drawing_id": "dd9ead12-6c1b-4d43-8213-e92ad50eecc7",
+      "locked": false,
+      "project_id": "a55cf9af-3955-48eb-a39c-a96fc034cd2b",
+      "rotation": 0,
+      "svg": "<svg width=\"80\" height=\"-59\"><rect width=\"80\" height=\"-59\" fill=\"#ffffff\" fill-opacity=\"1.0\" stroke-width=\"2\" stroke=\"#000000\" /><metadata id=\"gns3-canvas-item\">dd9ead12-6c1b-4d43-8213-e92ad50eecc7</metadata></svg>",
+      "x": 160,
+      "y": 219,
+      "z": 0
+    },
+    {
+      "drawing_id": "978b0ae8-84e2-4b0f-8bdf-0edce58b4e1d",
+      "locked": false,
+      "project_id": "a55cf9af-3955-48eb-a39c-a96fc034cd2b",
+      "rotation": 0,
+      "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"107.0\" height=\"79.0\"><metadata id=\"gns3-canvas-group\">{\"version\": 2, \"revision\": 5, \"name\": \"Exploration\", \"drawing_id\": \"978b0ae8-84e2-4b0f-8bdf-0edce58b4e1d\", \"identity\": \"978b0ae8-84e2-4b0f-8bdf-0edce58b4e1d\", \"origin\": {\"x\": 146.7, \"y\": 88.7}, \"style\": {\"shape\": \"rect\", \"border_color\": \"#ff3484c6\", \"border_width\": 1, \"border_style\": 1, \"fill_color\": \"#00000000\"}, \"size\": {\"width\": 107.0, \"height\": 79.0}, \"children\": [{\"type\": \"drawing\", \"id\": \"dd9ead12-6c1b-4d43-8213-e92ad50eecc7\", \"key\": \"dd9ead12-6c1b-4d43-8213-e92ad50eecc7\", \"x\": 13.300000000000011, \"y\": 131.0}]}</metadata><text x=\"0\" y=\"16\" fill=\"#3484c6\">Exploration</text></svg>",
+      "x": 146,
+      "y": 88,
+      "z": 0
+    }
+  ],
+  "undo_rect": [
+    80.0,
+    40.0
+  ],
+  "redo_rect": [
+    80.0,
+    -59.0
+  ],
+  "reopened_rect": [
+    80.0,
+    -59.0
+  ],
+  "reopened_history_invalid": ""
+}

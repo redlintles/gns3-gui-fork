@@ -1,0 +1,32 @@
+[
+  {
+    "alpha": 0,
+    "expected": "#00123456",
+    "actual": "#00003456",
+    "svg": "<svg width=\"80\" height=\"40\" viewBox=\"-2.0 -2.0 84.0 44.0\"><line x1=\"0\" y1=\"0\" x2=\"80\" y2=\"40\" stroke-width=\"4\" stroke=\"#3456\" stroke-opacity=\"0.0\" /></svg>"
+  },
+  {
+    "alpha": 1,
+    "expected": "#01123456",
+    "actual": "#01023456",
+    "svg": "<svg width=\"80\" height=\"40\" viewBox=\"-2.0 -2.0 84.0 44.0\"><line x1=\"0\" y1=\"0\" x2=\"80\" y2=\"40\" stroke-width=\"4\" stroke=\"#23456\" stroke-opacity=\"0.003921568859368563\" /></svg>"
+  },
+  {
+    "alpha": 2,
+    "expected": "#02123456",
+    "actual": "#02023456",
+    "svg": "<svg width=\"80\" height=\"40\" viewBox=\"-2.0 -2.0 84.0 44.0\"><line x1=\"0\" y1=\"0\" x2=\"80\" y2=\"40\" stroke-width=\"4\" stroke=\"#23456\" stroke-opacity=\"0.007843137718737125\" /></svg>"
+  },
+  {
+    "alpha": 8,
+    "expected": "#08123456",
+    "actual": "#08023456",
+    "svg": "<svg width=\"80\" height=\"40\" viewBox=\"-2.0 -2.0 84.0 44.0\"><line x1=\"0\" y1=\"0\" x2=\"80\" y2=\"40\" stroke-width=\"4\" stroke=\"#23456\" stroke-opacity=\"0.0313725508749485\" /></svg>"
+  },
+  {
+    "alpha": 15,
+    "expected": "#0f123456",
+    "actual": "#0f023456",
+    "svg": "<svg width=\"80\" height=\"40\" viewBox=\"-2.0 -2.0 84.0 44.0\"><line x1=\"0\" y1=\"0\" x2=\"80\" y2=\"40\" stroke-width=\"4\" stroke=\"#23456\" stroke-opacity=\"0.05882352963089943\" /></svg>"
+  }
+]

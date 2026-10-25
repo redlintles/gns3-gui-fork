@@ -1,0 +1,21 @@
+{
+  "nested": false,
+  "locked": true,
+  "edge": "top",
+  "before_rect": [
+    80.0,
+    40.0
+  ],
+  "after_rect": [
+    80.0,
+    29.0
+  ],
+  "before_pos": [
+    160.0,
+    120.0
+  ],
+  "after_pos": [
+    160.0,
+    131.0
+  ]
+}

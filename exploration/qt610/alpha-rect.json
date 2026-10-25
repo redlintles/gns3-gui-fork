@@ -1,0 +1,50 @@
+[
+  {
+    "alpha": 0,
+    "expected": "#00123456",
+    "actual": "#00003456",
+    "svg": "<svg width=\"80\" height=\"40\"><rect width=\"80\" height=\"40\" fill=\"#000000\" fill-opacity=\"1.0\" stroke-width=\"4\" stroke=\"#3456\" /></svg>"
+  },
+  {
+    "alpha": 1,
+    "expected": "#01123456",
+    "actual": "#00023456",
+    "svg": "<svg width=\"80\" height=\"40\"><rect width=\"80\" height=\"40\" fill=\"#000000\" fill-opacity=\"1.0\" stroke-width=\"4\" stroke=\"#23456\" /></svg>"
+  },
+  {
+    "alpha": 2,
+    "expected": "#02123456",
+    "actual": "#00023456",
+    "svg": "<svg width=\"80\" height=\"40\"><rect width=\"80\" height=\"40\" fill=\"#000000\" fill-opacity=\"1.0\" stroke-width=\"4\" stroke=\"#23456\" /></svg>"
+  },
+  {
+    "alpha": 8,
+    "expected": "#08123456",
+    "actual": "#00023456",
+    "svg": "<svg width=\"80\" height=\"40\"><rect width=\"80\" height=\"40\" fill=\"#000000\" fill-opacity=\"1.0\" stroke-width=\"4\" stroke=\"#23456\" /></svg>"
+  },
+  {
+    "alpha": 15,
+    "expected": "#0f123456",
+    "actual": "#00023456",
+    "svg": "<svg width=\"80\" height=\"40\"><rect width=\"80\" height=\"40\" fill=\"#000000\" fill-opacity=\"1.0\" stroke-width=\"4\" stroke=\"#23456\" /></svg>"
+  },
+  {
+    "alpha": 16,
+    "expected": "#10123456",
+    "actual": "#ff123456",
+    "svg": "<svg width=\"80\" height=\"40\"><rect width=\"80\" height=\"40\" fill=\"#000000\" fill-opacity=\"1.0\" stroke-width=\"4\" stroke=\"#123456\" /></svg>"
+  },
+  {
+    "alpha": 64,
+    "expected": "#40123456",
+    "actual": "#ff123456",
+    "svg": "<svg width=\"80\" height=\"40\"><rect width=\"80\" height=\"40\" fill=\"#000000\" fill-opacity=\"1.0\" stroke-width=\"4\" stroke=\"#123456\" /></svg>"
+  },
+  {
+    "alpha": 128,
+    "expected": "#80123456",
+    "actual": "#ff123456",
+    "svg": "<svg width=\"80\" height=\"40\"><rect width=\"80\" height=\"40\" fill=\"#000000\" fill-opacity=\"1.0\" stroke-width=\"4\" stroke=\"#123456\" /></svg>"
+  }
+]

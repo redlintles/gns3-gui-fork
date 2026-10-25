@@ -1,0 +1,45 @@
+{
+  "qt": "6.4.2",
+  "events": [
+    {
+      "ms": 2.817,
+      "error_handlers": 2,
+      "text_handlers": 1
+    },
+    {
+      "ms": 3.176,
+      "error_handlers": 3,
+      "text_handlers": 2
+    },
+    {
+      "ms": 3.628,
+      "error_handlers": 5,
+      "text_handlers": 4
+    },
+    {
+      "ms": 4.356,
+      "error_handlers": 9,
+      "text_handlers": 8
+    },
+    {
+      "ms": 5.781,
+      "error_handlers": 17,
+      "text_handlers": 16
+    },
+    {
+      "ms": 8.642,
+      "error_handlers": 33,
+      "text_handlers": 32
+    },
+    {
+      "ms": 14.179,
+      "error_handlers": 65,
+      "text_handlers": 64
+    },
+    {
+      "ms": 25.043,
+      "error_handlers": 129,
+      "text_handlers": 128
+    }
+  ]
+}

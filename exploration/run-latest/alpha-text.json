@@ -1,0 +1,32 @@
+[
+  {
+    "alpha": 0,
+    "expected": "#00123456",
+    "actual": "#00003456",
+    "svg": "<svg width=\"37\" height=\"26\"><text font-family=\"TypeWriter\" font-size=\"10.0\" fill=\"#3456\" fill-opacity=\"0.0\">hello</text></svg>"
+  },
+  {
+    "alpha": 1,
+    "expected": "#01123456",
+    "actual": "#01023456",
+    "svg": "<svg width=\"37\" height=\"26\"><text font-family=\"TypeWriter\" font-size=\"10.0\" fill=\"#23456\" fill-opacity=\"0.003921568859368563\">hello</text></svg>"
+  },
+  {
+    "alpha": 2,
+    "expected": "#02123456",
+    "actual": "#02023456",
+    "svg": "<svg width=\"37\" height=\"26\"><text font-family=\"TypeWriter\" font-size=\"10.0\" fill=\"#23456\" fill-opacity=\"0.007843137718737125\">hello</text></svg>"
+  },
+  {
+    "alpha": 8,
+    "expected": "#08123456",
+    "actual": "#08023456",
+    "svg": "<svg width=\"37\" height=\"26\"><text font-family=\"TypeWriter\" font-size=\"10.0\" fill=\"#23456\" fill-opacity=\"0.0313725508749485\">hello</text></svg>"
+  },
+  {
+    "alpha": 15,
+    "expected": "#0f123456",
+    "actual": "#0f023456",
+    "svg": "<svg width=\"37\" height=\"26\"><text font-family=\"TypeWriter\" font-size=\"10.0\" fill=\"#23456\" fill-opacity=\"0.05882352963089943\">hello</text></svg>"
+  }
+]

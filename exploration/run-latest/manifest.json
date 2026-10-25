@@ -1,0 +1,98 @@
+{
+  "commit": "6073b656073f79f86e56105edb39cb36013df446",
+  "platform": "linux",
+  "qt_platform": "offscreen",
+  "results": [
+    {
+      "name": "tool-switch",
+      "command": [
+        "/usr/bin/python3",
+        "-m",
+        "pytest",
+        "-q",
+        "tests/items/probe_exploratory_sequences.py",
+        "-k",
+        "tool_switch_draws_wrong_kind"
+      ],
+      "returncode": 1
+    },
+    {
+      "name": "generated-geometry",
+      "command": [
+        "/usr/bin/python3",
+        "-m",
+        "pytest",
+        "-q",
+        "tests/items/probe_exploratory_sequences.py",
+        "-k",
+        "generated_hierarchy or serialized_line"
+      ],
+      "returncode": 0
+    },
+    {
+      "name": "shape-resize",
+      "command": [
+        "/usr/bin/python3",
+        "-m",
+        "pytest",
+        "-q",
+        "tests/items/probe_exploratory_sequences.py",
+        "-k",
+        "shape_resize_probe"
+      ],
+      "returncode": 1
+    },
+    {
+      "name": "alpha-roundtrip",
+      "command": [
+        "/usr/bin/python3",
+        "-m",
+        "pytest",
+        "-q",
+        "tests/items/probe_exploratory_sequences.py",
+        "-k",
+        "generated_alpha"
+      ],
+      "returncode": 1
+    },
+    {
+      "name": "image-ratio",
+      "command": [
+        "/usr/bin/python3",
+        "-m",
+        "pytest",
+        "-q",
+        "tests/items/probe_exploratory_sequences.py",
+        "-k",
+        "image_ratio"
+      ],
+      "returncode": 1
+    },
+    {
+      "name": "image-interrupted",
+      "command": [
+        "/usr/bin/python3",
+        "-m",
+        "pytest",
+        "-q",
+        "tests/items/probe_exploratory_sequences.py",
+        "-k",
+        "image_interrupted"
+      ],
+      "returncode": 1
+    },
+    {
+      "name": "generated-history",
+      "command": [
+        "/usr/bin/python3",
+        "-m",
+        "pytest",
+        "-q",
+        "tests/history/probe_exploratory_sequences.py",
+        "-k",
+        "generated_history_oracle"
+      ],
+      "returncode": 0
+    }
+  ]
+}

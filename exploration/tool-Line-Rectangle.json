@@ -1,0 +1,19 @@
+{
+  "sequence": [
+    "Line",
+    "Rectangle"
+  ],
+  "state": {
+    "note": false,
+    "rectangle": true,
+    "ellipse": false,
+    "line": false,
+    "link": false
+  },
+  "checked": {
+    "Rectangle": true,
+    "Ellipse": false,
+    "Note": false,
+    "Line": false
+  }
+}

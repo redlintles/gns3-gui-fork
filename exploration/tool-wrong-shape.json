@@ -1,0 +1,12 @@
+{
+  "created": [
+    "RectangleItem"
+  ],
+  "state": {
+    "note": false,
+    "rectangle": false,
+    "ellipse": false,
+    "line": false,
+    "link": false
+  }
+}
